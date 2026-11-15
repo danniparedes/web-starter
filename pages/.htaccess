@@ -1,0 +1,7 @@
+# Pages are shown through /index.php, never opened directly.
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Deny from all
+</IfModule>

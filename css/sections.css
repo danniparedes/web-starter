@@ -1,0 +1,259 @@
+/* ==========================================================================
+   SECTIONS
+   What   : Styles that belong to ONE named section: the section--NAME
+            classes. Each section is called by its content.
+   Rule   : - Only tune what is specific to that section: background, border,
+              and spacing (by overriding --section-padding-block or
+              --column-padding-inline on the section).
+            - Reusable pieces belong in components.css, not here.
+   Loaded : 5th (last). Wins over layout.css and components.css.
+
+   BLOCK TEMPLATE:
+   -------------------------------------------------------------------------
+   SECTION: name
+   Markup : <section class="section section--name" id="name">
+              <div class="column">...</div>
+            </section>
+   ------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   SECTION: header
+   Markup : <header class="section section--header">
+              <div class="column thirds"> logo | nav | social </div>
+            </header>
+   -------------------------------------------------------------------------- */
+.section--header {
+  --section-padding-block: var(--space-3);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION: footer
+   Markup : <footer class="section section--footer">
+              <div class="column stack">
+                <div class="thirds thirds--stack"> logo | sitemap | company </div>
+                <p class="legal">...</p>
+              </div>
+            </footer>
+   -------------------------------------------------------------------------- */
+.section--footer {
+  --section-padding-block: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION: hero
+   Markup : <section class="section section--hero section--media" id="hero">
+              <div class="media-bg">...</div>
+              <div class="column stack">...</div>
+              <button class="media-toggle">...</button>
+            </section>
+   Note   : Text is light because it sits on dark media. If a hero has no
+            media, remove the color line below.
+   -------------------------------------------------------------------------- */
+.section--hero {
+  display: flex;
+  align-items: center;
+  min-height: var(--hero-min-height);
+  color: var(--color-on-media);
+}
+.section--hero .lead { color: inherit; }
+
+/* --------------------------------------------------------------------------
+   SECTION: divider
+   Markup : <section class="section section--divider section--media" id="divider">
+              <div class="media-bg">...</div>
+              <div class="column stack"> <h2>..</h2> <p>..</p> </div>
+              <button class="media-toggle">...</button>
+            </section>
+   Note   : Big vertical padding shows more of the video above and below the
+            text; the text rows are narrow and centered so they have space
+            around them. Light text, like the hero, because it sits on media.
+   -------------------------------------------------------------------------- */
+.section--divider {
+  --section-padding-block: var(--divider-padding-block);
+  color: var(--color-on-media);
+  text-align: center;
+}
+.section--divider .column > * {
+  max-width: var(--divider-text-max);
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION: page-banner
+   Markup : <section class="section section--page-banner">
+              <div class="column stack"> breadcrumb, <h1>, .lead </div></section>
+   Use    : top of every inner page (not the home page).
+   -------------------------------------------------------------------------- */
+.section--page-banner {
+  --section-padding-block: var(--space-5);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   SECTIONS with centered text: stats, logos, quote
+   -------------------------------------------------------------------------- */
+.section--stats,
+.section--logos,
+.section--quote { text-align: center; }
+
+/* --------------------------------------------------------------------------
+   SECTION: cta  (call-to-action band)
+   Markup : <section class="section section--cta"><div class="column stack">
+              <h2>..</h2><p>..</p><p><a class="btn btn--light">..</a></p></div></section>
+   -------------------------------------------------------------------------- */
+.section--cta {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  text-align: center;
+}
+
+
+/* --------------------------------------------------------------------------
+   SECTION: hero-image  (image hero with big type, no video)
+   Markup : <section class="section section--hero section--hero-image section--media" id="hero">
+              <div class="media-bg" aria-hidden="true"><img class="media-bg__img" ..></div>
+              <div class="column stack"><p class="hero__eyebrow">..</p><h1 class="hero__title">..</h1>
+                <p class="lead">..</p><p><a class="btn btn--primary">..</a></p></div>
+            </section>
+   Note   : Builds on .section--hero (light text over media). Text sits at the bottom
+            left; the headline uses the display size token. No moving parts, so no
+            pause button is needed (lighter and kinder on slow phones).
+   -------------------------------------------------------------------------- */
+.section--hero-image {
+  align-items: flex-end;
+  min-height: var(--hero-image-min-height);
+}
+.section--hero-image .column > * { max-width: var(--hero-image-text-max); }
+.hero__title {
+  font-size: var(--text-display);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--tracking-tight);
+  overflow-wrap: break-word;
+}
+.hero__eyebrow {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION: logo-bar  (thin band of logos right under a hero)
+   Markup : <section class="section section--logo-bar" aria-label="[Who trusts us]">
+              <div class="column stack"><p class="logo-bar__caption">..</p>
+                <ul class="logo-strip">..</ul></div></section>
+   Note   : Same .logo-strip component as the full logo section, but slimmer and
+            with a small caption. Only real logos, with the owner's permission.
+   -------------------------------------------------------------------------- */
+.section--logo-bar {
+  --section-padding-block: var(--logo-bar-padding);
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+}
+.logo-bar__caption {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION: about-me  (portrait + story)
+   Markup : <section class="section section--about-me"><div class="column halves halves--top">
+              <figure class="figure figure--portrait">..</figure>
+              <div class="stack">[h2, prose]</div></div></section>
+   Note   : Reuses .halves. The photo stays in view while the story scrolls (tablet+).
+   -------------------------------------------------------------------------- */
+@media (min-width: 48em) {
+  .section--about-me .figure { position: sticky; top: var(--space-5); }
+}
+
+/* --------------------------------------------------------------------------
+   SECTION: dark  (theme switch: any section, or the whole page)
+   Markup : <section class="section section--dark"> ..any content.. </section>
+            Whole site dark: <body class="theme-dark">.
+   Note   : Swaps the color ROLES (background, text, primary, borders, errors) for the
+            --dark-* values in tokens.css, so every component (cards, steps, FAQ, forms,
+            buttons) adapts by itself. Alternate dark and light bands for rhythm.
+            Do not set colors inside a dark section: change the --dark-* tokens instead.
+   -------------------------------------------------------------------------- */
+.section--dark,
+.theme-dark {
+  --color-bg:               var(--dark-bg);
+  --color-surface:          var(--dark-surface);
+  --color-text:             var(--dark-text);
+  --color-text-muted:       var(--dark-text-muted);
+  --color-primary:          var(--dark-primary);
+  --color-primary-hover:    var(--dark-primary-hover);
+  --color-primary-contrast: var(--dark-primary-contrast);
+  --color-border:           var(--dark-border);
+  --color-error:            var(--dark-error);
+  --color-error-surface:    var(--dark-error-surface);
+  --color-success:          var(--dark-success);
+  --color-success-surface:  var(--dark-success-surface);
+}
+.section--dark {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+.section--dark .btn--light { background: var(--color-text); color: var(--color-bg); }
+
+/* --------------------------------------------------------------------------
+   SECTION: stats-card  (stats card rising over the hero)
+   Markup : <section class="section section--hero section--hero-overlap ..."> (the hero above: adds foot room)
+            <section class="section section--stats-card"><div class="column">
+              <div class="stats-card"> .. </div></div></section>
+   Note   : No top padding: the card rises over the hero above (see .stats-card).
+   -------------------------------------------------------------------------- */
+.section--stats-card { padding-top: 0; }
+/* Hero that has a stats card under it: extra room at the foot so the card never covers its text. */
+.section--hero-overlap { padding-bottom: calc(var(--section-padding-block) + var(--stats-card-overlap)); }
+
+/* --------------------------------------------------------------------------
+   SECTION: hero-type  (giant headline; a photo overlaps its lower part)
+   Markup : <section class="section section--hero-type"><div class="column stack">
+              <h1 class="hero__title hero__title--giant">..</h1>
+              <figure class="figure figure--portrait hero-type__figure">..</figure>
+              <p class="lead">..</p></div></section>
+   Note   : The headline is the picture. Keep it to one or two short words so the
+            part the photo covers never hides the meaning. The photo is decoration:
+            the text underneath stays real, readable text (not part of the image).
+   -------------------------------------------------------------------------- */
+.hero__title--giant {
+  font-size: var(--text-giant);
+  line-height: var(--line-height-giant);
+  text-transform: uppercase;
+}
+.hero-type__figure {
+  position: relative;
+  z-index: 1;
+  max-width: var(--hero-type-figure-max);
+  margin-top: calc(var(--text-giant) * var(--hero-type-overlap) * -1);
+  margin-inline: auto;
+}
+.section--hero-type .lead { max-width: var(--article-max); margin-inline: auto; text-align: center; }
+.section--hero-type .hero__title,
+.hero-type__action { text-align: center; }
+
+/* --------------------------------------------------------------------------
+   SECTION: glass  (form on a frosted card over a photo)
+   Markup : <section class="section section--media section--glass"><div class="media-bg">..</div>
+              <div class="column halves"> [heading + text] | <div class="glass-card stack">form</div></div></section>
+   Note   : Light text, like the hero, because it sits on media.
+   -------------------------------------------------------------------------- */
+.section--glass { color: var(--color-on-media); }
+.section--glass .lead { color: inherit; }
+
+/* --------------------------------------------------------------------------
+   SECTIONS built only from components: projects, project-detail, bento,
+   programs, offerings, editorial rows, tiles, timelines. They need no rules of their own;
+   the pieces live in components.css (project, facts, bento, program, offers, rows,
+   section-label, tiles, timeline, faq--numbered).
+   -------------------------------------------------------------------------- */

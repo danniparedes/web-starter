@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  FORMS.HTML — Form kit (every field type a project usually needs)
+  ----------------------------------------------------------------------------
+  Built only from the section patterns in docs/Patterns. Header and footer are
+  IDENTICAL on every page (copy them from index.html when they change).
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <!-- 1. META -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form kit | [Site name]</title>
+  <meta name="description" content="Every form field type, ready to keep or delete.">
+
+  <!-- 2. STYLES (same order as every page) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <!-- Site switches (true/false). Runs before the page is drawn, so it is NOT deferred. -->
+  <script src="../js/site-config.js"></script>
+  <script src="../js/features.js"></script>
+</head>
+
+<body>
+  <!-- =====================================================================
+       3. SKIP LINK
+       First focusable element. Lets keyboard users jump past the menu.
+       ===================================================================== -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- =====================================================================
+       4. HEADER  (section--header)
+       Same two layers as every section: section (full width) > column.
+       The column is split in three parts with .thirds:
+         left   = logo
+         middle = main navigation
+         right  = social icons
+       data-js="nav-toggle" and data-js="nav-list" are used by js/main.js.
+       Links use full page paths (index.html#about) so this block is IDENTICAL
+       on every page. js/main.js marks the link of the current page with
+       aria-current="page" (initCurrentPage), so no per-page edits are needed.
+       ===================================================================== -->
+  <header class="section section--header">
+    <div class="column thirds">
+
+      <!-- 4.1 LEFT: LOGO SLOT. To use the real logo, replace the <span> with:
+           <img src="../assets/img/logo.svg" alt="[Site name]" width="160" height="48">
+           and keep the link around it. -->
+      <a class="logo" href="index.html" aria-label="[Site name] home">
+        <span class="logo__placeholder">LOGO</span>
+      </a>
+
+      <!-- 4.2 MIDDLE: MAIN NAVIGATION -->
+      <nav class="nav" aria-label="Main">
+        <button class="nav__toggle" type="button"
+                aria-expanded="false" aria-controls="nav-list"
+                data-js="nav-toggle">Menu</button>
+        <ul class="nav__list" id="nav-list" data-js="nav-list">
+          <li class="nav__item"><a class="nav__link" href="index.html">Home</a></li>
+          <li class="nav__item nav__item--has-sub">
+            <a class="nav__link" href="index.html#about">About</a>
+            <button class="nav__sub-toggle" type="button" aria-expanded="false" aria-controls="sub-about" data-js="sub-toggle">
+              <span class="visually-hidden">Show About submenu</span>
+            </button>
+            <ul class="nav__sub" id="sub-about">
+              <li><a class="nav__link" href="index.html#about">About us</a></li>
+              <li><a class="nav__link" href="team.html">Team</a></li>
+              <li><a class="nav__link" href="admissions.html">Admissions</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a class="nav__link" href="store.html">Store</a></li>
+          <li class="nav__item"><a class="nav__link" href="blog.html">Blog</a></li>
+          <li class="nav__item"><a class="nav__link" href="contact.html">Contact</a></li>
+          <li class="nav__item nav__item--has-sub">
+            <a class="nav__link" href="patterns.html">Library</a>
+            <button class="nav__sub-toggle" type="button" aria-expanded="false" aria-controls="sub-library" data-js="sub-toggle">
+              <span class="visually-hidden">Show Library submenu</span>
+            </button>
+            <ul class="nav__sub" id="sub-library">
+              <li><a class="nav__link" href="all-pages.html">All pages</a></li>
+              <li><a class="nav__link" href="patterns.html">Patterns</a></li>
+              <li><a class="nav__link" href="forms.html">Forms</a></li>
+              <li><a class="nav__link" href="store.html">Store</a></li>
+              <li><a class="nav__link" href="projects.html">Work</a></li>
+              <li><a class="nav__link" href="project.html">Project</a></li>
+              <li><a class="nav__link" href="about-me.html">About me</a></li>
+              <li><a class="nav__link" href="programs.html">Programs</a></li>
+              <li><a class="nav__link" href="post.html">Blog post</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 4.3 RIGHT: SOCIAL ICONS (links to the profiles). Replace each
+           [URL]. Add or remove <li> items as needed; keep aria-label. -->
+      <ul class="social" aria-label="Social media">
+        <li>
+          <a class="social__link" href="[Facebook URL]" aria-label="Facebook">
+            <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="social__link" href="[Instagram URL]" aria-label="Instagram">
+            <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="social__link" href="[LinkedIn URL]" aria-label="LinkedIn">
+            <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       5. MAIN CONTENT
+       ===================================================================== -->
+  <main id="main">
+
+    <!-- INNER-PAGE BANNER -->
+    <section class="section section--page-banner" id="page-banner" aria-labelledby="page-title">
+      <div class="column stack">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Form kit</li>
+          </ol>
+        </nav>
+        <h1 id="page-title">Form kit</h1>
+        <p class="lead">Every field type a project usually needs. Keep the groups you need, delete the rest.</p>
+      </div>
+    </section>
+
+    <!-- HOW TO TRIM -->
+    <section class="section" id="how-to-use" aria-labelledby="how-to-use-title">
+      <div class="column column--narrow stack">
+        <h2 id="how-to-use-title">How to use this kit</h2>
+        <ol class="list">
+          <li>Copy the whole <code>&lt;form&gt;</code> into your page.</li>
+          <li>To hide a group without deleting it, set its switch to <code>false</code> in <code>js/site-config.js</code> (for example <code>'form.address': false</code>). Set it back to <code>true</code> to show it again.</li>
+          <li>Each block between <code>GROUP n</code> comments is one <code>&lt;fieldset class="form__group"&gt;</code>. Delete the blocks you do not need; a single field can be deleted on its own too.</li>
+          <li>Required fields: add <code>required</code> to the control and <code>form__label--required</code> to its label.</li>
+          <li>Field names (<code>name="..."</code>) are what the PHP side receives. Keep them stable once PHP exists.</li>
+          <li>The spam-trap field is named <code>website</code>, so the real web address field is called <code>website_url</code>.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- COMPLETE FORM -->
+    <section class="section section--alt" id="complete-form" aria-labelledby="complete-form-title">
+      <div class="column column--narrow stack">
+        <h2 id="complete-form-title">Complete form</h2>
+        <p class="form__hint">Fields marked * are required. This demo does not send anything (data-demo); remove that attribute on a real form.</p>
+
+        <!-- enctype="multipart/form-data" is only needed when the form has a file field (GROUP 6). -->
+        <form class="form form--groups" action="../php/handlers/contact.php" method="post" enctype="multipart/form-data" data-js="form" data-demo
+              data-success="Thank you! We received your message and will reply soon.">
+
+          <!-- GROUP 1 — ABOUT YOU -->
+          <fieldset class="form__group" data-feature="form.aboutYou">
+            <legend class="form__legend">About you</legend>
+            <div class="form__row">
+              <div class="form__field">
+                <label class="form__label form__label--required" for="fk-first-name">First name</label>
+                <input class="form__control" id="fk-first-name" name="first_name" type="text" autocomplete="given-name" required>
+              </div>
+              <div class="form__field">
+                <label class="form__label form__label--required" for="fk-last-name">Last name</label>
+                <input class="form__control" id="fk-last-name" name="last_name" type="text" autocomplete="family-name" required>
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="form__field">
+                <label class="form__label form__label--required" for="fk-email">Email</label>
+                <input class="form__control" id="fk-email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fk-phone">Phone</label>
+                <input class="form__control" id="fk-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="fk-phone-hint">
+                <p class="form__hint" id="fk-phone-hint">Include the country code.</p>
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="form__field">
+                <label class="form__label" for="fk-organization">Organization</label>
+                <input class="form__control" id="fk-organization" name="organization" type="text" autocomplete="organization">
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fk-website-url">Website</label>
+                <input class="form__control" id="fk-website-url" name="website_url" type="url" autocomplete="url" aria-describedby="fk-website-hint">
+                <p class="form__hint" id="fk-website-hint">Start with https://</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- GROUP 2 — YOUR REQUEST -->
+          <fieldset class="form__group" data-feature="form.request">
+            <legend class="form__legend">Your request</legend>
+            <div class="form__field">
+              <label class="form__label form__label--required" for="fk-subject">Subject</label>
+              <select class="form__control" id="fk-subject" name="subject" required data-error="Please choose a subject.">
+                <option value="">Choose one&hellip;</option>
+                <option value="[option-1]">[Option 1]</option>
+                <option value="[option-2]">[Option 2]</option>
+                <option value="[option-3]">[Option 3]</option>
+              </select>
+            </div>
+            <div class="form__field">
+              <label class="form__label form__label--required" for="fk-message">Message</label>
+              <textarea class="form__control form__control--area" id="fk-message" name="message" maxlength="500" required
+                        data-counter="fk-count" aria-describedby="fk-count"></textarea>
+              <p class="form__hint" id="fk-count">0 / 500</p>
+            </div>
+          </fieldset>
+
+          <!-- GROUP 3 — DETAILS (dates, numbers, slider) -->
+          <fieldset class="form__group" data-feature="form.details">
+            <legend class="form__legend">Details</legend>
+            <div class="form__row">
+              <div class="form__field">
+                <label class="form__label" for="fk-date">Preferred date</label>
+                <input class="form__control" id="fk-date" name="date" type="date">
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fk-time">Preferred time</label>
+                <input class="form__control" id="fk-time" name="time" type="time">
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="form__field">
+                <label class="form__label" for="fk-quantity">Number of people</label>
+                <input class="form__control" id="fk-quantity" name="quantity" type="number" min="1" max="10" step="1" inputmode="numeric">
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fk-importance">Importance (1 = low, 5 = high)</label>
+                <input class="form__control form__control--range" id="fk-importance" name="importance" type="range" min="1" max="5" step="1" value="3">
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- GROUP 4 — CHOICES (radio buttons and checkboxes) -->
+          <fieldset class="form__group" data-feature="form.preferences">
+            <legend class="form__legend">Your preferences</legend>
+            <fieldset class="form__choices form__choices--inline">
+              <legend class="form__label form__label--required">How should we contact you?</legend>
+              <label class="form__choice"><input type="radio" name="contact_method" value="email" required> Email</label>
+              <label class="form__choice"><input type="radio" name="contact_method" value="phone"> Phone</label>
+              <label class="form__choice"><input type="radio" name="contact_method" value="whatsapp"> WhatsApp</label>
+            </fieldset>
+            <fieldset class="form__choices">
+              <legend class="form__label">What are you interested in?</legend>
+              <label class="form__choice"><input type="checkbox" name="interests[]" value="option-a"> [Option A]</label>
+              <label class="form__choice"><input type="checkbox" name="interests[]" value="option-b"> [Option B]</label>
+              <label class="form__choice"><input type="checkbox" name="interests[]" value="option-c"> [Option C]</label>
+            </fieldset>
+          </fieldset>
+
+          <!-- GROUP 5 — ADDRESS -->
+          <fieldset class="form__group" data-feature="form.address">
+            <legend class="form__legend">Address</legend>
+            <div class="form__field">
+              <label class="form__label" for="fk-street">Street address</label>
+              <input class="form__control" id="fk-street" name="street" type="text" autocomplete="street-address">
+            </div>
+            <div class="form__row form__row--trio">
+              <div class="form__field">
+                <label class="form__label" for="fk-city">City</label>
+                <input class="form__control" id="fk-city" name="city" type="text" autocomplete="address-level2">
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fk-region">State / province</label>
+                <input class="form__control" id="fk-region" name="region" type="text" autocomplete="address-level1">
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fk-postal">Postal code</label>
+                <input class="form__control" id="fk-postal" name="postal_code" type="text" autocomplete="postal-code">
+              </div>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="fk-country">Country</label>
+              <select class="form__control" id="fk-country" name="country" autocomplete="country-name">
+                <option value="">Choose one&hellip;</option>
+                <option value="[country-1]">[Country 1]</option>
+                <option value="[country-2]">[Country 2]</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- GROUP 6 — ATTACHMENT (needs enctype="multipart/form-data" on the form) -->
+          <fieldset class="form__group" data-feature="form.attachment">
+            <legend class="form__legend">Attachment</legend>
+            <div class="form__field">
+              <label class="form__label" for="fk-file">Upload a file</label>
+              <input class="form__control" id="fk-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png" aria-describedby="fk-file-hint">
+              <p class="form__hint" id="fk-file-hint">PDF, JPG or PNG. Maximum size: [DECIDE per project; the PHP side must enforce it].</p>
+            </div>
+          </fieldset>
+
+          <!-- GROUP 7 — CONSENT -->
+          <fieldset class="form__group" data-feature="form.consent">
+            <legend class="form__legend">Consent</legend>
+            <div class="form__field">
+              <label class="form__choice"><input type="checkbox" name="accept_terms" value="yes" required data-error="Please accept to continue."> <span>I accept the <a href="[Privacy policy URL]">privacy policy</a>.</span></label>
+            </div>
+            <div class="form__field">
+              <label class="form__choice"><input type="checkbox" name="newsletter" value="yes"> <span>Send me news and updates by email.</span></label>
+            </div>
+          </fieldset>
+
+          <!-- GROUP 8 — SECURITY (invisible fields + optional widget) -->
+          <!-- Spam trap: hidden from people, bots tend to fill it. The PHP side rejects any message where it is not empty. -->
+          <div class="visually-hidden" aria-hidden="true">
+            <label>Leave this field empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <!-- Filled by PHP in the PHP stage (protects against forged requests). -->
+          <input type="hidden" name="csrf_token" value="">
+          <!-- Where the visitor came from (useful in the notification email). -->
+          <input type="hidden" name="source_page" value="forms.html">
+          <!-- OPTIONAL anti-spam widget (a CAPTCHA or similar). Delete this slot if not used. -->
+          <div class="form__slot" data-slot="antispam" data-feature="form.antispam">[Anti-spam widget goes here, if the project needs one]</div>
+
+          <div class="form__status" role="status" data-js="form-status" hidden></div>
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit" data-loading-label="Sending&hellip;">[Send]</button>
+            <button class="btn btn--outline" type="reset">Clear form</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER SIGNUP — one field, one button -->
+    <section class="section" id="newsletter" data-feature="newsletter" aria-labelledby="newsletter-title">
+      <div class="column column--narrow stack">
+        <h2 id="newsletter-title">Newsletter signup</h2>
+        <p>One field and one button. Works in a band, a footer or a sidebar.</p>
+        <form class="form form--inline" action="../php/handlers/newsletter.php" method="post" data-js="form" data-demo
+              data-success="Thanks for subscribing!">
+          <div class="form__field">
+            <label class="form__label form__label--required" for="nl-email">Email</label>
+            <input class="form__control" id="nl-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="visually-hidden" aria-hidden="true">
+            <label>Leave this field empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <input type="hidden" name="csrf_token" value="">
+          <input type="hidden" name="source_page" value="forms.html">
+          <button class="btn btn--primary" type="submit" data-loading-label="Subscribing&hellip;">[Subscribe]</button>
+          <div class="form__status" role="status" data-js="form-status" hidden></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       6. FOOTER  (section--footer)
+       Same two layers as every section: section (full width) > column.
+       The column holds the .thirds row, then a legal line:
+         left   = logo
+         middle = sitemap
+         right  = company info, in two rows (details, then small social icons)
+       data-js="year" is filled in by js/main.js.
+       ===================================================================== -->
+  <footer class="section section--footer">
+    <div class="column stack">
+
+      <div class="thirds thirds--stack">
+
+        <!-- 6.1 LEFT: LOGO (same as the header) -->
+        <a class="logo" href="index.html" aria-label="[Site name] home">
+          <span class="logo__placeholder">LOGO</span>
+        </a>
+
+        <!-- 6.2 MIDDLE: SITEMAP (the page's main links) -->
+        <nav class="sitemap" aria-label="Sitemap">
+          <ul class="sitemap__list" data-js="sitemap-list">
+            <li><a class="sitemap__link" href="index.html">Home</a></li>
+            <li><a class="sitemap__link" href="index.html#about">About</a></li>
+            <li><a class="sitemap__link" href="team.html">Team</a></li>
+            <li><a class="sitemap__link" href="contact.html">Contact</a></li>
+            <li><a class="sitemap__link" href="store.html">Store</a></li>
+            <li><a class="sitemap__link" href="blog.html">Blog</a></li>
+            <li><a class="sitemap__link" href="admissions.html">Admissions</a></li>
+            <li><a class="sitemap__link" href="patterns.html">Patterns</a></li>
+          </ul>
+        </nav>
+
+        <!-- 6.3 RIGHT: COMPANY INFO, two rows -->
+        <div class="company stack">
+          <!-- Row 1: contact details -->
+          <address class="company__info">
+            <span class="company__name">[Company name]</span><br>
+            [Street address, City, Country]<br>
+            <a href="tel:[Phone]">[Phone]</a><br>
+            <a href="mailto:[Email]">[Email]</a>
+          </address>
+          <!-- Row 2: social profiles, small icons -->
+        <ul class="social social--small" aria-label="Social media">
+          <li>
+            <a class="social__link" href="[Facebook URL]" aria-label="Facebook">
+              <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="social__link" href="[Instagram URL]" aria-label="Instagram">
+              <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="social__link" href="[LinkedIn URL]" aria-label="LinkedIn">
+              <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+        </div>
+
+      </div>
+
+      <!-- 6.4 LEGAL LINE -->
+      <p class="legal">&copy; <span data-js="year">[Year]</span> [Site name]. All rights reserved.</p>
+
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       7. SCRIPTS
+       Last in <body>. `defer` = runs after the HTML is parsed.
+       ===================================================================== -->
+  <!-- =====================================================================
+       7. CHAT BUBBLE (floating contact button, same on every page)
+       Opens a WhatsApp chat. Replace [WHATSAPP-NUMBER] with the full
+       international number, digits only (country code first; no +, no
+       leading 0, no spaces). The text after ?text= is the prefilled message,
+       URL-encoded (a space is %20).
+       Remove this block on pages that must not show it.
+       ===================================================================== -->
+  <a class="chat-bubble" data-feature="chatBubble" href="https://wa.me/[WHATSAPP-NUMBER]?text=Hello%2C%20I%20have%20a%20question."
+     target="_blank" rel="noopener">
+    <svg class="icon icon--large" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-4.9A8.5 8.5 0 1 1 21 11.5z"/>
+    </svg>
+    <span class="chat-bubble__label">Chat with us on WhatsApp <span class="visually-hidden">(opens in a new tab)</span></span>
+  </a>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1595 @@
+/* ==========================================================================
+   COMPONENTS
+   What   : Named, reusable UI pieces. One block per component.
+   Naming : .component, .component__part, .component--variant
+            e.g. .card, .card__title, .card--featured
+   Rule   : Values come from tokens.css. Each block starts with the header
+            comment below so the file stays scannable.
+            Styles for ONE specific section (header, footer...) do not go
+            here: they go in sections.css.
+   Loaded : 4th (before sections.css).
+
+   BLOCK TEMPLATE:
+   -------------------------------------------------------------------------
+   COMPONENT: name
+   Use when : one line.
+   Markup   : <tag class="name">...</tag>
+   ------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   COMPONENT: logo
+   Use when : the brand mark, normally upper left of the header.
+   Markup   : <a class="logo" href="index.html"><img src="..." alt="..."></a>
+              Until the real file exists: <span class="logo__placeholder">LOGO</span>
+   -------------------------------------------------------------------------- */
+.logo {
+  display: block;
+  max-width: 100%;
+  line-height: 0;
+  text-decoration: none;
+}
+.logo img { width: var(--site-logo-width); max-width: 100%; height: auto; }
+
+.logo__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--site-logo-width);
+  max-width: 100%;   /* shrinks on narrow phones instead of pushing the icons out */
+  height: var(--site-logo-height);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: nav
+   Use when : main site navigation.
+   Behavior : Visible by default. If JavaScript runs, it collapses on small
+              screens behind the toggle button (progressive enhancement).
+   -------------------------------------------------------------------------- */
+.nav__toggle { display: none; }  /* only shown when JS is available, small screens */
+
+.nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+.nav__link {
+  color: var(--color-text);
+  text-decoration: none;
+}
+.nav__link:hover { color: var(--color-primary); }
+
+/* Dropdown (submenu), like the WordPress menu.
+   Markup : <li class="nav__item nav__item--has-sub">
+              <a class="nav__link" href="...">Parent</a>
+              <button class="nav__sub-toggle" type="button" aria-expanded="false"
+                      aria-controls="sub-ID" data-js="sub-toggle">
+                <span class="visually-hidden">Show Parent submenu</span></button>
+              <ul class="nav__sub" id="sub-ID"><li><a class="nav__link" href="...">Child</a></li></ul>
+            </li>
+   Desktop: opens on hover, on keyboard focus, or with the arrow button.
+   Phone  : the submenu sits indented under its parent; the arrow button opens it.
+   Without JavaScript: opens on hover/focus (desktop) and is always visible (phone). */
+.nav__item { position: relative; }
+.nav__item--has-sub { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1); }
+.nav__sub-toggle { display: none; }
+.js .nav__sub-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius);
+  color: var(--color-text);
+  cursor: pointer;
+}
+.nav__sub-toggle::after {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-25%) rotate(45deg);
+  transition: transform var(--transition);
+}
+.nav__item--has-sub.is-open > .nav__sub-toggle::after { transform: translateY(25%) rotate(-135deg); }
+.nav__sub {
+  display: none;
+  flex-basis: 100%;
+  min-width: 12rem;
+  padding: var(--space-2);
+  list-style: none;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-floating);
+}
+.nav__sub .nav__link { display: block; padding: var(--space-2) var(--space-3); border-radius: var(--radius); }
+.nav__sub .nav__link:hover { background: var(--color-surface); }
+
+@media (min-width: 60em) {
+  .nav__sub {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: var(--z-dropdown);
+    flex-basis: auto;
+  }
+  .nav__item--has-sub:not(.is-dismissed):hover > .nav__sub,
+  .nav__item--has-sub:not(.is-dismissed):focus-within > .nav__sub,
+  .nav__item--has-sub.is-open > .nav__sub { display: block; }
+}
+
+/* Menu collapses below 60em (not 48em): five links wrap onto two lines on tablets. */
+@media (max-width: 59.99em) {
+  .js .nav__toggle {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .js .nav__list {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding-top: var(--space-3);
+  }
+  .js .nav__list.is-open { display: flex; }
+  .nav__sub { display: block; box-shadow: none; border: 0; padding-block: 0; padding-inline-start: var(--space-3); }
+  .js .nav__sub { display: none; }
+  .js .nav__item--has-sub.is-open > .nav__sub { display: block; }
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: social
+   Use when : a row of icon links to social profiles.
+   Markup   : <ul class="social" aria-label="Social media">
+                <li><a class="social__link" href="..." aria-label="Name">
+                  <svg class="social__icon" aria-hidden="true">...</svg></a></li>
+              </ul>
+   Rule     : Icons inherit color through currentColor (stroke or fill).
+   -------------------------------------------------------------------------- */
+.social {
+  display: flex;
+  gap: var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+.social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-button-size);
+  height: var(--icon-button-size);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  transition: background var(--transition), color var(--transition);
+}
+.social__link:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+.social__icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+
+/* Variant: smaller icons (used in the footer) */
+.social--small .social__link {
+  width: var(--icon-button-size-small);
+  height: var(--icon-button-size-small);
+}
+.social--small .social__icon {
+  width: var(--icon-size-small);
+  height: var(--icon-size-small);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: sitemap
+   Use when : a vertical list of the site's main links (footer).
+   Markup   : <nav class="sitemap" aria-label="Sitemap">
+                <ul class="sitemap__list"><li><a class="sitemap__link" href="#">..</a></li></ul>
+              </nav>
+   -------------------------------------------------------------------------- */
+.sitemap__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+.sitemap__link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+.sitemap__link:hover { color: var(--color-primary); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: company
+   Use when : company contact details (name, address, phone, email).
+   Markup   : <div class="company stack">
+                <address class="company__info">..</address>
+                ...a second row, e.g. <ul class="social social--small">
+              </div>
+   -------------------------------------------------------------------------- */
+.company__info {
+  font-style: normal;   /* <address> is italic by default */
+  line-height: var(--line-height-body);
+}
+.company__name { font-weight: 700; color: var(--color-text); }
+.company__info a { color: inherit; }
+.company__info a:hover { color: var(--color-primary); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: legal
+   Use when : the bottom line of the footer (copyright, legal notes).
+   Markup   : <p class="legal">...</p>
+   -------------------------------------------------------------------------- */
+.legal {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: consent
+   Use when : the cookie banner (analytics asks for permission). partials/consent.php.
+   Markup   : <section class="consent" data-js="consent" hidden>
+                <p class="consent__text">...</p>
+                <div class="consent__actions"><button class="btn">...</button></div></section>
+   Notes    : hidden until js/main.js decides. Sits above the chat bubble (--z-banner).
+              .consent-link is the footer button that reopens it (looks like a link).
+   -------------------------------------------------------------------------- */
+.consent {
+  position: fixed;
+  inset-inline: var(--space-3);
+  inset-block-end: var(--space-3);
+  z-index: var(--z-banner);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  max-width: var(--column-narrow-max);
+  margin-inline: auto;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-floating);
+}
+.consent[hidden] { display: none; }   /* display:flex above would otherwise win over the hidden attribute */
+.consent__text { flex: 1 1 18rem; }
+.consent__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+.consent-link {
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: var(--color-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.consent-link:hover { color: var(--color-primary-hover); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: btn
+   Use when : any clickable action styled as a button.
+   Markup   : <a class="btn btn--primary" href="...">Label</a>
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;        /* lets an icon sit beside the label */
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: 0;                   /* so <button class="btn"> looks like <a class="btn"> */
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+  color: var(--color-primary-contrast);
+}
+/* Variant: light button, for use on a colored background (e.g. CTA band) */
+.btn--light {
+  background: var(--color-primary-contrast);
+  color: var(--color-primary);
+}
+.btn--outline {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+.btn--outline:hover { background: var(--color-surface); }
+.btn--light:hover {
+  background: var(--color-surface);
+  color: var(--color-primary-hover);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: lead
+   Use when : intro paragraph under a main heading (hero, section intro).
+   Markup   : <p class="lead">...</p>
+   -------------------------------------------------------------------------- */
+.lead {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: 40rem;
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: card
+   Use when : a self-contained item inside a .grid.
+   Markup   : <article class="card"><h3 class="card__title">..</h3><p>..</p></article>
+   -------------------------------------------------------------------------- */
+.card {
+  padding: var(--space-4);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.card__title { margin-bottom: var(--space-2); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: media-bg
+   Use when : a video or image fills the background of a section.
+   Markup   : <div class="media-bg" aria-hidden="true">
+                <video class="media-bg__video" autoplay muted loop playsinline
+                       poster="first-frame.jpg"> <source ...> </video>
+              </div>
+              Still image instead of video: <img class="media-bg__img" src=".." alt="" width="1920" height="1080">
+   Rules    : - Parent section needs .section--media.
+              - poster = the video's first frame, shown until the video loads.
+              - The background color shows if poster/video are missing.
+              - The overlay (::after) keeps text readable over any footage.
+              - Decorative only: aria-hidden, no audio.
+   -------------------------------------------------------------------------- */
+.media-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-media-fallback);
+}
+.media-bg__video,
+.media-bg__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* fill the area, crop instead of stretching */
+}
+.media-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--media-overlay);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: media-toggle
+   Use when : a pause/play button for a moving background (accessibility:
+              people must be able to stop motion). Shown only when JS runs.
+   Markup   : <button class="media-toggle" type="button" data-js="bg-video-toggle">
+   -------------------------------------------------------------------------- */
+.media-toggle { display: none; }
+
+.js .media-toggle {
+  display: inline-block;
+  position: absolute;
+  left: var(--space-3);        /* left: the chat bubble lives bottom-right */
+  bottom: var(--space-3);
+  padding: var(--space-1) var(--space-3);
+  background: var(--media-overlay);
+  color: var(--color-on-media);
+  border: 1px solid var(--color-on-media);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+.js .media-toggle:hover { background: var(--color-primary); border-color: var(--color-primary); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: figure
+   Use when : an image inside content (not a background).
+   Markup   : <figure class="figure">
+                <img class="figure__img" src="assets/img/name.jpg"
+                     alt="Describe the image" width="1200" height="900" loading="lazy">
+              </figure>
+              Until the real file exists: <span class="figure__placeholder">IMAGE</span>
+   Rule     : Images are cropped to --figure-ratio so every figure matches.
+   -------------------------------------------------------------------------- */
+.figure { width: 100%; }
+
+.figure__img,
+.figure__placeholder {
+  width: 100%;
+  aspect-ratio: var(--figure-ratio);
+  border-radius: var(--radius);
+}
+.figure__img { object-fit: cover; }
+
+/* Variant: square image (team photos). The ratio token is overridden locally. */
+.figure--square { --figure-ratio: var(--ratio-square); }
+.figure--wide   { --figure-ratio: var(--ratio-wide); }
+.figure--banner { --figure-ratio: var(--ratio-banner); }
+.figure--portrait { --figure-ratio: var(--ratio-portrait); }
+.figure--project  { --figure-ratio: var(--ratio-project); }
+.figure--tall     { --figure-ratio: var(--ratio-tall); }
+
+.figure__placeholder {
+  display: grid;
+  place-items: center;
+  background: var(--color-surface);
+  border: 2px dashed var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  place-content: center;
+}
+/* Placeholders show the size the real file must have: data-size="1200 x 900" */
+.figure__placeholder[data-size]::after {
+  content: attr(data-size);
+  margin-top: var(--space-1);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: list
+   Use when : a bulleted list inside content.
+   Markup   : <ul class="list"><li>..</li><li>..</li></ul>
+   -------------------------------------------------------------------------- */
+.list {
+  padding-left: var(--space-4);
+  list-style: disc;
+}
+.list > li + li { margin-top: var(--space-2); }
+.list > li::marker { color: var(--color-primary); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: breadcrumb
+   Use when : the "you are here" trail on inner pages.
+   Markup   : <nav aria-label="Breadcrumb"><ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Page name</li></ol></nav>
+   -------------------------------------------------------------------------- */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+.breadcrumb > li + li::before {
+  content: "/";
+  padding-inline: var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: stat
+   Use when : one big number with a label, inside .grid.grid--narrow.
+   Markup   : <div class="stat"><p class="stat__value">..</p>
+                <p class="stat__label">..</p><p class="stat__source">..</p></div>
+   Rule     : Every number needs a primary source and the date it was checked.
+              No source = write [NUMBER NEEDED - source required].
+   -------------------------------------------------------------------------- */
+.stat__value {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-primary);
+}
+.stat__label { margin-top: var(--space-1); font-weight: 600; }
+.stat__source {
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: testimonial
+   Use when : a real quote from a real person. Combine with .card.
+   Markup   : <figure class="card testimonial"><blockquote class="testimonial__quote">
+                <p>..</p></blockquote><figcaption class="testimonial__author">
+                <span class="testimonial__name">..</span>
+                <span class="testimonial__role">..</span></figcaption></figure>
+   Rule     : Real quotes only, used with the person's permission.
+   -------------------------------------------------------------------------- */
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.testimonial__quote { font-size: var(--text-lg); line-height: 1.4; }
+.testimonial__name { display: block; font-weight: 700; }
+.testimonial__role { display: block; font-size: var(--text-sm); color: var(--color-text-muted); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: pull-quote
+   Use when : one large statement with attribution.
+   Markup   : <figure class="pull-quote"><blockquote><p class="pull-quote__text">..</p>
+                </blockquote><figcaption class="pull-quote__author">..</figcaption></figure>
+   -------------------------------------------------------------------------- */
+.pull-quote__text {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1.35;
+}
+.pull-quote__text::before { content: "\201C"; color: var(--color-primary); }
+.pull-quote__text::after  { content: "\201D"; color: var(--color-primary); }
+.pull-quote__author {
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: steps
+   Use when : a numbered process (admissions steps, career milestones).
+   Markup   : <ol class="steps"><li class="steps__item">
+                <h3 class="steps__title">..</h3><p>..</p></li></ol>
+   Rule     : Numbers come from CSS counters: never type them in the HTML.
+   -------------------------------------------------------------------------- */
+.steps {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.steps__item { counter-increment: step; }
+.steps__item::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: var(--icon-button-size);
+  height: var(--icon-button-size);
+  margin-bottom: var(--space-2);
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  font-weight: 700;
+}
+.steps__title { margin-bottom: var(--space-1); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: faq
+   Use when : questions and answers that open and close. No JavaScript:
+              the browser's <details> element does the work.
+   Markup   : <div class="faq"><details class="faq__item">
+                <summary class="faq__question">..</summary><p>..</p></details></div>
+   -------------------------------------------------------------------------- */
+.faq__item {
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+.faq__question {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.faq__question::-webkit-details-marker { display: none; }
+.faq__question::after { content: "+"; color: var(--color-primary); }
+.faq__item[open] > .faq__question::after { content: "\2212"; }
+.faq__item > p { margin-top: var(--space-2); color: var(--color-text-muted); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: person
+   Use when : team member card: round photo, name, role. Inside .grid.grid--narrow.
+   Markup   : <article class="person"><figure class="figure figure--square">..</figure>
+                <h3 class="person__name">..</h3><p class="person__role">..</p></article>
+   -------------------------------------------------------------------------- */
+.person { text-align: center; }
+.person .figure { max-width: 10rem; margin-inline: auto; }
+.person .figure__img,
+.person .figure__placeholder { border-radius: 50%; }
+.person__name { margin-top: var(--space-3); }
+.person__role { color: var(--color-text-muted); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: logo-strip
+   Use when : a row of partner, client, press or accreditation logos.
+   Markup   : <ul class="logo-strip"><li><img class="logo-strip__img"
+                src=".." alt="Partner name" height="48"></li></ul>
+              Until the real files exist: <span class="logo-strip__placeholder">LOGO</span>
+   -------------------------------------------------------------------------- */
+.logo-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+.logo-strip__img { height: var(--logo-strip-height); width: auto; }
+.logo-strip__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--logo-strip-width);
+  height: var(--logo-strip-height);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: post
+   Use when : a news item or event card. Combine with .card, inside .grid.
+   Markup   : <article class="card post"><time class="post__date" datetime="YYYY-MM-DD">..</time>
+                <h3 class="card__title"><a href="..">..</a></h3><p>..</p>
+                <a class="post__link" href="..">Read more</a></article>
+   -------------------------------------------------------------------------- */
+.post { display: flex; flex-direction: column; gap: var(--space-2); }
+.post__date { font-size: var(--text-sm); color: var(--color-text-muted); }
+.post .card__title { margin-bottom: 0; }
+.post .card__title a { color: var(--color-text); text-decoration: none; }
+.post .card__title a:hover { color: var(--color-primary); }
+.post__link { margin-top: auto; font-weight: 600; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: gallery  (needs JavaScript for the viewer: initGallery in main.js)
+   Use when : a grid of images that open larger in a viewer (lightbox).
+   Markup   : <ul class="grid grid--narrow gallery"><li><button class="gallery__item"
+                type="button" data-js="gallery-item" aria-haspopup="dialog">
+                <img class="figure__img" ...></button></li></ul>
+              plus ONE <dialog class="lightbox"> (see the gallery in patterns.html).
+   Rule     : Without JavaScript the grid still shows; the viewer is an extra.
+   -------------------------------------------------------------------------- */
+.gallery { padding: 0; list-style: none; }
+.gallery__item {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  transition: opacity var(--transition);
+}
+.gallery__item:hover { opacity: 0.85; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: lightbox
+   Use when : the viewer for .gallery. Uses the browser's own <dialog>:
+              Esc closes it, focus is handled by the browser.
+   -------------------------------------------------------------------------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(90vw, 60rem);
+  max-height: 90vh;
+  /* top padding = room for the close button + a clear gap above the image */
+  padding: calc(var(--icon-button-size) + var(--space-3)) var(--space-4) var(--space-4);
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+.lightbox::backdrop { background: var(--lightbox-backdrop); }
+.lightbox__img { display: block; width: 100%; max-height: 70vh; object-fit: contain; }
+.lightbox__close,
+.lightbox__nav {
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: var(--text-lg);
+  line-height: 1.2;
+  cursor: pointer;
+}
+.lightbox__close { position: absolute; top: var(--space-2); right: var(--space-2); }
+.lightbox__controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-3);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: form
+   Use when : any form. Every control has a visible <label>.
+   Markup   : <form class="form"><div class="form__field">
+                <label class="form__label" for="x">..</label>
+                <input class="form__control" id="x" name="x"></div> ...</form>
+   -------------------------------------------------------------------------- */
+.form { display: grid; gap: var(--space-3); }
+.form__field { display: grid; align-content: start; gap: var(--space-1); }  /* start: a taller neighbour must not stretch this field */
+.form__label { font-weight: 600; }
+.form__control {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.form__control--area { min-height: 8rem; resize: vertical; }
+.form__hint { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+/* Required marker: put the class on the label (the real rule is the `required` attribute). */
+.form__label--required::after { content: " *"; color: var(--color-error); }
+
+/* Layout helpers inside a form */
+.form--groups { gap: var(--space-5); }            /* more air between fieldset groups */
+.form__group {                                    /* a titled block of related fields */
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+.form__legend { padding: 0 0 var(--space-2); font-size: var(--text-lg); font-weight: 700; }
+.form__row { display: grid; grid-template-columns: 1fr; gap: var(--space-3); }
+.form__row > * { min-width: 0; }
+@media (min-width: 48em) {
+  .form__row { grid-template-columns: 1fr 1fr; }
+  .form__row--trio { grid-template-columns: 1fr 1fr 1fr; }
+}
+.form__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+/* Controls beyond text boxes */
+.form__control:disabled { background: var(--color-surface); color: var(--color-text-muted); cursor: not-allowed; }
+.form__control--range { padding: 0; border: 0; accent-color: var(--color-primary); }
+.form__control::file-selector-button {
+  margin-inline-end: var(--space-3);
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+/* Checkbox and radio groups: <fieldset class="form__choices"> with a <legend class="form__label"> */
+.form__choices { display: grid; gap: var(--space-2); min-width: 0; padding: 0; border: 0; }
+.form__choices .form__label { padding: 0 0 var(--space-1); }
+.form__choices--inline { display: flex; flex-wrap: wrap; column-gap: var(--space-4); row-gap: var(--space-2); }
+.form__choices--inline .form__error { flex-basis: 100%; }
+.form__choice { display: flex; align-items: flex-start; gap: var(--space-2); font-weight: 400; }
+.form__choice input {
+  flex: none;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  margin: 0.15em 0 0;
+  accent-color: var(--color-primary);
+}
+
+/* States */
+.form__control[aria-invalid="true"] { border-color: var(--color-error); }
+.form__error { color: var(--color-error); font-size: var(--text-sm); font-weight: 600; }
+.form__status {
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+.form__status--success { color: var(--color-success); background: var(--color-success-surface); border-color: var(--color-success); }
+.form__status--error   { color: var(--color-error);   background: var(--color-error-surface);   border-color: var(--color-error); }
+.btn[aria-busy="true"] { opacity: 0.7; cursor: progress; }
+.btn:disabled { cursor: not-allowed; }
+
+/* Empty slot for a third-party widget (anti-spam check, etc.) */
+.form__slot {
+  padding: var(--space-3);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+/* Inline form: one row (newsletter signup). Wraps on narrow screens. */
+.form--inline { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-3); }
+.form--inline .form__field { flex: 1 1 16rem; }
+.form--inline .form__status { flex-basis: 100%; }
+
+/* --------------------------------------------------------------------------
+   STATE: current page link
+   js/main.js (initCurrentPage) sets aria-current="page" on the menu and
+   sitemap link that points to the page being viewed.
+   -------------------------------------------------------------------------- */
+.nav__link[aria-current="page"],
+.nav__link[aria-current="true"] { color: var(--color-primary); font-weight: 600; }
+.sitemap__link[aria-current="page"] { color: var(--color-primary); font-weight: 600; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: icon
+   Use when : a small line icon from the sprite (assets/icons/sprite.svg).
+   Markup   : <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="#icon-mail"></use></svg>
+              Icon that carries meaning on its own: add role="img" and
+              aria-label="..." instead of aria-hidden.
+   Rules    : - Drawn on a 24 x 24 grid, line style, 1.5 stroke, SVG only.
+              - Color comes from the text color (currentColor).
+              - Sizes: .icon (1.25rem), .icon--small, .icon--large.
+   -------------------------------------------------------------------------- */
+.icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon--small { width: var(--icon-size-small); height: var(--icon-size-small); }
+.icon--large { width: var(--icon-size-large); height: var(--icon-size-large); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: lottie
+   Use when : a small animation (animated icon, loader). Files are .lottie
+              (preferred) or .json, played by <dotlottie-wc> (see main.js).
+   Markup   : <div class="lottie">
+                <dotlottie-wc data-js="lottie" src="assets/lottie/NAME.lottie"
+                              autoplay></dotlottie-wc></div>
+              Until the real file exists: <span class="lottie__placeholder">
+   Rules    : - Icons play once (no loop). Loaders loop only while loading.
+              - A looping animation longer than 5 seconds needs a pause
+                button (same rule as background video).
+              - With "reduce motion" on, main.js removes autoplay and loop.
+   -------------------------------------------------------------------------- */
+.lottie {
+  width: var(--lottie-size);
+  height: var(--lottie-size);
+}
+.lottie--large { width: var(--lottie-size-large); height: var(--lottie-size-large); }
+.lottie dotlottie-wc { display: block; width: 100%; height: 100%; }
+
+.lottie__placeholder {
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100%;
+  background: var(--color-surface);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+/* Icon catalog tiles (patterns page): icon above its name. */
+.icon-tiles { padding: 0; list-style: none; }
+.icon-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: chat-bubble
+   Use when : a floating "talk to us" button, fixed to the bottom-right corner
+              of every page. Same markup on every page (like header/footer).
+   Markup   : <a class="chat-bubble" href="https://wa.me/NUMBER?text=..."
+                 target="_blank" rel="noopener">
+                <svg class="icon icon--large" aria-hidden="true" focusable="false">..</svg>
+                <span class="chat-bubble__label">Chat with us</span></a>
+   Rules    : - NUMBER = full international number, digits only (no +, 0, spaces).
+              - The label is always in the page for screen readers; sighted
+                visitors see it when they hover or focus the button.
+              - Needs no JavaScript. Hidden when printing.
+   -------------------------------------------------------------------------- */
+.chat-bubble {
+  position: fixed;
+  inset-inline-end: var(--space-4);
+  inset-block-end: var(--space-4);
+  z-index: var(--z-floating);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--chat-bubble-size);
+  min-height: var(--chat-bubble-size);
+  padding-inline: calc((var(--chat-bubble-size) - var(--icon-size-large)) / 2);
+  background: var(--color-chat);
+  color: var(--color-chat-contrast);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-floating);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--transition);
+}
+.chat-bubble:hover,
+.chat-bubble:visited { color: var(--color-chat-contrast); }   /* beats the global link colors */
+.chat-bubble:hover { background: var(--color-chat-hover); }
+.chat-bubble__label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width var(--transition), padding var(--transition);
+}
+.chat-bubble:hover .chat-bubble__label,
+.chat-bubble:focus-visible .chat-bubble__label {
+  max-width: 14rem;
+  padding-inline-start: var(--space-2);
+}
+@media print { .chat-bubble { display: none; } }
+
+/* ==========================================================================
+   PAGE-TEMPLATE COMPONENTS (store, blog, admissions)
+   Used by store.html, blog.html, post.html, admissions.html.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   COMPONENT: badge
+   Use when : a small label on a card or a product ("New", "Sale", "Open").
+   Markup   : <span class="badge">New</span>  |  <span class="badge badge--sale">-20%</span>
+   -------------------------------------------------------------------------- */
+.badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.badge--sale {
+  background: var(--color-error-surface);
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+.badge--success {
+  background: var(--color-success-surface);
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: price
+   Use when : any price. The old price (if any) is crossed out.
+   Markup   : <p class="price"><span class="price__was">$30</span> <span class="price__now">$24</span></p>
+              Real figures come from the database in the PHP stage.
+   -------------------------------------------------------------------------- */
+.price { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2); }
+.price__now { font-size: var(--text-lg); font-weight: 700; }
+.price__was { color: var(--color-text-muted); text-decoration: line-through; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: product  (a card variant for the store grid)
+   Use when : one product in a list. Photo, name, price, add-to-cart.
+   Markup   : <article class="card product"> <figure class="figure figure--square">...
+              <h3 class="card__title"><a>..</a></h3> <p class="price">..</p>
+              <form class="product__buy" action="php/cart.php" method="post">..</form>
+   -------------------------------------------------------------------------- */
+.product { display: flex; flex-direction: column; gap: var(--space-2); }
+.product .card__title { margin-bottom: 0; }
+.product .card__title a { color: var(--color-text); text-decoration: none; }
+.product .card__title a:hover { color: var(--color-primary); }
+.product__buy { margin-top: auto; padding-top: var(--space-2); }
+.product__buy .btn { width: 100%; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: toolbar  (search, sort, filters above a list)
+   Use when : a list needs a search box and/or a sort menu.
+   Markup   : <form class="toolbar" role="search" action="PAGE" method="get">
+                <div class="form__field">...</div> ... <button class="btn">Apply</button></form>
+   -------------------------------------------------------------------------- */
+.toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: var(--space-3); }
+.toolbar .form__field { flex: 1 1 14rem; }
+.toolbar .btn { flex: 0 0 auto; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: chips  (category links)
+   Use when : filter or category choices shown as small pills.
+   Markup   : <ul class="chips"><li><a class="chip" href="..." aria-current="true">All</a></li>...</ul>
+              The active chip carries aria-current="true".
+   -------------------------------------------------------------------------- */
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0; list-style: none; }
+.chip {
+  display: inline-block;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition);
+}
+.chip:hover { background: var(--color-surface); border-color: var(--color-primary); color: var(--color-text); }
+.chip[aria-current="true"],
+.chip[aria-current="true"]:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: pagination
+   Use when : a list continues on other pages.
+   Markup   : <nav aria-label="Pagination"><ul class="pagination"><li><a class="pagination__link" href="...">2</a></li>..
+              The current page: <a class="pagination__link" aria-current="page">.
+   -------------------------------------------------------------------------- */
+.pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2); padding: 0; list-style: none; }
+.pagination__link {
+  display: inline-block;
+  min-width: 2.75rem;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  text-align: center;
+  text-decoration: none;
+}
+.pagination__link:hover { background: var(--color-surface); color: var(--color-text); }
+.pagination__link[aria-current="page"],
+.pagination__link[aria-current="page"]:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: table  (data table that scrolls sideways on small screens)
+   Use when : dates, fees, a cart, specs. Wrap it in .table-wrap.
+   Markup   : <div class="table-wrap" tabindex="0" role="region" aria-label="NAME">
+                <table class="table"><caption>..</caption><thead>..</thead><tbody>..</tbody></table></div>
+   -------------------------------------------------------------------------- */
+.table-wrap { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius); }
+.table { width: 100%; border-collapse: collapse; text-align: left; }
+.table caption { padding: var(--space-3); font-weight: 700; text-align: left; }
+.table th,
+.table td { padding: var(--space-3); border-top: 1px solid var(--color-border); vertical-align: top; }
+.table thead th { background: var(--color-surface); white-space: nowrap; }
+.table__num { text-align: right; white-space: nowrap; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: summary  (order total box)
+   Use when : cart or checkout totals.
+   Markup   : <dl class="card summary"><div class="summary__row"><dt>..</dt><dd>..</dd></div>
+              <div class="summary__row summary__row--total">..</div></dl>
+   -------------------------------------------------------------------------- */
+.summary { display: grid; gap: var(--space-2); }
+.summary__row { display: flex; justify-content: space-between; gap: var(--space-3); }
+.summary__row dd { font-weight: 600; }
+.summary__row--total {
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: meta  (author, date, reading time)
+   Use when : a short line of facts under a title.
+   Markup   : <ul class="meta"><li>By [Name]</li><li><time datetime="..">[Date]</time></li><li>5 min read</li></ul>
+   -------------------------------------------------------------------------- */
+.meta { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); padding: 0; list-style: none; color: var(--color-text-muted); font-size: var(--text-sm); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: post--featured  (the big first post of a blog)
+   Use when : one highlighted post: photo on one side, text on the other.
+   Markup   : <article class="card post post--featured"> <figure class="figure">..</figure>
+              <div class="post__body">...</div></article>
+   -------------------------------------------------------------------------- */
+.post--featured { display: grid; gap: var(--space-4); align-items: center; }
+.post__body { display: flex; flex-direction: column; gap: var(--space-2); }
+.post__body .card__title { font-size: var(--text-xl); }
+@media (min-width: 48em) {
+  .post--featured { grid-template-columns: 1fr 1fr; }
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: prose  (long article text)
+   Use when : the body of an article or a policy page. Keeps lines readable.
+   Markup   : <div class="prose"> h2, h3, p, ul, ol, blockquote, figure </div>
+   Rule     : spacing is the gap of the grid (no margins).
+   -------------------------------------------------------------------------- */
+.prose { display: grid; gap: var(--space-3); max-width: var(--article-max); margin-inline: auto; font-size: var(--text-lg); line-height: 1.7; }
+.prose h2,
+.prose h3 { padding-top: var(--space-3); }
+.prose ul,
+.prose ol { padding-left: var(--space-4); }
+.prose blockquote { padding-left: var(--space-4); border-left: 4px solid var(--color-primary); font-style: italic; }
+.prose .figure { max-width: none; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: author  (small author box)
+   Use when : end of an article.
+   Markup   : <aside class="card author"> <figure class="figure figure--square">..</figure>
+              <div><p class="author__name">..</p><p>..</p></div></aside>
+   -------------------------------------------------------------------------- */
+.author { display: flex; align-items: center; gap: var(--space-4); max-width: var(--article-max); margin-inline: auto; }
+.author .figure { flex: 0 0 5rem; width: 5rem; }
+.author .figure__img,
+.author .figure__placeholder { border-radius: 50%; }
+.author__name { font-weight: 700; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: thumbs  (small photos under a main product photo)
+   Use when : a product has more than one photo.
+   Markup   : <ul class="thumbs"><li><figure class="figure figure--square">..</figure></li>..</ul>
+   -------------------------------------------------------------------------- */
+.thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); padding: 0; list-style: none; }
+
+
+/* --------------------------------------------------------------------------
+   COMPONENT: facts
+   Use when : short label/value pairs (client, year, role; duration, ages, fees).
+   Markup   : <dl class="facts"><div class="facts__row"><dt>Client</dt><dd>..</dd></div>..</dl>
+   Rule     : Never type a number, price or date without a document from the client.
+   -------------------------------------------------------------------------- */
+.facts { display: grid; gap: var(--space-2); margin: 0; }
+.facts__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+.facts dt { color: var(--color-text-muted); }
+.facts dd { margin: 0; font-weight: 600; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: project
+   Use when : a portfolio / case-study card. Whole card is one link.
+   Markup   : <article class="project"><a class="project__link" href="..">
+                <figure class="figure figure--project">..</figure>
+                <span class="badge">[Type]</span>
+                <h3 class="project__title">..</h3><p>[One line: the result]</p></a></article>
+   Inside   : <div class="grid grid--projects">. First card .project--feature = bigger. Six cards (feature + 5) fill the desktop grid.
+   -------------------------------------------------------------------------- */
+.project__link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  color: var(--color-text);
+  text-decoration: none;
+}
+.project__link:hover { color: var(--color-text); }
+.project__link:hover .project__title { color: var(--color-primary); }
+.project__link .figure { overflow: hidden; border-radius: var(--radius); }
+.project__link:hover .figure__img { transform: scale(1.03); }
+.figure__img { transition: transform var(--transition); }
+.project__title { margin: 0; }
+.project p { color: var(--color-text-muted); margin: 0; }
+/* Project grid: 1 column on phones, 2 on tablets, 3 on desktop.
+   Feature card: 2 columns on tablet, 2 x 2 cells on desktop. Six cards (feature + 5)
+   fill the desktop grid exactly; on tablets the last row has one card. */
+.grid--projects { grid-template-columns: 1fr; }
+@media (min-width: 40em) {
+  .grid--projects { grid-template-columns: repeat(2, 1fr); }
+  .project--feature { grid-column: span 2; }
+}
+@media (min-width: 64em) {
+  .grid--projects { grid-template-columns: repeat(3, 1fr); }
+  .project--feature { grid-row: span 2; }
+  .project--feature .figure { --figure-ratio: 1 / 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project__link:hover .figure__img { transform: none; }
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: bento
+   Use when : a mosaic of tiles of different sizes (services, highlights, proof).
+   Markup   : <div class="bento"><article class="bento__tile bento__tile--wide"> ..
+              Sizes: --wide (2 cols), --tall (2 rows), --feature (2 x 2).
+              Looks: default = soft surface; --primary = brand color;
+                     --image = photo behind light text (add <img class="bento__img" alt="">).
+   Phones   : one column, every tile one slot; sizes apply from 36em up.
+   -------------------------------------------------------------------------- */
+.bento {
+  display: grid;
+  gap: var(--bento-gap);
+  grid-auto-rows: minmax(var(--bento-row), auto);
+  grid-template-columns: 1fr;
+}
+.bento__tile {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.bento__tile > h3,
+.bento__tile > p { margin: 0; }
+.bento__tile--primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+.bento__tile--image {
+  background: var(--color-media-fallback);
+  border-color: var(--color-media-fallback);
+  color: var(--color-on-media);
+}
+.bento__img {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bento__tile--image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--media-overlay);
+}
+.bento__tile .badge { margin-bottom: auto; color: var(--color-text); }  /* badge keeps its light chip, dark text */
+.bento__tile .icon { margin-bottom: auto; }
+@media (min-width: 36em) {
+  .bento { grid-template-columns: repeat(2, 1fr); grid-auto-flow: dense; }
+  .bento__tile--wide,
+  .bento__tile--feature { grid-column: span 2; }
+  .bento__tile--tall,
+  .bento__tile--feature { grid-row: span 2; }
+}
+@media (min-width: 64em) {
+  .bento { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: program
+   Use when : a school program / course card (level, title, summary, key facts).
+   Markup   : <article class="card program"><span class="badge">[Level]</span>
+                <h3 class="card__title">..</h3><p>..</p>
+                <dl class="facts">..</dl><a class="post__link" href="..">Learn more</a></article>
+   -------------------------------------------------------------------------- */
+.program { display: flex; flex-direction: column; gap: var(--space-3); }
+.program .card__title { margin-bottom: 0; }
+.program .facts { margin-top: auto; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: offer
+   Use when : "what I can do for you" list on an about-me page: number + title + text.
+   Markup   : <ol class="offers"><li class="offer"><h3>..</h3><p>..</p></li>..</ol>
+   Numbers come from CSS, like .steps.
+   -------------------------------------------------------------------------- */
+.offers { display: grid; gap: var(--space-4); padding: 0; list-style: none; counter-reset: offer; }
+.offer {
+  counter-increment: offer;
+  display: grid;
+  gap: var(--space-1) var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+.offer::before {
+  content: counter(offer, decimal-leading-zero);
+  color: var(--color-primary);
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+.offer > h3,
+.offer > p { margin: 0; }
+@media (min-width: 48em) {
+  .offer { grid-template-columns: 4rem 1fr 2fr; align-items: baseline; }
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: faq--numbered  (FAQ with 01, 02, 03 in front of each question)
+   Use when : the numbers help people refer to a question ("see question 03").
+   Markup   : <div class="faq faq--numbered"> .. same <details> items as .faq
+   Numbers come from CSS counters, like .steps. Works on light and dark.
+   -------------------------------------------------------------------------- */
+.faq--numbered { counter-reset: faq; }
+.faq--numbered .faq__item { counter-increment: faq; }
+.faq--numbered .faq__question { justify-content: flex-start; }
+.faq--numbered .faq__question::before {
+  content: counter(faq, decimal-leading-zero);
+  min-width: var(--icon-button-size);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+.faq--numbered .faq__question::after { margin-left: auto; }
+.faq--numbered .faq__item > p { padding-left: var(--icon-button-size); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: section-label  (small "03 / Selected work" tag above a heading)
+   Use when : an editorial look: a thin line, a number and a label above the heading.
+   Markup   : <p class="section-label"><span class="section-label__number">03</span>
+                <span>[Label]</span></p>
+   Rule     : The number is typed here on purpose: it is the section's place on the
+              page (03 of 05), not a list counter.
+   -------------------------------------------------------------------------- */
+.section-label {
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+  margin: 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.section-label__number { color: var(--color-primary); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: rows  (editorial list: number, big title, text, arrow, thin lines)
+   Use when : projects, services or articles as a clean list instead of cards.
+   Markup   : <ol class="rows"><li class="row"><a class="row__link" href="..">
+                <h3 class="row__title">..</h3><p class="row__text">..</p>
+                <svg class="icon row__icon" aria-hidden="true"..>..</svg></a></li>..</ol>
+   Rule     : Numbers come from CSS counters. Each row is one link (or plain text
+              if it has no page: use <div class="row__link"> instead of <a>).
+   Phones   : number, title and text stack; the arrow hides.
+   -------------------------------------------------------------------------- */
+.rows { padding: 0; list-style: none; counter-reset: row; }
+.row { counter-increment: row; border-top: 1px solid var(--color-border); }
+.row:last-child { border-bottom: 1px solid var(--color-border); }
+.row__link {
+  display: grid;
+  gap: var(--space-1) var(--space-4);
+  padding-block: var(--space-4);
+  color: var(--color-text);
+  text-decoration: none;
+}
+.row__link::before {
+  content: counter(row, decimal-leading-zero);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+a.row__link:hover { color: var(--color-text); }
+a.row__link:hover .row__title { color: var(--color-primary); }
+.row__title { margin: 0; font-size: var(--text-xl); }
+.row__text { margin: 0; color: var(--color-text-muted); }
+.row__icon { display: none; }
+@media (min-width: 48em) {
+  .row__link { grid-template-columns: 4rem 1fr 1fr var(--icon-size); align-items: baseline; }
+  .row__icon { display: block; align-self: center; color: var(--color-primary); }
+  a.row__link:hover .row__icon { transform: translateX(var(--space-1)); }
+  .row__icon { transition: transform var(--transition); }
+}
+@media (prefers-reduced-motion: reduce) {
+  a.row__link:hover .row__icon { transform: none; }
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: stats-card  (a card of figures that rises over the hero above it)
+   Use when : proof right under the headline. Place the section directly after a
+              hero (5.1 video hero or 5.16 image hero).
+   Markup   : <section class="section section--stats-card"><div class="column">
+                <div class="stats-card"><div class="grid grid--narrow">
+                  <div class="stat"> .. </div> ..</div></div></div></section>
+   Rule     : Every number needs a primary source and the date it was checked.
+              No source = write [NUMBER NEEDED - source required].
+   -------------------------------------------------------------------------- */
+.stats-card {
+  position: relative;                       /* paints above the hero */
+  z-index: 1;
+  margin-top: calc(var(--stats-card-overlap) * -1);
+  padding: var(--space-4);
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-floating);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: tiles  (tall photo tiles in one row that swipes sideways)
+   Use when : tours, rooms, programs, products: a few tall photos with a caption.
+   Markup   : <div class="tiles-wrap"><ul class="tiles" data-js="tiles" tabindex="0"
+                role="region" aria-label="[What the tiles show]">
+                <li class="tile"><a class="tile__link" href="..">
+                  <figure class="figure figure--tall">..</figure>
+                  <span class="tile__caption"><span class="badge">[Label]</span>
+                  <strong class="tile__title">[Title]</strong></span></a></li>..</ul>
+              <div class="tiles__controls" data-js="tiles-controls"> prev / next buttons </div></div>
+   Phones   : swipe with a finger (scroll snaps to each tile). Four tiles fit side by
+              side from 64em up; more than four scroll sideways.
+   Buttons  : arrows are added by JavaScript only; without it the row still scrolls.
+   -------------------------------------------------------------------------- */
+.tiles {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--tile-width);
+  gap: var(--tile-gap);
+  padding: 0 0 var(--space-2);
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+}
+.tile { scroll-snap-align: start; }
+.tile__link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  color: var(--color-on-media);
+  text-decoration: none;
+}
+.tile__link:hover { color: var(--color-on-media); }
+.tile__link .figure__img { transition: transform var(--transition); }
+.tile__link:hover .figure__img { transform: scale(1.03); }
+.tile__caption {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-5) var(--space-3) var(--space-3);
+  background: var(--tile-caption-overlay);
+}
+.tile__caption .badge { color: var(--color-text); }  /* keeps its light chip, dark text */
+.tile__title { font-size: var(--text-lg); line-height: var(--line-height-heading); }
+.tiles__controls { display: none; }
+.js .tiles__controls { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-3); }
+.tiles__controls[hidden] { display: none; }   /* beats the .js display rule above */
+.tiles__button {
+  display: grid;
+  place-items: center;
+  width: var(--icon-button-size);
+  height: var(--icon-button-size);
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.tiles__button:hover:not(:disabled) { background: var(--color-surface); }
+.tiles__button:disabled { opacity: 0.4; cursor: not-allowed; }
+.tiles__button--prev .icon { transform: scaleX(-1); }   /* the one arrow icon, turned around */
+@media (min-width: 64em) {
+  .tiles { grid-auto-columns: calc((100% - 3 * var(--tile-gap)) / 4); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tiles { scroll-behavior: auto; }
+  .tile__link:hover .figure__img { transform: none; }
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: timeline  (a line with markers: process steps or an itinerary)
+   Use when : things happen in order, over time.
+   Markup   : <ol class="timeline [timeline--numbered] [timeline--horizontal]">
+                <li class="timeline__item"><p class="timeline__when">[Phase or dates]</p>
+                  <h3 class="timeline__title">..</h3><p>..</p></li>..</ol>
+   Looks    : default = small dots, one under another (an itinerary: Days 1-3, 4-6).
+              --numbered = numbered circles (numbers come from CSS, like .steps).
+              --horizontal = one row from 48em up (a process: Discover, Design, Build);
+              phones always stack. Three to five items read best across.
+   -------------------------------------------------------------------------- */
+.timeline {
+  --timeline-marker: var(--timeline-dot-size);
+  display: grid;
+  gap: var(--timeline-gap);
+  padding: 0;
+  list-style: none;
+  counter-reset: timeline;
+}
+.timeline--numbered { --timeline-marker: var(--icon-button-size); }
+.timeline__item {
+  position: relative;
+  counter-increment: timeline;
+  padding-left: calc(var(--timeline-marker) + var(--space-3));
+}
+.timeline__item::before {                        /* the marker */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: var(--timeline-marker);
+  height: var(--timeline-marker);
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  font-weight: 700;
+}
+.timeline--numbered .timeline__item::before { content: counter(timeline); }
+.timeline__item:not(:last-child)::after {        /* the line down to the next marker */
+  content: "";
+  position: absolute;
+  top: var(--timeline-marker);
+  bottom: calc(var(--timeline-gap) * -1);
+  left: calc(var(--timeline-marker) / 2);
+  border-left: 1px solid var(--color-border);
+}
+.timeline__when {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.timeline__title { margin: 0 0 var(--space-1); }
+.timeline__item > p:not(.timeline__when) { margin: 0; }
+@media (min-width: 48em) {
+  .timeline--horizontal {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+  .timeline--horizontal .timeline__item { padding-left: 0; padding-top: calc(var(--timeline-marker) + var(--space-3)); }
+  .timeline--horizontal .timeline__item:not(:last-child)::after {
+    top: calc(var(--timeline-marker) / 2);
+    bottom: auto;
+    left: calc(var(--timeline-marker) + var(--space-2));
+    right: calc(var(--timeline-gap) * -1 + var(--space-2));
+    border-left: 0;
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: glass-card  (frosted panel over a photo; holds a form or short text)
+   Use when : a request form sits over a landscape or interior photo.
+   Markup   : <section class="section section--media section--glass"><div class="media-bg">..</div>
+                <div class="column"><div class="glass-card stack">..</div></div></section>
+   Rules    : - The panel is tinted dark, so white text stays readable on any photo.
+              - Fields keep their normal white look so people can see where to type.
+              - Browsers that cannot blur get a darker solid panel instead.
+   -------------------------------------------------------------------------- */
+.glass-card {
+  --color-text-muted: var(--glass-text-muted);
+  --color-error:         var(--dark-error);
+  --color-error-surface: var(--dark-error-surface);
+  --color-success:         var(--dark-success);
+  --color-success-surface: var(--dark-success-surface);
+  padding: var(--space-4);
+  background: var(--glass-bg-solid);
+  color: var(--color-on-media);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .glass-card {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+  }
+}
+.glass-card .form__hint { color: var(--glass-text-muted); }

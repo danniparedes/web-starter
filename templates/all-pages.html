@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  ALL-PAGES.HTML — static copy of pages/all-pages.php (the PHP page is the source of truth)
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <!-- 1. META -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All pages | [Site name]</title>
+  <meta name="description" content="Index of every page in the starter.">
+
+  <!-- 2. STYLES (same order as every page) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <!-- Site switches (true/false). Runs before the page is drawn, so it is NOT deferred. -->
+  <script src="../js/site-config.js"></script>
+  <script src="../js/features.js"></script>
+</head>
+
+<body>
+  <!-- =====================================================================
+       3. SKIP LINK
+       First focusable element. Lets keyboard users jump past the menu.
+       ===================================================================== -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- =====================================================================
+       4. HEADER  (section--header)
+       Same two layers as every section: section (full width) > column.
+       The column is split in three parts with .thirds:
+         left   = logo
+         middle = main navigation
+         right  = social icons
+       data-js="nav-toggle" and data-js="nav-list" are used by js/main.js.
+       Links use full page paths (index.html#about) so this block is IDENTICAL
+       on every page. js/main.js marks the link of the current page with
+       aria-current="page" (initCurrentPage), so no per-page edits are needed.
+       ===================================================================== -->
+  <header class="section section--header">
+    <div class="column thirds">
+
+      <!-- 4.1 LEFT: LOGO SLOT. To use the real logo, replace the <span> with:
+           <img src="../assets/img/logo.svg" alt="[Site name]" width="160" height="48">
+           and keep the link around it. -->
+      <a class="logo" href="index.html" aria-label="[Site name] home">
+        <span class="logo__placeholder">LOGO</span>
+      </a>
+
+      <!-- 4.2 MIDDLE: MAIN NAVIGATION -->
+      <nav class="nav" aria-label="Main">
+        <button class="nav__toggle" type="button"
+                aria-expanded="false" aria-controls="nav-list"
+                data-js="nav-toggle">Menu</button>
+        <ul class="nav__list" id="nav-list" data-js="nav-list">
+          <li class="nav__item"><a class="nav__link" href="index.html">Home</a></li>
+          <li class="nav__item nav__item--has-sub">
+            <a class="nav__link" href="index.html#about">About</a>
+            <button class="nav__sub-toggle" type="button" aria-expanded="false" aria-controls="sub-about" data-js="sub-toggle">
+              <span class="visually-hidden">Show About submenu</span>
+            </button>
+            <ul class="nav__sub" id="sub-about">
+              <li><a class="nav__link" href="index.html#about">About us</a></li>
+              <li><a class="nav__link" href="team.html">Team</a></li>
+              <li><a class="nav__link" href="admissions.html">Admissions</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a class="nav__link" href="store.html">Store</a></li>
+          <li class="nav__item"><a class="nav__link" href="blog.html">Blog</a></li>
+          <li class="nav__item"><a class="nav__link" href="contact.html">Contact</a></li>
+          <li class="nav__item nav__item--has-sub">
+            <a class="nav__link" href="patterns.html">Library</a>
+            <button class="nav__sub-toggle" type="button" aria-expanded="false" aria-controls="sub-library" data-js="sub-toggle">
+              <span class="visually-hidden">Show Library submenu</span>
+            </button>
+            <ul class="nav__sub" id="sub-library">
+              <li><a class="nav__link" href="all-pages.html">All pages</a></li>
+              <li><a class="nav__link" href="patterns.html">Patterns</a></li>
+              <li><a class="nav__link" href="forms.html">Forms</a></li>
+              <li><a class="nav__link" href="store.html">Store</a></li>
+              <li><a class="nav__link" href="projects.html">Work</a></li>
+              <li><a class="nav__link" href="project.html">Project</a></li>
+              <li><a class="nav__link" href="about-me.html">About me</a></li>
+              <li><a class="nav__link" href="programs.html">Programs</a></li>
+              <li><a class="nav__link" href="post.html">Blog post</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 4.3 RIGHT: SOCIAL ICONS (links to the profiles). Replace each
+           [URL]. Add or remove <li> items as needed; keep aria-label. -->
+      <ul class="social" aria-label="Social media">
+        <li>
+          <a class="social__link" href="[Facebook URL]" aria-label="Facebook">
+            <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="social__link" href="[Instagram URL]" aria-label="Instagram">
+            <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="social__link" href="[LinkedIn URL]" aria-label="LinkedIn">
+            <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       5. MAIN CONTENT
+       ===================================================================== -->
+  <main id="main">
+
+    <section class="section section--page-banner" id="page-banner" aria-labelledby="page-title">
+      <div class="column stack">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">All pages</li>
+          </ol>
+        </nav>
+        <h1 id="page-title">All pages</h1>
+        <p class="lead">Every page in the starter, grouped by purpose. Design reference only: remove before launch.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="g-core-site">
+      <div class="column stack">
+        <h2 id="g-core-site">Core site</h2>
+        <div class="grid">
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title"><a href="index.html">Home</a></h3>
+            <p>Hero, about, features, image + text, divider, lists, contact</p>
+          </article>
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title"><a href="contact.html">Contact</a></h3>
+            <p>Form, details, map, steps, FAQ</p>
+          </article>
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title"><a href="team.html">Team</a></h3>
+            <p>People cards, testimonials</p>
+          </article>
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title"><a href="blog.html">Blog</a></h3>
+            <p>Post list, categories, newsletter</p>
+          </article>
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title"><a href="post.html">Blog post</a></h3>
+            <p>Article template (copy per post)</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="g-schools">
+      <div class="column stack">
+        <h2 id="g-schools">Schools</h2>
+        <div class="grid">
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title"><a href="admissions.html">Admissions</a></h3>
+            <p>Dates, tuition, FAQ, inquiry form</p>
+          </article>
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title"><a href="programs.html">Programs</a></h3>
+            <p>Program cards per level</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="g-personal-brand-and-portfolio">
+      <div class="column stack">
+        <h2 id="g-personal-brand-and-portfolio">Personal brand and portfolio</h2>
+        <div class="grid">
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title"><a href="about-me.html">About me</a></h3>
+            <p>Portrait, story, offerings, logo bar</p>
+          </article>
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title"><a href="projects.html">Work</a></h3>
+            <p>Project cards (portfolio)</p>
+          </article>
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title"><a href="project.html">Project</a></h3>
+            <p>Case-study template (copy per project)</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="g-library-design-reference-">
+      <div class="column stack">
+        <h2 id="g-library-design-reference-">Library (design reference)</h2>
+        <div class="grid">
+          <article class="card post">
+            <span class="badge">reference</span>
+            <h3 class="card__title"><a href="patterns.html">Patterns</a></h3>
+            <p>Catalog of every reusable section, including the dark theme</p>
+          </article>
+          <article class="card post">
+            <span class="badge">reference</span>
+            <h3 class="card__title"><a href="forms.html">Forms</a></h3>
+            <p>Form kit with all field types</p>
+          </article>
+          <article class="card post">
+            <span class="badge">design only</span>
+            <h3 class="card__title"><a href="store.html">Store</a></h3>
+            <p>Store design; cart and checkout not built</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="g-legal">
+      <div class="column stack">
+        <h2 id="g-legal">Legal</h2>
+        <div class="grid">
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title">Privacy policy</h3>
+            <p>Structure only, not legal advice</p>
+          </article>
+          <article class="card post">
+            <span class="badge badge--success">ready</span>
+            <h3 class="card__title">Terms of use</h3>
+            <p>Structure only, not legal advice</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       6. FOOTER  (section--footer)
+       Same two layers as every section: section (full width) > column.
+       The column holds the .thirds row, then a legal line:
+         left   = logo
+         middle = sitemap
+         right  = company info, in two rows (details, then small social icons)
+       data-js="year" is filled in by js/main.js.
+       ===================================================================== -->
+  <footer class="section section--footer">
+    <div class="column stack">
+
+      <div class="thirds thirds--stack">
+
+        <!-- 6.1 LEFT: LOGO (same as the header) -->
+        <a class="logo" href="index.html" aria-label="[Site name] home">
+          <span class="logo__placeholder">LOGO</span>
+        </a>
+
+        <!-- 6.2 MIDDLE: SITEMAP (the page's main links) -->
+        <nav class="sitemap" aria-label="Sitemap">
+          <ul class="sitemap__list" data-js="sitemap-list">
+            <li><a class="sitemap__link" href="index.html">Home</a></li>
+            <li><a class="sitemap__link" href="index.html#about">About</a></li>
+            <li><a class="sitemap__link" href="team.html">Team</a></li>
+            <li><a class="sitemap__link" href="contact.html">Contact</a></li>
+            <li><a class="sitemap__link" href="store.html">Store</a></li>
+            <li><a class="sitemap__link" href="blog.html">Blog</a></li>
+            <li><a class="sitemap__link" href="admissions.html">Admissions</a></li>
+            <li><a class="sitemap__link" href="patterns.html">Patterns</a></li>
+          </ul>
+        </nav>
+
+        <!-- 6.3 RIGHT: COMPANY INFO, two rows -->
+        <div class="company stack">
+          <!-- Row 1: contact details -->
+          <address class="company__info">
+            <span class="company__name">[Company name]</span><br>
+            [Street address, City, Country]<br>
+            <a href="tel:[Phone]">[Phone]</a><br>
+            <a href="mailto:[Email]">[Email]</a>
+          </address>
+          <!-- Row 2: social profiles, small icons -->
+        <ul class="social social--small" aria-label="Social media">
+          <li>
+            <a class="social__link" href="[Facebook URL]" aria-label="Facebook">
+              <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="social__link" href="[Instagram URL]" aria-label="Instagram">
+              <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="social__link" href="[LinkedIn URL]" aria-label="LinkedIn">
+              <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+        </div>
+
+      </div>
+
+      <!-- 6.4 LEGAL LINE -->
+      <p class="legal">&copy; <span data-js="year">[Year]</span> [Site name]. All rights reserved.</p>
+
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       7. SCRIPTS
+       Last in <body>. `defer` = runs after the HTML is parsed.
+       ===================================================================== -->
+  <!-- =====================================================================
+       7. CHAT BUBBLE (floating contact button, same on every page)
+       Opens a WhatsApp chat. Replace [WHATSAPP-NUMBER] with the full
+       international number, digits only (country code first; no +, no
+       leading 0, no spaces). The text after ?text= is the prefilled message,
+       URL-encoded (a space is %20).
+       Remove this block on pages that must not show it.
+       ===================================================================== -->
+  <a class="chat-bubble" data-feature="chatBubble" href="https://wa.me/[WHATSAPP-NUMBER]?text=Hello%2C%20I%20have%20a%20question."
+     target="_blank" rel="noopener">
+    <svg class="icon icon--large" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-4.9A8.5 8.5 0 1 1 21 11.5z"/>
+    </svg>
+    <span class="chat-bubble__label">Chat with us on WhatsApp <span class="visually-hidden">(opens in a new tab)</span></span>
+  </a>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+/* ==========================================================================
+   BASE
+   What   : Reset + default look of plain HTML elements (body, h1, a, img).
+   Rule   : Element selectors only. No classes except the accessibility
+            helpers at the bottom. Values come from tokens.css.
+   Loaded : 2nd.
+   ========================================================================== */
+
+/* ---- Reset: predictable box sizing, no default margins ---- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+/* ---- Document ---- */
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* ---- Headings ---- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: var(--line-height-heading);
+}
+h1 { font-size: var(--text-2xl); }
+h2 { font-size: var(--text-xl); }
+h3 { font-size: var(--text-lg); }
+
+/* ---- Links ---- */
+a { color: var(--color-primary); }
+a:hover { color: var(--color-primary-hover); }
+
+/* ---- Media: never overflow their parent ---- */
+img, picture, video, svg { display: block; max-width: 100%; height: auto; }
+
+/* ---- Form controls inherit the page font ---- */
+button, input, select, textarea { font: inherit; }
+
+/* ---- Keyboard focus: always visible ---- */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY HELPERS (the only classes allowed in this file)
+   ========================================================================== */
+
+/* Hide visually but keep available to screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Skip link: hidden until it receives keyboard focus */
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: -100%;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  border-radius: var(--radius);
+}
+.skip-link:focus { top: var(--space-3); }
+
+/* Respect users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

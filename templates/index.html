@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  INDEX.HTML — Master page template
+  ----------------------------------------------------------------------------
+  Purpose : Standard skeleton every project starts from.
+  Rules   : See docs/ for the full conventions. Short version:
+            - One <h1> per page.
+            - One <section> per content block, each with an id and a heading.
+            - Styling uses classes (.card). JavaScript uses data-js="..." hooks.
+            - No inline styles, no inline scripts.
+  How to use: copy this file, replace every [PLACEHOLDER], delete blocks you
+              do not need. Keep the block ORDER and the comment headers.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <!-- =====================================================================
+       1. META
+       Required on every page: charset, viewport, title, description.
+       ===================================================================== -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Page title] | [Site name]</title>
+  <meta name="description" content="[One sentence describing this page.]">
+
+  <!-- =====================================================================
+       2. STYLES
+       ORDER MATTERS: each file builds on the one before it.
+       tokens -> base -> layout -> components -> sections
+       ===================================================================== -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <!-- Site switches (true/false). Runs before the page is drawn, so it is NOT deferred. -->
+  <script src="../js/site-config.js"></script>
+  <script src="../js/features.js"></script>
+</head>
+
+<body>
+  <!-- =====================================================================
+       3. SKIP LINK
+       First focusable element. Lets keyboard users jump past the menu.
+       ===================================================================== -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- =====================================================================
+       4. HEADER  (section--header)
+       Same two layers as every section: section (full width) > column.
+       The column is split in three parts with .thirds:
+         left   = logo
+         middle = main navigation
+         right  = social icons
+       data-js="nav-toggle" and data-js="nav-list" are used by js/main.js.
+       Links use full page paths (index.html#about) so this block is IDENTICAL
+       on every page. js/main.js marks the link of the current page with
+       aria-current="page" (initCurrentPage), so no per-page edits are needed.
+       ===================================================================== -->
+  <header class="section section--header">
+    <div class="column thirds">
+
+      <!-- 4.1 LEFT: LOGO SLOT. To use the real logo, replace the <span> with:
+           <img src="../assets/img/logo.svg" alt="[Site name]" width="160" height="48">
+           and keep the link around it. -->
+      <a class="logo" href="index.html" aria-label="[Site name] home">
+        <span class="logo__placeholder">LOGO</span>
+      </a>
+
+      <!-- 4.2 MIDDLE: MAIN NAVIGATION -->
+      <nav class="nav" aria-label="Main">
+        <button class="nav__toggle" type="button"
+                aria-expanded="false" aria-controls="nav-list"
+                data-js="nav-toggle">Menu</button>
+        <ul class="nav__list" id="nav-list" data-js="nav-list">
+          <li class="nav__item"><a class="nav__link" href="index.html">Home</a></li>
+          <li class="nav__item nav__item--has-sub">
+            <a class="nav__link" href="index.html#about">About</a>
+            <button class="nav__sub-toggle" type="button" aria-expanded="false" aria-controls="sub-about" data-js="sub-toggle">
+              <span class="visually-hidden">Show About submenu</span>
+            </button>
+            <ul class="nav__sub" id="sub-about">
+              <li><a class="nav__link" href="index.html#about">About us</a></li>
+              <li><a class="nav__link" href="team.html">Team</a></li>
+              <li><a class="nav__link" href="admissions.html">Admissions</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a class="nav__link" href="store.html">Store</a></li>
+          <li class="nav__item"><a class="nav__link" href="blog.html">Blog</a></li>
+          <li class="nav__item"><a class="nav__link" href="contact.html">Contact</a></li>
+          <li class="nav__item nav__item--has-sub">
+            <a class="nav__link" href="patterns.html">Library</a>
+            <button class="nav__sub-toggle" type="button" aria-expanded="false" aria-controls="sub-library" data-js="sub-toggle">
+              <span class="visually-hidden">Show Library submenu</span>
+            </button>
+            <ul class="nav__sub" id="sub-library">
+              <li><a class="nav__link" href="all-pages.html">All pages</a></li>
+              <li><a class="nav__link" href="patterns.html">Patterns</a></li>
+              <li><a class="nav__link" href="forms.html">Forms</a></li>
+              <li><a class="nav__link" href="store.html">Store</a></li>
+              <li><a class="nav__link" href="projects.html">Work</a></li>
+              <li><a class="nav__link" href="project.html">Project</a></li>
+              <li><a class="nav__link" href="about-me.html">About me</a></li>
+              <li><a class="nav__link" href="programs.html">Programs</a></li>
+              <li><a class="nav__link" href="post.html">Blog post</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 4.3 RIGHT: SOCIAL ICONS (links to the profiles). Replace each
+           [URL]. Add or remove <li> items as needed; keep aria-label. -->
+      <ul class="social" aria-label="Social media">
+        <li>
+          <a class="social__link" href="[Facebook URL]" aria-label="Facebook">
+            <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="social__link" href="[Instagram URL]" aria-label="Instagram">
+            <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="social__link" href="[LinkedIn URL]" aria-label="LinkedIn">
+            <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       5. MAIN CONTENT
+       Exactly one <main> per page. Blocks below are interchangeable:
+       reorder, duplicate or delete them as the page needs.
+
+       EVERY BLOCK USES THE SAME TWO LAYERS:
+         <section class="section section--NAME" id="NAME">  full-width band
+           <div class="column stack">                       centered content
+       Name each section by its content (hero, about, features, contact).
+       ===================================================================== -->
+  <main id="main">
+
+    <!-- 5.1 HERO — first impression: one promise, one action.
+         Video background: remove the .media-bg block, the toggle button and
+         the class "section--media" if you want a hero without media. -->
+    <section class="section section--hero section--media" id="hero" aria-labelledby="hero-title">
+
+      <!-- Background video (decorative).
+           - poster = first frame of the video: shown until the video loads.
+           - muted + playsinline are REQUIRED for autoplay on phones.
+           - Two formats: the browser uses the first one it supports.
+           SIZE: master 1920 x 1080 (16:9). Poster = same size, JPG or WebP.
+           Phones: data-src-small points to a 1280 x 720 MP4 that main.js uses on small screens.
+           Files: assets/img/hero-poster.jpg, assets/video/hero.webm, assets/video/hero.mp4,
+                  assets/video/hero-1280.mp4 -->
+      <div class="media-bg" aria-hidden="true">
+        <video class="media-bg__video" data-js="bg-video" data-src-small="../assets/video/hero-1280.mp4"
+               autoplay muted loop playsinline preload="metadata"
+               poster="../assets/img/hero-poster.jpg">
+          <source src="../assets/video/hero.webm" type="video/webm">
+          <source src="../assets/video/hero.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="column stack">
+        <h1 id="hero-title">[Main promise of the page]</h1>
+        <p class="lead">[One or two sentences that support the promise.]</p>
+        <p><a class="btn btn--primary" href="#contact">[Primary action]</a></p>
+      </div>
+
+      <!-- Pause/play for the moving background. Visible only when JS runs.
+           CLIENT OPTION (plain autoplay + loop, no button): delete this
+           <button> line. Nothing else needs to change. Trade-off: visitors can
+           no longer stop the motion (see docs/Conventions, section 9). -->
+      <button class="media-toggle" type="button" data-js="bg-video-toggle">Pause video</button>
+    </section>
+
+    <!-- 5.2 ABOUT — who/what, in plain words -->
+    <section class="section section--about" id="about" aria-labelledby="about-title">
+      <div class="column stack">
+        <h2 id="about-title">[About heading]</h2>
+        <p>[Short paragraph.]</p>
+      </div>
+    </section>
+
+    <!-- 5.3 FEATURES — repeating cards in a responsive grid -->
+    <section class="section section--features section--alt" id="features" aria-labelledby="features-title">
+      <div class="column stack">
+        <h2 id="features-title">[Features heading]</h2>
+        <div class="grid">
+          <article class="card">
+            <h3 class="card__title">[Card title]</h3>
+            <p>[Card text.]</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">[Card title]</h3>
+            <p>[Card text.]</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">[Card title]</h3>
+            <p>[Card text.]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5.4 IMAGE + TEXT — two columns: image (left), text (right).
+         Invert the columns by swapping the two children (see 5.5). -->
+    <section class="section section--image-text" id="image-text" aria-labelledby="image-text-title">
+      <div class="column halves">
+
+        <!-- IMAGE SLOT. To use a real image, replace the <span> with:
+             <img class="figure__img" src="../assets/img/NAME.jpg" alt="[Describe the image]"
+                  width="1200" height="900" loading="lazy"> -->
+        <figure class="figure">
+          <span class="figure__placeholder" data-size="1200 × 900">IMAGE</span>
+        </figure>
+
+        <div class="stack">
+          <h2 id="image-text-title">[Heading]</h2>
+          <p>[Short text that supports the heading.]</p>
+          <p><a class="btn btn--primary" href="#contact">[Button label]</a></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5.5 TEXT + IMAGE — same pattern, columns inverted: text (left), image (right) -->
+    <section class="section section--text-image section--alt" id="text-image" aria-labelledby="text-image-title">
+      <div class="column halves">
+
+        <div class="stack">
+          <h2 id="text-image-title">[Heading]</h2>
+          <p>[Short text that supports the heading.]</p>
+          <p><a class="btn btn--primary" href="#contact">[Button label]</a></p>
+        </div>
+
+        <!-- IMAGE SLOT. To use a real image, replace the <span> with:
+             <img class="figure__img" src="../assets/img/NAME.jpg" alt="[Describe the image]"
+                  width="1200" height="900" loading="lazy"> -->
+        <figure class="figure">
+          <span class="figure__placeholder" data-size="1200 × 900">IMAGE</span>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- 5.6 DIVIDER — a band with a video background and a short message.
+         Same video pattern as the hero (see 5.1). Own poster, own video,
+         own pause button.
+         Files: assets/img/divider-poster.jpg, assets/video/divider.webm, assets/video/divider.mp4 -->
+    <section class="section section--divider section--media" id="divider" aria-labelledby="divider-title">
+
+      <!-- SIZE: master 1920 x 800 (12:5). Phone version: 1280 x 534 MP4 (data-src-small). -->
+      <div class="media-bg" aria-hidden="true">
+        <video class="media-bg__video" data-js="bg-video" data-src-small="../assets/video/divider-1280.mp4"
+               autoplay muted loop playsinline preload="metadata"
+               poster="../assets/img/divider-poster.jpg">
+          <source src="../assets/video/divider.webm" type="video/webm">
+          <source src="../assets/video/divider.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Two rows: heading, then text -->
+      <div class="column stack">
+        <h2 id="divider-title">[Divider heading]</h2>
+        <p>[Short dummy text that supports the heading. Keep it brief: the video is the star of this band.]</p>
+      </div>
+
+      <button class="media-toggle" type="button" data-js="bg-video-toggle">Pause video</button>
+    </section>
+
+    <!-- 5.7 LISTS — three rows inside one column:
+         row 1 = heading | row 2 = two columns of bullets | row 3 = text + action -->
+    <section class="section section--lists" id="lists" aria-labelledby="lists-title">
+      <div class="column stack stack--loose">
+
+        <!-- Row 1: heading -->
+        <h2 id="lists-title">[Heading]</h2>
+
+        <!-- Row 2: two columns, each with a bulleted list -->
+        <div class="halves halves--top">
+          <ul class="list">
+            <li>[List item one]</li>
+            <li>[List item two]</li>
+            <li>[List item three]</li>
+          </ul>
+          <ul class="list">
+            <li>[List item one]</li>
+            <li>[List item two]</li>
+            <li>[List item three]</li>
+          </ul>
+        </div>
+
+        <!-- Row 3: closing text + call to action -->
+        <div class="stack">
+          <p>[Closing text that leads to the action.]</p>
+          <p><a class="btn btn--primary" href="#contact">[Call to action]</a></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5.8 CONTACT / CALL TO ACTION — the page's closing action -->
+    <section class="section section--contact section--alt" id="contact" aria-labelledby="contact-title">
+      <div class="column stack">
+        <h2 id="contact-title">[Contact heading]</h2>
+        <p>[What happens when they get in touch.]</p>
+        <p><a class="btn btn--primary" href="mailto:[email]">[Action label]</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       6. FOOTER  (section--footer)
+       Same two layers as every section: section (full width) > column.
+       The column holds the .thirds row, then a legal line:
+         left   = logo
+         middle = sitemap
+         right  = company info, in two rows (details, then small social icons)
+       data-js="year" is filled in by js/main.js.
+       ===================================================================== -->
+  <footer class="section section--footer">
+    <div class="column stack">
+
+      <div class="thirds thirds--stack">
+
+        <!-- 6.1 LEFT: LOGO (same as the header) -->
+        <a class="logo" href="index.html" aria-label="[Site name] home">
+          <span class="logo__placeholder">LOGO</span>
+        </a>
+
+        <!-- 6.2 MIDDLE: SITEMAP (the page's main links) -->
+        <nav class="sitemap" aria-label="Sitemap">
+          <ul class="sitemap__list" data-js="sitemap-list">
+            <li><a class="sitemap__link" href="index.html">Home</a></li>
+            <li><a class="sitemap__link" href="index.html#about">About</a></li>
+            <li><a class="sitemap__link" href="team.html">Team</a></li>
+            <li><a class="sitemap__link" href="contact.html">Contact</a></li>
+            <li><a class="sitemap__link" href="store.html">Store</a></li>
+            <li><a class="sitemap__link" href="blog.html">Blog</a></li>
+            <li><a class="sitemap__link" href="admissions.html">Admissions</a></li>
+            <li><a class="sitemap__link" href="patterns.html">Patterns</a></li>
+          </ul>
+        </nav>
+
+        <!-- 6.3 RIGHT: COMPANY INFO, two rows -->
+        <div class="company stack">
+          <!-- Row 1: contact details -->
+          <address class="company__info">
+            <span class="company__name">[Company name]</span><br>
+            [Street address, City, Country]<br>
+            <a href="tel:[Phone]">[Phone]</a><br>
+            <a href="mailto:[Email]">[Email]</a>
+          </address>
+          <!-- Row 2: social profiles, small icons -->
+        <ul class="social social--small" aria-label="Social media">
+          <li>
+            <a class="social__link" href="[Facebook URL]" aria-label="Facebook">
+              <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="social__link" href="[Instagram URL]" aria-label="Instagram">
+              <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="social__link" href="[LinkedIn URL]" aria-label="LinkedIn">
+              <svg class="social__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+        </div>
+
+      </div>
+
+      <!-- 6.4 LEGAL LINE -->
+      <p class="legal">&copy; <span data-js="year">[Year]</span> [Site name]. All rights reserved.</p>
+
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       7. SCRIPTS
+       Last in <body>. `defer` = runs after the HTML is parsed.
+       ===================================================================== -->
+  <!-- =====================================================================
+       7. CHAT BUBBLE (floating contact button, same on every page)
+       Opens a WhatsApp chat. Replace [WHATSAPP-NUMBER] with the full
+       international number, digits only (country code first; no +, no
+       leading 0, no spaces). The text after ?text= is the prefilled message,
+       URL-encoded (a space is %20).
+       Remove this block on pages that must not show it.
+       ===================================================================== -->
+  <a class="chat-bubble" data-feature="chatBubble" href="https://wa.me/[WHATSAPP-NUMBER]?text=Hello%2C%20I%20have%20a%20question."
+     target="_blank" rel="noopener">
+    <svg class="icon icon--large" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-4.9A8.5 8.5 0 1 1 21 11.5z"/>
+    </svg>
+    <span class="chat-bubble__label">Chat with us on WhatsApp <span class="visually-hidden">(opens in a new tab)</span></span>
+  </a>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

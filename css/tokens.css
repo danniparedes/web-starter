@@ -1,0 +1,162 @@
+/* ==========================================================================
+   TOKENS
+   What   : Every design decision (color, type, spacing) as a CSS variable.
+   Rule   : This is the ONLY file where raw values (#hex, rem sizes) live.
+            All other CSS files use var(--token-name).
+   Why    : Re-branding a project = editing this one file.
+   Loaded : 1st (before base, layout, components).
+   ========================================================================== */
+
+:root {
+  /* ---- Color: roles, not names ("primary", not "blue") ---- */
+  --color-bg:               #ffffff;
+  --color-surface:          #f4f6f8;  /* alternate section background, cards */
+  --color-text:             #1b1f24;
+  --color-text-muted:       #55606e;
+  --color-primary:          #2a5bd7;
+  --color-primary-hover:    #1f47ad;
+  --color-primary-contrast: #ffffff;  /* text on top of --color-primary */
+  --color-border:           #dde2e8;
+  --color-focus:            #f2a900;  /* keyboard focus ring */
+
+  /* ---- Feedback colors (form errors and success messages) ---- */
+  --color-error:           #b42318;
+  --color-error-surface:   #fef3f2;
+  --color-success:         #067647;
+  --color-success-surface: #ecfdf3;
+
+  /* ---- Dark theme: the same roles, re-valued ----
+     .section--dark (or .theme-dark on <body>) swaps the color roles above for these.
+     All pairs checked for contrast on 2026-11-15: text 16.8:1, muted text 7.7:1 or more,
+     primary on dark 7.6:1 or more (WCAG needs 4.5:1). Re-check after changing a value. */
+  --dark-bg:               #0f1419;
+  --dark-surface:          #1a2129;
+  --dark-text:             #f2f4f7;
+  --dark-text-muted:       #aab4c0;
+  --dark-primary:          #8fb1ff;
+  --dark-primary-hover:    #b0c6ff;
+  --dark-primary-contrast: #0f1419;  /* text on top of --dark-primary */
+  --dark-border:           #313b46;
+  --dark-error:            #ffb4ab;
+  --dark-error-surface:    #3a1612;
+  --dark-success:          #7ee2a8;
+  --dark-success-surface:  #10301f;
+
+  /* ---- Chat bubble (floating contact button) ---- */
+  --color-chat:           #0f766e;   /* white text on it: 5.47:1 (checked 2026-11-13) */
+  --color-chat-hover:     #0b6b61;
+  --color-chat-contrast:  #ffffff;
+  --chat-bubble-size:     3.5rem;
+  --z-floating:           50;
+  --z-dropdown:           40;   /* submenus: above the page, below floating buttons */
+  --z-banner:             60;   /* cookie banner: above the chat bubble */
+
+  /* ---- Media backgrounds (video/image behind text) ---- */
+  --color-media-fallback: #1b1f24;               /* shown if the video/poster is missing */
+  --media-overlay:        rgba(0, 0, 0, 0.45);   /* darkens media so text stays readable */
+  --color-on-media:       #ffffff;               /* text color on top of media */
+  --tile-caption-overlay: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));  /* darkens the foot of a tile photo */
+
+  /* ---- Glass card (frosted panel over a photo) ----
+     Tinted dark on purpose: even over a pure white photo (worst case, after the media
+     overlay) white text stays above 4.5:1. Worked out with the contrast script, 2026-11-15. */
+  --glass-bg:            rgba(15, 20, 25, 0.5);
+  --glass-bg-solid:      rgba(15, 20, 25, 0.85);   /* used when the browser cannot blur */
+  --glass-border:        rgba(255, 255, 255, 0.35);
+  --glass-blur:          16px;
+  --glass-text-muted:    #e4e8ee;                  /* hints and small print on the glass */
+
+  /* ---- Typography ---- */
+  --font-body:    system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-body);
+  --line-height-body:    1.6;
+  --line-height-heading: 1.2;
+
+  /* Type scale (rem = relative to the user's browser font size) */
+  --text-sm:  0.875rem;
+  --text-base: 1rem;
+  --text-lg:  1.25rem;
+  --text-xl:  1.75rem;
+  --text-2xl: 2.5rem;
+  --text-display: clamp(2.75rem, 8vw, 6rem);   /* big headline of the image hero */
+  --tracking-tight: -0.02em;                   /* tighter letters for display type */
+  --line-height-display: 1.05;
+  --text-giant: clamp(3.5rem, 15vw, 11rem);    /* giant-type hero (headline is the picture) */
+  --line-height-giant: 0.9;
+
+  /* ---- Spacing scale ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+
+  /* ---- Shape & depth ---- */
+  --radius:     0.5rem;
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-floating: 0 4px 12px rgba(0, 0, 0, 0.25);   /* floating buttons */
+  --radius-pill: 999px;
+  --radius-lg:  1rem;                                  /* big cards: stats card, glass card */
+
+  /* ---- Layout ----
+     section = full-width band; column = centered content inside it.
+     Override these variables on one section to tune only that section. */
+  --column-max:            70rem;
+  --column-narrow-max:     48rem;           /* .column--narrow: FAQ, quotes, forms */
+  --article-max:           42rem;           /* width of article text (.prose): about 70 characters per line */
+  --column-padding-inline: 3rem;            /* side padding of the column */
+  --section-padding-block: var(--space-6);  /* top/bottom padding of a section */
+  --hero-min-height:       32rem;           /* minimum height of the hero section */
+  --divider-padding-block: 8rem;            /* generous padding: lets the video be seen */
+  --divider-text-max:      40rem;           /* width of the divider text (space around it) */
+  --hero-image-min-height: 36rem;           /* image hero (taller than the plain hero) */
+  --hero-image-text-max:   48rem;           /* width of the image-hero text block */
+  --logo-bar-padding:      var(--space-4);  /* height of the thin logo bar under a hero */
+  --bento-row:             11rem;           /* height of one row in the bento grid */
+  --bento-gap:             var(--space-3);
+  --stats-card-overlap:    4rem;            /* how far the stats card rises over the hero above */
+  --hero-type-overlap:     0.3;             /* share of the giant headline the photo covers (0 to 0.5) */
+  --hero-type-figure-max:  28rem;           /* width of the photo that overlaps the giant headline */
+  --tile-width:            16rem;           /* one tall tile in the swipe row (phones, tablets) */
+  --tile-gap:              var(--space-3);
+  --timeline-gap:          var(--space-4);
+  --timeline-dot-size:     1rem;            /* plain timeline marker; numbered markers use --icon-button-size */
+
+  /* ---- Site logo size (header + footer; replace with real logo dimensions) ---- */
+  --site-logo-width:  10rem;
+  --site-logo-height: 3rem;
+
+  /* ---- Icons ---- */
+  --icon-size:        1.25rem;
+  --icon-button-size: 2.5rem;   /* clickable circle around an icon */
+  --icon-size-small:        1rem;     /* small variant (footer) */
+  --icon-button-size-small: 2rem;
+  --icon-size-large:        2rem;     /* feature icons above a heading */
+  --icon-stroke:            1.5;      /* line weight on the 24 x 24 grid */
+
+  /* ---- Lottie animations (icons and loaders) ---- */
+  --lottie-size:       4rem;
+  --lottie-size-large: 12rem;
+
+  /* ---- Logo strip (partner / accreditation logos) ---- */
+  --logo-strip-width:  8rem;
+  --logo-strip-height: 3rem;
+
+  /* ---- Lightbox (gallery viewer) ---- */
+  --lightbox-backdrop: rgba(0, 0, 0, 0.85);
+
+  /* ---- Figures (images inside content) ---- */
+  /* One name per media shape. Master sizes live in docs/..._Media-Specs.md. */
+  --ratio-wide:   16 / 9;       /* hero video + poster      1920 x 1080 */
+  --ratio-banner: 12 / 5;       /* divider + page banner    1920 x 800  */
+  --ratio-card:   4 / 3;        /* cards, news, gallery     1200 x 900  */
+  --ratio-square: 1 / 1;        /* team photos              800 x 800   */
+  --ratio-portrait: 4 / 5;      /* about-me photo           960 x 1200  */
+  --ratio-project: 3 / 2;       /* project cards            1200 x 800  */
+  --ratio-tall:    3 / 4;       /* tall tiles               900 x 1200  */
+  --figure-ratio: var(--ratio-card);   /* default shape of every .figure */
+
+  /* ---- Motion ---- */
+  --transition: 150ms ease;
+}
