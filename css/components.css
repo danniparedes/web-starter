@@ -1595,7 +1595,7 @@ a.row__link:hover .row__title { color: var(--color-primary); }
 .glass-card .form__hint { color: var(--glass-text-muted); }
 
 /* --------------------------------------------------------------------------
-   COMPONENT: float-cluster  (rounded cards that overlap, over a pale panel smaller than the group)
+   COMPONENT: float-cluster  (separate rounded cards over a centered pale panel smaller than the group)
    Use when : proof beside a headline: a score, the sources behind it, a quality check.
    Markup   : <div class="float-cluster">
                 <div class="float-card theme-dark float-card--score"> <p class="score">..</p> </div>
@@ -1604,8 +1604,7 @@ a.row__link:hover .row__title { color: var(--color-primary); }
                 <div class="float-card float-card--meters"> <h3 class="float-card__title">..</h3>
                   <ul class="meter-list"><li class="meter-row">..</li></ul> </div>
               </div>
-   Phones   : cards stack. From 40em: score and sources side by side, meters below and
-              rising over both (--float-overlap).
+   Phones   : cards stack. From 40em: score and sources side by side, meters below.
    Dark card: add theme-dark to ONE card. It swaps the roles by itself (no colors here).
    Rule     : Every number needs a primary source and the date it was checked.
               No source = write [NUMBER NEEDED - source required].
@@ -1614,17 +1613,16 @@ a.row__link:hover .row__title { color: var(--color-primary); }
   position: relative;
   isolation: isolate;                 /* keeps the backdrop behind the cards */
   display: grid;
-  padding: var(--space-5) 0;
+  gap: var(--space-3);                /* cards do NOT touch: a clear gap between them */
 }
-/* Backdrop: a rounded pale panel SMALLER than the composition. The cards
-   poke out past its top, left and bottom edges, so the group feels layered. */
+/* Backdrop: a rounded pale panel, centered behind the group and SMALLER than it,
+   so every card pokes out past its edge. */
 .float-cluster::before {
   content: "";
   position: absolute;
-  inset: calc(var(--space-5) + var(--space-4)) 0 var(--space-4) 25%;
+  inset: 12% 3%;
   z-index: -1;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-primary) 10%, var(--color-bg));   /* pale tint of the brand color */
   border-radius: var(--radius-xl);
 }
 .float-card {
@@ -1636,18 +1634,13 @@ a.row__link:hover .row__title { color: var(--color-primary); }
   box-shadow: var(--shadow-card);
 }
 .float-card__title { margin-bottom: var(--space-3); font-size: var(--text-lg); }
-/* Phones: one column. Each card rises over the one above and steps sideways. */
-.float-card + .float-card { margin-top: calc(var(--float-overlap) * -1); position: relative; }
-.float-card--sources { margin-left: var(--space-4); }
-.float-card--meters  { margin-right: var(--space-4); z-index: 1; }
-/* From 40em: score and sources share the middle (they touch), meters sit
-   below and overlap both, starting a little inside from the left. */
+/* Phones: one column. From 40em: score and sources side by side, meters below
+   (a little narrower, centered under them). */
 @media (min-width: 40em) {
   .float-cluster { grid-template-columns: repeat(12, 1fr); }
-  .float-card + .float-card { margin-top: 0; }
-  .float-card--score   { grid-column: 1 / span 6; grid-row: 1; align-self: start; }
-  .float-card--sources { grid-column: 7 / -1; grid-row: 1; margin: var(--space-4) 0 0 calc(var(--space-3) * -1); z-index: 1; }
-  .float-card--meters  { grid-column: 2 / span 10; grid-row: 2; margin: calc(var(--float-overlap) * -1) 0 0; }
+  .float-card--score   { grid-column: 1 / span 6; grid-row: 1; }
+  .float-card--sources { grid-column: 7 / -1;     grid-row: 1; }
+  .float-card--meters  { grid-column: 2 / span 10; grid-row: 2; }
 }
 
 /* --------------------------------------------------------------------------

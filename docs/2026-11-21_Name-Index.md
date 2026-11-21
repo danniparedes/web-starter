@@ -47,7 +47,7 @@ Every structure we built has ONE name. Use the name when you ask for it ("add Fl
 | Features grid | Section | `section--features` (Home) | Heading + card grid | Features (old Home 5.3) |
 | Figure | Component | `.figure` | Image frame with fixed shape (4:3, portrait, tall) |  |
 | Float card | Component | `.float-card` | One small card inside a Float cluster |  |
-| Float cluster | Component | `.float-cluster` | Pale panel holding overlapping small cards |  |
+| Float cluster | Component | `.float-cluster` | Separate rounded cards over a centered pale panel smaller than the group |  |
 | Floating proof cards | Section | `section--float-cards` | Dark score card, sources card with round logos, meter panel | (old 5.29) |
 | Footer | Page frame | `section--footer` | Logo, sitemap, company info, social, legal line |  |
 | Form | Component | `.form` | Field, label, error and status styles |  |
