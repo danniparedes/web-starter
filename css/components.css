@@ -1670,9 +1670,10 @@ a.row__link:hover .row__title { color: var(--color-primary); }
               No logo yet: put the initials as text, e.g. <li class="avatar-row__item">[AB]</li>
    Rule     : Show only real sources, with permission to use their logo.
    -------------------------------------------------------------------------- */
-.avatar-row { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0; list-style: none; }
+.avatar-row { display: flex; flex-wrap: wrap; gap: calc(var(--space-3) * 0.75); padding: 0; list-style: none; }  /* clear space between the circles */
 .avatar-row__item {
   display: grid;
+  flex: none;                          /* a circle never shrinks into its neighbor */
   place-items: center;
   width: var(--avatar-size);
   height: var(--avatar-size);

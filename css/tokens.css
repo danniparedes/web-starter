@@ -124,7 +124,7 @@
   --tile-width:            16rem;           /* one tall tile in the swipe row (phones, tablets) */
   --tile-gap:              var(--space-3);
   --timeline-gap:          var(--space-4);
-  --avatar-size:           2.5rem;            /* round logo in the sources card */
+  --avatar-size:           2.25rem;            /* round logo in the sources card */
   --meter-segment-height:  0.5rem;          /* one segment of a meter bar */
   --timeline-dot-size:     1rem;            /* plain timeline marker; numbered markers use --icon-button-size */
 
