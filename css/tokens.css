@@ -99,6 +99,7 @@
   --shadow-floating: 0 4px 12px rgba(0, 0, 0, 0.25);   /* floating buttons */
   --radius-pill: 999px;
   --radius-lg:  1rem;                                  /* big cards: stats card, glass card */
+  --radius-xl:  1.5rem;                                /* very round: floating proof cards and their backdrop */
   --shadow-card: 0 8px 24px rgba(15, 20, 25, 0.12);    /* floating cards (score, sources, meters) */
 
   /* ---- Layout ----
@@ -124,7 +125,7 @@
   --tile-gap:              var(--space-3);
   --timeline-gap:          var(--space-4);
   --float-overlap:         var(--space-4);  /* how far the meter panel rises over the cards above it */
-  --avatar-size:           3rem;            /* round logo in the sources card */
+  --avatar-size:           2.5rem;            /* round logo in the sources card */
   --meter-segment-height:  0.5rem;          /* one segment of a meter bar */
   --timeline-dot-size:     1rem;            /* plain timeline marker; numbered markers use --icon-button-size */
 
