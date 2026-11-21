@@ -24,7 +24,7 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- ABOUT ME (5.20 in the patterns catalog) — portrait photo (stays in view while you read) + story.
+    <!-- About me (in the patterns catalog) — portrait photo (stays in view while you read) + story.
          The story uses .prose for comfortable line length. -->
     <section class="section section--about-me" id="about-me" aria-labelledby="about-me-title">
       <div class="column halves halves--top">

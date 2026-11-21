@@ -5,32 +5,33 @@ require_once dirname(__DIR__) . '/php/bootstrap.php';
 $page = ['id' => 'all-pages', 'title' => 'All pages', 'description' => 'Index of every page in the starter.', 'noindex' => true];
 require SITE_ROOT . '/partials/head.php';
 
-/* group => [ [page name, label, what it is, status] ]. status: ready | design only */
+/* group => [ [page name, label, what it is, status] ]. Groups and pages are listed A to Z: keep it that way.
+   status: ready | reference | design only */
 $groups = [
     'Core site' => [
-        ['index',      'Home',       'Hero, about, features, image + text, divider, lists, contact', 'ready'],
-        ['contact',    'Contact',    'Form, details, map, steps, FAQ', 'ready'],
-        ['team',       'Team',       'People cards, testimonials', 'ready'],
-        ['blog',       'Blog',       'Post list, categories, newsletter', 'ready'],
-        ['post',       'Blog post',  'Article template (copy per post)', 'ready'],
-    ],
-    'Schools' => [
-        ['admissions', 'Admissions', 'Dates, tuition, FAQ, inquiry form', 'ready'],
-        ['programs',   'Programs',   'Program cards per level', 'ready'],
-    ],
-    'Personal brand and portfolio' => [
-        ['about-me',   'About me',   'Portrait, story, offerings, logo bar', 'ready'],
-        ['projects',   'Work',       'Project cards (portfolio)', 'ready'],
-        ['project',    'Project',    'Case-study template (copy per project)', 'ready'],
-    ],
-    'Library (design reference)' => [
-        ['patterns',   'Patterns',   'Catalog of every reusable section, including the dark theme', 'reference'],
-        ['forms',      'Forms',      'Form kit with all field types', 'reference'],
-        ['store',      'Store',      'Store design; cart and checkout not built', 'design only'],
+        ['blog',      'Blog',             'Post list, categories, newsletter', 'ready'],
+        ['post',      'Blog post',        'Article template (copy per post)', 'ready'],
+        ['contact',   'Contact',          'Contact split, Steps, FAQ', 'ready'],
+        ['index',     'Home',             'Hero video, About text, Features grid, Image + text, Text + image, Video divider, Triple lists, Contact band', 'ready'],
+        ['team',      'Team',             'Team cards, Testimonials', 'ready'],
     ],
     'Legal' => [
-        ['privacy',    'Privacy policy', 'Structure only, not legal advice', 'ready'],
-        ['terms',      'Terms of use',   'Structure only, not legal advice', 'ready'],
+        ['privacy',   'Privacy policy',   'Structure only, not legal advice', 'ready'],
+        ['terms',     'Terms of use',     'Structure only, not legal advice', 'ready'],
+    ],
+    'Library (design reference)' => [
+        ['forms',     'Forms',            'Form kit with all field types', 'reference'],
+        ['patterns',  'Patterns',         'Catalog of every reusable section, including the dark theme', 'reference'],
+        ['store',     'Store',            'Store design; cart and checkout not built', 'design only'],
+    ],
+    'Personal brand and portfolio' => [
+        ['about-me',  'About me',         'Portrait, story, offerings, logo bar', 'ready'],
+        ['project',   'Project',          'Case-study template (copy per project)', 'ready'],
+        ['projects',  'Work',             'Project cards (portfolio)', 'ready'],
+    ],
+    'Schools' => [
+        ['admissions', 'Admissions',       'Dates, tuition, FAQ, inquiry form', 'ready'],
+        ['programs',  'Programs',         'Program cards per level', 'ready'],
     ],
 ];
 ?>
@@ -49,7 +50,7 @@ $groups = [
           </ol>
         </nav>
         <h1 id="page-title">All pages</h1>
-        <p class="lead">Every page in the starter, grouped by purpose. Design reference only: remove before launch.</p>
+        <p class="lead">Every page in the starter, grouped by purpose, A to Z. Design reference only: remove before launch.</p>
       </div>
     </section>
 

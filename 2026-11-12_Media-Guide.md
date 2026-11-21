@@ -10,32 +10,32 @@ Quality numbers below (CRF, quality 80, etc.) are **starting points**, not rules
 
 | Media | Master size | Format | Folder | Name example |
 |---|---|---|---|---|
-| Hero video | 1920 x 1080 (16:9) | MP4 + WebM, no audio | `assets/video/` | `hero.mp4`, `hero.webm` |
-| Hero video, phone | 1280 x 720 | MP4 | `assets/video/` | `hero-1280.mp4` |
-| Hero poster | 1920 x 1080 | JPG or WebP | `assets/img/` | `hero-poster.jpg` |
-| Divider video | 1920 x 800 (12:5) | MP4 + WebM | `assets/video/` | `divider.mp4` |
-| Divider video, phone | 1280 x 534 | MP4 | `assets/video/` | `divider-1280.mp4` |
-| Divider poster | 1920 x 800 | JPG or WebP | `assets/img/` | `divider-poster.jpg` |
-| Image hero (no video) | 1920 x 1200 (16:10) | JPG or WebP | `assets/img/` | `hero-image.jpg` |
-| Project card / project image | 1200 x 800 (3:2) | JPG or WebP | `assets/img/` | `project-name.jpg` |
-| Project cover (detail page) | 1280 x 720 (16:9) | JPG or WebP | `assets/img/` | `project-name-cover.jpg` |
 | About-me portrait | 960 x 1200 (4:5) | JPG or WebP | `assets/img/` | `portrait.jpg` |
 | Bento tile photo | 1600 x 1600 (1:1) | JPG or WebP | `assets/img/` | `bento-1.jpg` |
-| Tall tile photo (swipe row) | 900 x 1200 (3:4) | JPG or WebP | `assets/img/` | `tile-1.jpg` |
-| Glass-form background | 1920 x 1200 (16:10) | JPG or WebP | `assets/img/` | `glass-bg.jpg` |
-| Giant-type hero photo | 960 x 1200 (4:5) | JPG or WebP | `assets/img/` | `hero-type.jpg` |
-| Source logo (floating proof card) | 96 x 96 (1:1) | PNG, SVG or WebP | `assets/img/` | `source-1.svg` |
 | Card / news image | 1200 x 900 (4:3) | JPG or WebP | `assets/img/` | `news-spring-fair.jpg` |
-| Gallery image | 1600 x 1200 (4:3) | JPG or WebP | `assets/img/` | `gallery-01.jpg` |
-| Team photo | 800 x 800 (1:1) | JPG or WebP | `assets/img/` | `team-ana-lopez.jpg` |
-| Logo | vector | SVG (+ PNG for email) | `assets/img/` | `logo.svg` |
-| Partner logos | height 48 | SVG or PNG, transparent | `assets/img/` | `partner-name.svg` |
+| Divider poster | 1920 x 800 | JPG or WebP | `assets/img/` | `divider-poster.jpg` |
+| Divider video | 1920 x 800 (12:5) | MP4 + WebM | `assets/video/` | `divider.mp4` |
+| Divider video, phone | 1280 x 534 | MP4 | `assets/video/` | `divider-1280.mp4` |
 | Favicon / app icon | 512 x 512 | PNG | `assets/img/` | `favicon.png` |
-| iPhone home-screen icon | 180 x 180 | PNG | `assets/img/` | `apple-touch-icon.png` |
-| Share image (social preview) | 1200 x 630 | JPG or PNG | `assets/img/` | `share.jpg` |
+| Gallery image | 1600 x 1200 (4:3) | JPG or WebP | `assets/img/` | `gallery-01.jpg` |
+| Giant-type hero photo | 960 x 1200 (4:5) | JPG or WebP | `assets/img/` | `hero-type.jpg` |
+| Glass-form background | 1920 x 1200 (16:10) | JPG or WebP | `assets/img/` | `glass-bg.jpg` |
+| Hero poster | 1920 x 1080 | JPG or WebP | `assets/img/` | `hero-poster.jpg` |
+| Hero video | 1920 x 1080 (16:9) | MP4 + WebM, no audio | `assets/video/` | `hero.mp4`, `hero.webm` |
+| Hero video, phone | 1280 x 720 | MP4 | `assets/video/` | `hero-1280.mp4` |
 | Icons | 24 x 24 grid | SVG, line, 1.5 stroke | `assets/icons/` | `sprite.svg` |
+| Image hero (no video) | 1920 x 1200 (16:10) | JPG or WebP | `assets/img/` | `hero-image.jpg` |
+| iPhone home-screen icon | 180 x 180 | PNG | `assets/img/` | `apple-touch-icon.png` |
+| Logo | vector | SVG (+ PNG for email) | `assets/img/` | `logo.svg` |
 | Lottie icon | 256 x 256 | `.lottie` (or `.json`) | `assets/lottie/` | `icon-check.lottie` |
 | Lottie large | 1024 x 1024 | `.lottie` (or `.json`) | `assets/lottie/` | `loader.lottie` |
+| Partner logos | height 48 | SVG or PNG, transparent | `assets/img/` | `partner-name.svg` |
+| Project card / project image | 1200 x 800 (3:2) | JPG or WebP | `assets/img/` | `project-name.jpg` |
+| Project cover (detail page) | 1280 x 720 (16:9) | JPG or WebP | `assets/img/` | `project-name-cover.jpg` |
+| Share image (social preview) | 1200 x 630 | JPG or PNG | `assets/img/` | `share.jpg` |
+| Source logo (floating proof card) | 96 x 96 (1:1) | PNG, SVG or WebP | `assets/img/` | `source-1.svg` |
+| Tall tile photo (swipe row) | 900 x 1200 (3:4) | JPG or WebP | `assets/img/` | `tile-1.jpg` |
+| Team photo | 800 x 800 (1:1) | JPG or WebP | `assets/img/` | `team-ana-lopez.jpg` |
 
 **File names:** lowercase, words separated by hyphens, no spaces, no accents (`team-ana-lopez.jpg`, never `Foto Ana 2.JPG`).
 

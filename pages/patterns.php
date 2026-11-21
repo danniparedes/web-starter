@@ -38,7 +38,7 @@ require SITE_ROOT . '/partials/head.php';
 
   <main id="main">
 
-    <!-- 5.1 INNER-PAGE BANNER — top of every inner page: breadcrumb, h1, intro -->
+    <!-- Page banner — top of every inner page: breadcrumb, h1, intro -->
     <section class="section section--page-banner" id="page-banner" aria-labelledby="page-title">
       <div class="column stack">
         <nav aria-label="Breadcrumb">
@@ -52,153 +52,260 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.2 CONTENTS — jump links to every pattern on this page -->
+    <!-- Contents — jump links to every pattern on this page, A to Z -->
     <section class="section" id="contents" aria-labelledby="contents-title">
       <div class="column stack">
         <h2 id="contents-title">Contents</h2>
         <div class="halves halves--top">
           <ul class="list">
-            <li><a href="#stats">Stats strip</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#quote">Pull quote</a></li>
-            <li><a href="#steps">Steps / timeline</a></li>
+            <li><a href="#about-me">About me</a> (<a href="<?= url('about-me') ?>">page</a>)</li>
+            <li><a href="#bento">Bento grid</a></li>
+            <li><a href="#cta">Call to action</a></li>
+            <li><a href="#contact-form">Contact split</a></li>
+            <li><a href="#dark">Dark section</a></li>
+            <li><a href="#rows">Editorial rows</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#team">Team cards</a></li>
-            <li><a href="#hero-image">Image hero (big type)</a></li>
-            <li><a href="#logo-bar">Hero + logo bar</a></li>
-            <li><a href="#projects">Project cards</a> (<a href="<?= url('projects') ?>">page</a>, <a href="<?= url('project') ?>">detail</a>)</li>
+            <li><a href="#faq-numbered">FAQ numbered</a></li>
+            <li><a href="#float-cards">Floating proof cards</a></li>
+            <li><a href="<?= url('forms') ?>">Form kit</a> (all field types)</li>
+            <li><a href="#gallery">Gallery viewer</a></li>
+            <li><a href="#glass-form">Glass form</a></li>
+            <li><a href="#hero-type">Hero giant type</a></li>
+            <li><a href="#hero-image">Hero image</a></li>
+            <li><a href="#icons">Icons</a></li>
+            <li><a href="#logo-bar">Logo bar</a></li>
           </ul>
           <ul class="list">
             <li><a href="#logos">Logo strip</a></li>
-            <li><a href="#news">News / events</a></li>
-            <li><a href="#gallery">Gallery with viewer</a></li>
-            <li><a href="#icons">Icons</a></li>
-            <li><a href="#lottie">Lottie animations</a></li>
-            <li><a href="#contact-form">Contact + form + map</a></li>
-            <li><a href="#bento">Bento grid</a></li>
-            <li><a href="#about-me">About me + offerings</a> (<a href="<?= url('about-me') ?>">page</a>)</li>
-            <li><a href="#programs">Program cards, schools</a> (<a href="<?= url('programs') ?>">page</a>)</li>
-            <li><a href="#dark">Dark section (theme switch)</a></li>
-            <li><a href="#stats-card">Stats card over the hero</a></li>
-            <li><a href="#rows">Editorial rows + section label</a></li>
-            <li><a href="#tiles">Tall tiles + swipe row</a></li>
-            <li><a href="#timeline-process">Timelines (process, itinerary)</a></li>
-            <li><a href="#glass-form">Glass form card + numbered FAQ</a></li>
-            <li><a href="#hero-type">Giant-type hero</a></li>
-            <li><a href="#float-cards">Floating proof cards</a></li>
-            <li><a href="#cta">Call-to-action band</a></li>
-            <li><a href="<?= url('forms') ?>">Form kit (all field types)</a></li>
+            <li><a href="#lottie">Lottie</a></li>
+            <li><a href="#news">News cards</a></li>
+            <li><a href="#offerings">Offerings</a></li>
+            <li><a href="#programs">Program cards</a> (<a href="<?= url('programs') ?>">page</a>)</li>
+            <li><a href="#projects">Project cards</a> (<a href="<?= url('projects') ?>">page</a>, <a href="<?= url('project') ?>">detail</a>)</li>
+            <li><a href="#quote">Pull quote</a></li>
+            <li><a href="#stats-card">Stats card</a></li>
+            <li><a href="#stats">Stats strip</a></li>
+            <li><a href="#steps">Steps</a></li>
+            <li><a href="#tiles">Tall tiles</a></li>
+            <li><a href="#team">Team cards</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#timeline-itinerary">Timeline itinerary</a></li>
+            <li><a href="#timeline-process">Timeline process</a></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- 5.3 STATS STRIP — big numbers with labels -->
-    <section class="section section--stats section--alt" id="stats" aria-labelledby="stats-title">
-      <div class="column stack stack--loose">
-        <h2 id="stats-title">[Heading]</h2>
-        <!-- RULE: every number needs a primary source and the date it was checked.
-             No verified source? Write [NUMBER NEEDED - source required]. -->
-        <div class="grid grid--narrow">
-          <div class="stat">
-            <p class="stat__value">[Number]</p>
-            <p class="stat__label">[What it counts]</p>
-            <p class="stat__source">[Source, date checked]</p>
-          </div>
-          <div class="stat">
-            <p class="stat__value">[Number]</p>
-            <p class="stat__label">[What it counts]</p>
-            <p class="stat__source">[Source, date checked]</p>
-          </div>
-          <div class="stat">
-            <p class="stat__value">[Number]</p>
-            <p class="stat__label">[What it counts]</p>
-            <p class="stat__source">[Source, date checked]</p>
-          </div>
-          <div class="stat">
-            <p class="stat__value">[Number]</p>
-            <p class="stat__label">[What it counts]</p>
-            <p class="stat__source">[Source, date checked]</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5.4 TESTIMONIALS — real quotes, with the person's permission -->
-    <section class="section section--testimonials" id="testimonials" aria-labelledby="testimonials-title">
-      <div class="column stack stack--loose">
-        <h2 id="testimonials-title">[Heading]</h2>
-        <div class="grid">
-          <figure class="card testimonial">
-            <blockquote class="testimonial__quote">
-              <p>[A real quote, in the person's own words.]</p>
-            </blockquote>
-            <figcaption class="testimonial__author">
-              <span class="testimonial__name">[Name]</span>
-              <span class="testimonial__role">[Role or relation]</span>
-            </figcaption>
-          </figure>
-          <figure class="card testimonial">
-            <blockquote class="testimonial__quote">
-              <p>[A real quote, in the person's own words.]</p>
-            </blockquote>
-            <figcaption class="testimonial__author">
-              <span class="testimonial__name">[Name]</span>
-              <span class="testimonial__role">[Role or relation]</span>
-            </figcaption>
-          </figure>
-          <figure class="card testimonial">
-            <blockquote class="testimonial__quote">
-              <p>[A real quote, in the person's own words.]</p>
-            </blockquote>
-            <figcaption class="testimonial__author">
-              <span class="testimonial__name">[Name]</span>
-              <span class="testimonial__role">[Role or relation]</span>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5.5 PULL QUOTE — one large statement -->
-    <section class="section section--quote section--alt" id="quote" aria-labelledby="quote-title">
-      <div class="column column--narrow">
-        <h2 id="quote-title" class="visually-hidden">[Quote heading]</h2>
-        <figure class="pull-quote">
-          <blockquote>
-            <p class="pull-quote__text">[One powerful statement, in one or two lines.]</p>
-          </blockquote>
-          <figcaption class="pull-quote__author">[Name], [Role]</figcaption>
+    <!-- About me — portrait photo (stays in view while you read) + story.
+         The story uses .prose for comfortable line length. -->
+    <section class="section section--about-me" id="about-me" aria-labelledby="about-me-title">
+      <div class="column halves halves--top">
+        <figure class="figure figure--portrait">
+          <span class="figure__placeholder" data-size="960 × 1200">IMAGE</span>
         </figure>
+        <div class="stack">
+          <h2 id="about-me-title">[Heading: a human sentence, not "About me"]</h2>
+          <div class="prose">
+            <p>[Opening: who you are, in the first person.]</p>
+            <p>[The story: where you started, the turning point, what you believe.]</p>
+            <p>[Today: what you do and who you do it for.]</p>
+          </div>
+          <p><a class="btn btn--primary" href="<?= url('contact') ?>">[Action label]</a></p>
+        </div>
       </div>
     </section>
 
-    <!-- 5.6 STEPS / TIMELINE — numbers come from CSS, not the HTML -->
-    <section class="section section--steps" id="steps" aria-labelledby="steps-title">
+    <!-- Bento grid — a mosaic of tiles in different sizes (4 columns on desktop,
+         2 on tablet, 1 on phone). Sizes: --wide, --tall, --feature. Looks: default,
+         --primary, --image. Keep text short: a tile is a glance, not a paragraph.
+         This order fills the 4-column desktop grid exactly (rows of 4 cells); if you add or
+         remove tiles, count cells so no hole is left.
+         IMAGE TILE. Add the photo as the first child:
+           <img class="bento__img" src="<?= e(asset('assets/img/tile.jpg')) ?>" alt="" width="1200" height="1200"> -->
+    <section class="section section--bento" id="bento" aria-labelledby="bento-title">
       <div class="column stack stack--loose">
-        <h2 id="steps-title">[Heading]</h2>
-        <ol class="steps">
-          <li class="steps__item">
-            <h3 class="steps__title">[Step title]</h3>
-            <p>[One or two sentences about this step.]</p>
+        <h2 id="bento-title">[Heading]</h2>
+        <div class="bento">
+          <article class="bento__tile bento__tile--feature bento__tile--image">
+            <span class="badge">[Label]</span>
+            <h3>[Big tile: your strongest message]</h3>
+            <p>[One short sentence.]</p>
+          </article>
+          <article class="bento__tile">
+            <svg class="icon icon--large" aria-hidden="true" focusable="false"><use href="<?= e(asset('assets/icons/sprite.svg')) ?>#icon-star"></use></svg>
+            <h3>[Tile title]</h3>
+            <p>[One short sentence.]</p>
+          </article>
+          <article class="bento__tile bento__tile--primary">
+            <svg class="icon icon--large" aria-hidden="true" focusable="false"><use href="<?= e(asset('assets/icons/sprite.svg')) ?>#icon-heart"></use></svg>
+            <h3>[Tile title]</h3>
+            <p>[One short sentence.]</p>
+          </article>
+          <article class="bento__tile bento__tile--wide">
+            <h3>[Wide tile title]</h3>
+            <p>[One short sentence.]</p>
+          </article>
+          <article class="bento__tile bento__tile--tall bento__tile--primary">
+            <h3>[Tall tile title]</h3>
+            <p>[One or two short sentences.]</p>
+          </article>
+          <article class="bento__tile">
+            <h3>[Tile title]</h3>
+            <p>[One short sentence.]</p>
+          </article>
+          <article class="bento__tile bento__tile--image">
+            <h3>[Tile title]</h3>
+          </article>
+          <article class="bento__tile">
+            <h3>[Tile title]</h3>
+            <p>[One short sentence.]</p>
+          </article>
+          <article class="bento__tile bento__tile--wide">
+            <h3>[Wide tile title]</h3>
+            <p>[One short sentence.]</p>
+          </article>
+          <article class="bento__tile bento__tile--primary">
+            <h3>[Tile title]</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action — one line, one button; sits right above the footer -->
+    <section class="section section--cta" id="cta" aria-labelledby="cta-title">
+      <div class="column stack">
+        <h2 id="cta-title">[One-line invitation]</h2>
+        <p>[One short sentence that removes doubt.]</p>
+        <p><a class="btn btn--light" href="<?= url('contact') ?>">[Action label]</a></p>
+      </div>
+    </section>
+
+    <!-- Contact split — two halves: form (left), details and map (right).
+         BACKEND: the form posts to php/handlers/contact.php, which is built in the PHP stage.
+         Until then, submitting leads nowhere. -->
+    <section class="section section--contact-form" id="contact-form" aria-labelledby="contact-form-title">
+      <div class="column halves halves--top">
+
+        <!-- Left: heading + form -->
+        <div class="stack">
+          <h2 id="contact-form-title">[Heading]</h2>
+          <form class="form" action="php/handlers/contact.php" method="post" data-js="form">
+            <div class="form__field">
+              <label class="form__label" for="cf-name">Name</label>
+              <input class="form__control" id="cf-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="cf-email">Email</label>
+              <input class="form__control" id="cf-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="cf-message">Message</label>
+              <textarea class="form__control form__control--area" id="cf-message" name="message" required></textarea>
+              <p class="form__hint">[Short note: when they will hear back.]</p>
+            </div>
+            <!-- Spam trap: hidden from people, bots tend to fill it. The PHP side
+                 rejects any message where this field is not empty. -->
+            <div class="visually-hidden" aria-hidden="true">
+              <label>Leave this field empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+            </div>
+            <div class="form__status" role="status" data-js="form-status" hidden></div>
+            <p><button class="btn btn--primary" type="submit" data-loading-label="Sending…">[Send message]</button></p>
+          </form>
+        </div>
+
+        <!-- Right: company details (row 1) + map (row 2) -->
+        <div class="company stack">
+          <address class="company__info">
+            <span class="company__name">[Company name]</span><br>
+            [Street address, City, Country]<br>
+            <a href="tel:[Phone]">[Phone]</a><br>
+            <a href="mailto:[Email]">[Email]</a>
+          </address>
+          <!-- MAP SLOT. Replace the <figure> with the map embed from your map provider:
+               <iframe title="Map: [Company name] location" src="[EMBED URL]"
+                       width="600" height="450" loading="lazy"></iframe> -->
+          <figure class="figure">
+            <span class="figure__placeholder" data-size="1200 × 900">MAP</span>
+          </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dark section — one class flips a whole band to a dark look.
+         Add class="section--dark" to any section. Cards, buttons, steps, FAQ and forms adapt by
+         themselves, because the color ROLES change (see --dark-* in css/tokens.css).
+         Alternate dark and light bands for rhythm. Whole site dark: <body class="theme-dark">. -->
+    <section class="section section--dark" id="dark" aria-labelledby="dark-title">
+      <div class="column stack stack--loose">
+        <div class="stack">
+          <p class="hero__eyebrow">[Short label]</p>
+          <h2 id="dark-title">[Heading for a dark band]</h2>
+          <p class="lead">[One or two sentences. Light text on a dark band reads as premium and calm.]</p>
+          <p><a class="btn btn--primary" href="<?= url('contact') ?>">[Primary action]</a> <a class="btn btn--outline" href="<?= url('projects') ?>">[Second action]</a></p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3 class="card__title">[Card title]</h3>
+            <p>[One short sentence.]</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">[Card title]</h3>
+            <p>[One short sentence.]</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">[Card title]</h3>
+            <p>[One short sentence.]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial rows — a section label (03 / Selected work) and a list of thin-lined rows.
+         Looks like a magazine page. Shown on a dark band; works on light too.
+         Numbers in the rows come from CSS. The number inside .section-label is typed on purpose:
+         it is the section's place on the page. ICON: on a real page use the sprite file:
+         <use href="<?= e(asset('assets/icons/sprite.svg')) ?>#icon-arrow-right"> -->
+    <section class="section section--dark" id="rows" aria-labelledby="rows-title">
+      <div class="column stack stack--loose">
+        <div class="stack">
+          <p class="section-label"><span class="section-label__number">03</span> <span>[Label, e.g. Selected work]</span></p>
+          <h2 id="rows-title">[Heading]</h2>
+        </div>
+        <ol class="rows">
+          <li class="row">
+            <a class="row__link" href="<?= url('projects') ?>">
+              <h3 class="row__title">[Row title 1]</h3>
+              <p class="row__text">[One line about it.]</p>
+              <svg class="icon row__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg>
+            </a>
           </li>
-          <li class="steps__item">
-            <h3 class="steps__title">[Step title]</h3>
-            <p>[One or two sentences about this step.]</p>
+          <li class="row">
+            <a class="row__link" href="<?= url('projects') ?>">
+              <h3 class="row__title">[Row title 2]</h3>
+              <p class="row__text">[One line about it.]</p>
+              <svg class="icon row__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg>
+            </a>
           </li>
-          <li class="steps__item">
-            <h3 class="steps__title">[Step title]</h3>
-            <p>[One or two sentences about this step.]</p>
+          <li class="row">
+            <a class="row__link" href="<?= url('projects') ?>">
+              <h3 class="row__title">[Row title 3]</h3>
+              <p class="row__text">[One line about it.]</p>
+              <svg class="icon row__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg>
+            </a>
           </li>
-          <li class="steps__item">
-            <h3 class="steps__title">[Step title]</h3>
-            <p>[One or two sentences about this step.]</p>
+          <li class="row">
+            <a class="row__link" href="<?= url('projects') ?>">
+              <h3 class="row__title">[Row title 4]</h3>
+              <p class="row__text">[One line about it.]</p>
+              <svg class="icon row__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg>
+            </a>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- 5.7 FAQ — opens and closes with no JavaScript -->
+    <!-- FAQ — opens and closes with no JavaScript -->
     <section class="section section--faq section--alt" id="faq" aria-labelledby="faq-title">
       <div class="column column--narrow stack stack--loose">
         <h2 id="faq-title">[Heading]</h2>
@@ -223,87 +330,102 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.8 TEAM CARDS — round photo, name, role -->
-    <section class="section section--team" id="team" aria-labelledby="team-title">
-      <div class="column stack stack--loose">
-        <h2 id="team-title">[Heading]</h2>
-        <div class="grid grid--narrow">
-          <article class="person">
-            <figure class="figure figure--square">
-              <span class="figure__placeholder" data-size="800 × 800">PHOTO</span>
-            </figure>
-            <h3 class="person__name">[Name]</h3>
-            <p class="person__role">[Role]</p>
-          </article>
-          <article class="person">
-            <figure class="figure figure--square">
-              <span class="figure__placeholder" data-size="800 × 800">PHOTO</span>
-            </figure>
-            <h3 class="person__name">[Name]</h3>
-            <p class="person__role">[Role]</p>
-          </article>
-          <article class="person">
-            <figure class="figure figure--square">
-              <span class="figure__placeholder" data-size="800 × 800">PHOTO</span>
-            </figure>
-            <h3 class="person__name">[Name]</h3>
-            <p class="person__role">[Role]</p>
-          </article>
-          <article class="person">
-            <figure class="figure figure--square">
-              <span class="figure__placeholder" data-size="800 × 800">PHOTO</span>
-            </figure>
-            <h3 class="person__name">[Name]</h3>
-            <p class="person__role">[Role]</p>
-          </article>
+    <!-- FAQ numbered — the same no-JavaScript block as FAQ, with 01, 02, 03 in front.
+         Add the class faq--numbered. Numbers come from CSS. -->
+    <section class="section section--faq" id="faq-numbered" aria-labelledby="faq-numbered-title">
+      <div class="column column--narrow stack stack--loose">
+        <h2 id="faq-numbered-title">[Heading]</h2>
+        <div class="faq faq--numbered">
+          <details class="faq__item">
+            <summary class="faq__question">[Question]</summary>
+            <p>[Answer.]</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">[Question]</summary>
+            <p>[Answer.]</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">[Question]</summary>
+            <p>[Answer.]</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">[Question]</summary>
+            <p>[Answer.]</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">[Question]</summary>
+            <p>[Answer.]</p>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- 5.9 LOGO STRIP — partners, clients, press, accreditations -->
-    <section class="section section--logos section--alt" id="logos" aria-labelledby="logos-title">
-      <div class="column stack stack--loose">
-        <h2 id="logos-title">[Heading]</h2>
-        <!-- LOGO SLOTS. Replace each <span> with:
-             <img class="logo-strip__img" src="assets/img/partner.svg" alt="[Partner name]" height="48"> -->
-        <ul class="logo-strip">
-          <li><span class="logo-strip__placeholder">LOGO</span></li>
-          <li><span class="logo-strip__placeholder">LOGO</span></li>
-          <li><span class="logo-strip__placeholder">LOGO</span></li>
-          <li><span class="logo-strip__placeholder">LOGO</span></li>
-          <li><span class="logo-strip__placeholder">LOGO</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 5.10 NEWS / EVENTS — cards with date, title, excerpt (static markup now; fed from a database in the PHP stage) -->
-    <section class="section section--news" id="news" aria-labelledby="news-title">
-      <div class="column stack stack--loose">
-        <h2 id="news-title">[Heading]</h2>
-        <div class="grid">
-          <article class="card post">
-            <time class="post__date" datetime="[YYYY-MM-DD]">[Date]</time>
-            <h3 class="card__title"><a href="[URL]">[Headline]</a></h3>
-            <p>[Short excerpt, one or two sentences.]</p>
-            <a class="post__link" href="[URL]">Read more</a>
-          </article>
-          <article class="card post">
-            <time class="post__date" datetime="[YYYY-MM-DD]">[Date]</time>
-            <h3 class="card__title"><a href="[URL]">[Headline]</a></h3>
-            <p>[Short excerpt, one or two sentences.]</p>
-            <a class="post__link" href="[URL]">Read more</a>
-          </article>
-          <article class="card post">
-            <time class="post__date" datetime="[YYYY-MM-DD]">[Date]</time>
-            <h3 class="card__title"><a href="[URL]">[Headline]</a></h3>
-            <p>[Short excerpt, one or two sentences.]</p>
-            <a class="post__link" href="[URL]">Read more</a>
-          </article>
+    <!-- Floating proof cards — text on one side; on the other a pale panel with small cards that
+         overlap: a dark score card, a sources card with round logos, and a meter panel.
+         Use for proof beside a headline. Put theme-dark on ONE card only.
+         Meters: five spans per bar, the first N carry is-on; the aria-label says the same in words.
+         RULE: every number, source name and level must come from a real check, with the date.
+         No verified source? Write [NUMBER NEEDED - source required]. Logos only with permission.
+         To add a meter row: copy one <li class="meter-row"> and change label, segments, status. -->
+    <section class="section section--float-cards" id="float-cards" aria-labelledby="float-cards-title">
+      <div class="column halves halves--top">
+        <div class="stack">
+          <p class="hero__eyebrow">[Short label]</p>
+          <h2 id="float-cards-title">[The promise, in one line]</h2>
+          <p class="lead">[One or two sentences that say how the proof below was checked.]</p>
+          <p><a class="btn btn--primary" href="<?= url('contact') ?>">[Primary action]</a></p>
+        </div>
+        <div class="float-cluster">
+          <div class="float-card theme-dark float-card--score">
+            <p class="score">
+              <span class="score__value">[Number]</span>
+              <span class="score__note">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg>
+                <span>[What the number counts]</span>
+              </span>
+            </p>
+          </div>
+          <div class="float-card float-card--sources">
+            <h3 class="float-card__title">[Sources]</h3>
+            <ul class="avatar-row" aria-label="[Names of the sources]">
+              <li class="avatar-row__item">[A]</li>
+              <li class="avatar-row__item">[B]</li>
+              <li class="avatar-row__item">[C]</li>
+              <li class="avatar-row__item">[D]</li>
+            </ul>
+            <p class="stat__source">[Where the sources come from, date checked]</p>
+          </div>
+          <div class="float-card float-card--meters">
+            <h3 class="float-card__title">[Check name]</h3>
+            <ul class="meter-list">
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[4] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[5] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[3] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 5.11 GALLERY WITH VIEWER — needs JavaScript for the viewer -->
+    <!-- Gallery viewer — needs JavaScript for the viewer -->
     <section class="section section--gallery section--alt" id="gallery" aria-labelledby="gallery-title">
       <div class="column stack stack--loose">
         <h2 id="gallery-title">[Heading]</h2>
@@ -363,7 +485,80 @@ require SITE_ROOT . '/partials/head.php';
       </dialog>
     </section>
 
-    <!-- 5.12 ICONS — the line-icon set. One sprite, one component (.icon).
+    <!-- Glass form — a request form on a frosted panel over a photo.
+         The panel is tinted dark, so white text stays readable on any photo. Fields stay white so
+         people can see where to type. BACKEND: posts to php/handlers/contact.php, like Contact split.
+         IMAGE SLOT. Put your photo inside .media-bg:
+           <img class="media-bg__img" src="<?= e(asset('assets/img/glass-bg.jpg')) ?>" alt="" width="1920" height="1200">
+         SIZE: master 1920 x 1200. Leave alt="" - the photo is decoration. -->
+    <section class="section section--media section--glass" id="glass-form" aria-labelledby="glass-form-title">
+      <div class="media-bg" aria-hidden="true"></div>
+      <div class="column halves">
+        <div class="stack">
+          <h2 id="glass-form-title">[Heading: an invitation]</h2>
+          <p class="lead">[One or two sentences: what happens after they send the request.]</p>
+        </div>
+        <div class="glass-card stack">
+          <form class="form" action="php/handlers/contact.php" method="post" data-js="form">
+            <div class="form__field">
+              <label class="form__label" for="gl-name">Name</label>
+              <input class="form__control" id="gl-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="gl-email">Email</label>
+              <input class="form__control" id="gl-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="gl-message">Message</label>
+              <textarea class="form__control form__control--area" id="gl-message" name="message" required></textarea>
+              <p class="form__hint">[Short note: when they will hear back.]</p>
+            </div>
+            <div class="visually-hidden" aria-hidden="true">
+              <label>Leave this field empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+            </div>
+            <div class="form__status" role="status" data-js="form-status" hidden></div>
+            <p><button class="btn btn--primary" type="submit" data-loading-label="Sending…">[Send request]</button></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero giant type — the headline is the picture: very large letters, and a photo that
+         overlaps their lower part. Keep the headline to one or two SHORT words, so the part the
+         photo covers never hides the meaning. The photo is decoration; the headline stays real text.
+         How much the photo covers: --hero-type-overlap in css/tokens.css.
+         IMAGE SLOT. Replace the placeholder with
+           <img class="figure__img" src="<?= e(asset('assets/img/hero-type.jpg')) ?>" alt="" width="960" height="1200">
+         SIZE: master 960 x 1200 (4:5). -->
+    <section class="section section--hero-type" id="hero-type" aria-labelledby="hero-type-title">
+      <div class="column stack stack--loose">
+        <h2 class="hero__title hero__title--giant" id="hero-type-title">[Name]</h2>
+        <figure class="figure figure--portrait hero-type__figure">
+          <span class="figure__placeholder" data-size="960 × 1200">IMAGE</span>
+        </figure>
+        <p class="lead">[One or two sentences that say what you do and for whom.]</p>
+        <p class="hero-type__action"><a class="btn btn--primary" href="<?= url('contact') ?>">[Primary action]</a></p>
+      </div>
+    </section>
+
+    <!-- Hero image — big type over one still photo. No video, no pause button.
+         The photo fills the section; the dark overlay keeps white text readable.
+         IMAGE SLOT. Put your photo inside .media-bg:
+           <img class="media-bg__img" src="<?= e(asset('assets/img/hero-image.jpg')) ?>" alt="" width="1920" height="1200">
+         SIZE: master 1920 x 1200, subject near the centre (phones crop the sides).
+         Leave alt="" - the photo is decoration; the headline carries the message. -->
+    <section class="section section--hero section--hero-image section--media" id="hero-image" aria-labelledby="hero-image-title">
+      <div class="media-bg" aria-hidden="true"></div>
+      <div class="column stack">
+        <p class="hero__eyebrow">[Short label: who you are or what you do]</p>
+        <!-- On a real page this heading is a level-1 heading (one per page). Here it is level 2 because this catalog page already has its level-1 heading. -->
+        <h2 class="hero__title" id="hero-image-title">[Main promise, in very few words]</h2>
+        <p class="lead">[One or two sentences that support the promise.]</p>
+        <p><a class="btn btn--primary" href="<?= url('contact') ?>">[Primary action]</a></p>
+      </div>
+    </section>
+
+    <!-- Icons — the line-icon set. One sprite, one component (.icon).
          Spec: 24 x 24 grid, line style, 1.5 stroke, SVG only, color = text color. -->
     <section class="section" id="icons" aria-labelledby="icons-title">
       <div class="column stack">
@@ -456,7 +651,41 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.13 LOTTIE — small animations (animated icon, loader).
+    <!-- Logo bar — a thin band of logos right under the hero.
+         Use it with Hero video or Hero image. Real logos only,
+         and only with the owner's permission. -->
+    <section class="section section--logo-bar" id="logo-bar" aria-label="[Who trusts us]">
+      <div class="column stack">
+        <p class="logo-bar__caption">[Short caption, e.g. Trusted by]</p>
+        <!-- LOGO SLOTS. Replace each <span> with:
+             <img class="logo-strip__img" src="<?= e(asset('assets/img/partner.svg')) ?>" alt="[Partner name]" height="48"> -->
+        <ul class="logo-strip">
+          <li><span class="logo-strip__placeholder">LOGO</span></li>
+          <li><span class="logo-strip__placeholder">LOGO</span></li>
+          <li><span class="logo-strip__placeholder">LOGO</span></li>
+          <li><span class="logo-strip__placeholder">LOGO</span></li>
+          <li><span class="logo-strip__placeholder">LOGO</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Logo strip — partners, clients, press, accreditations -->
+    <section class="section section--logos section--alt" id="logos" aria-labelledby="logos-title">
+      <div class="column stack stack--loose">
+        <h2 id="logos-title">[Heading]</h2>
+        <!-- LOGO SLOTS. Replace each <span> with:
+             <img class="logo-strip__img" src="assets/img/partner.svg" alt="[Partner name]" height="48"> -->
+        <ul class="logo-strip">
+          <li><span class="logo-strip__placeholder">LOGO</span></li>
+          <li><span class="logo-strip__placeholder">LOGO</span></li>
+          <li><span class="logo-strip__placeholder">LOGO</span></li>
+          <li><span class="logo-strip__placeholder">LOGO</span></li>
+          <li><span class="logo-strip__placeholder">LOGO</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Lottie — small animations (animated icon, loader).
          Real markup (once a file exists):
            <div class="lottie"><dotlottie-wc data-js="lottie" src="assets/lottie/NAME.lottie" autoplay></dotlottie-wc></div>
          main.js loads the player only on pages that contain data-js="lottie". -->
@@ -477,94 +706,88 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.14 CONTACT + FORM + MAP — two halves: form (left), details and map (right).
-         BACKEND: the form posts to php/handlers/contact.php, which is built in the PHP stage.
-         Until then, submitting leads nowhere. -->
-    <section class="section section--contact-form" id="contact-form" aria-labelledby="contact-form-title">
-      <div class="column halves halves--top">
-
-        <!-- Left: heading + form -->
-        <div class="stack">
-          <h2 id="contact-form-title">[Heading]</h2>
-          <form class="form" action="php/handlers/contact.php" method="post" data-js="form">
-            <div class="form__field">
-              <label class="form__label" for="cf-name">Name</label>
-              <input class="form__control" id="cf-name" name="name" type="text" autocomplete="name" required>
-            </div>
-            <div class="form__field">
-              <label class="form__label" for="cf-email">Email</label>
-              <input class="form__control" id="cf-email" name="email" type="email" autocomplete="email" required>
-            </div>
-            <div class="form__field">
-              <label class="form__label" for="cf-message">Message</label>
-              <textarea class="form__control form__control--area" id="cf-message" name="message" required></textarea>
-              <p class="form__hint">[Short note: when they will hear back.]</p>
-            </div>
-            <!-- Spam trap: hidden from people, bots tend to fill it. The PHP side
-                 rejects any message where this field is not empty. -->
-            <div class="visually-hidden" aria-hidden="true">
-              <label>Leave this field empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
-            </div>
-            <div class="form__status" role="status" data-js="form-status" hidden></div>
-            <p><button class="btn btn--primary" type="submit" data-loading-label="Sending…">[Send message]</button></p>
-          </form>
+    <!-- News cards — cards with date, title, excerpt (static markup now; fed from a database in the PHP stage) -->
+    <section class="section section--news" id="news" aria-labelledby="news-title">
+      <div class="column stack stack--loose">
+        <h2 id="news-title">[Heading]</h2>
+        <div class="grid">
+          <article class="card post">
+            <time class="post__date" datetime="[YYYY-MM-DD]">[Date]</time>
+            <h3 class="card__title"><a href="[URL]">[Headline]</a></h3>
+            <p>[Short excerpt, one or two sentences.]</p>
+            <a class="post__link" href="[URL]">Read more</a>
+          </article>
+          <article class="card post">
+            <time class="post__date" datetime="[YYYY-MM-DD]">[Date]</time>
+            <h3 class="card__title"><a href="[URL]">[Headline]</a></h3>
+            <p>[Short excerpt, one or two sentences.]</p>
+            <a class="post__link" href="[URL]">Read more</a>
+          </article>
+          <article class="card post">
+            <time class="post__date" datetime="[YYYY-MM-DD]">[Date]</time>
+            <h3 class="card__title"><a href="[URL]">[Headline]</a></h3>
+            <p>[Short excerpt, one or two sentences.]</p>
+            <a class="post__link" href="[URL]">Read more</a>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <!-- Right: company details (row 1) + map (row 2) -->
-        <div class="company stack">
-          <address class="company__info">
-            <span class="company__name">[Company name]</span><br>
-            [Street address, City, Country]<br>
-            <a href="tel:[Phone]">[Phone]</a><br>
-            <a href="mailto:[Email]">[Email]</a>
-          </address>
-          <!-- MAP SLOT. Replace the <figure> with the map embed from your map provider:
-               <iframe title="Map: [Company name] location" src="[EMBED URL]"
-                       width="600" height="450" loading="lazy"></iframe> -->
-          <figure class="figure">
-            <span class="figure__placeholder" data-size="1200 × 900">MAP</span>
-          </figure>
+    <!-- Offerings — what you can do for the reader: number, title, text.
+         Numbers come from CSS. Three to five items; more feels like a menu. -->
+    <section class="section section--offerings section--alt" id="offerings" aria-labelledby="offerings-title">
+      <div class="column stack stack--loose">
+        <h2 id="offerings-title">[Heading, e.g. How I can help]</h2>
+        <ol class="offers">
+          <li class="offer"><h3>[Offer one]</h3><p>[Who it is for and what changes for them.]</p></li>
+          <li class="offer"><h3>[Offer two]</h3><p>[Who it is for and what changes for them.]</p></li>
+          <li class="offer"><h3>[Offer three]</h3><p>[Who it is for and what changes for them.]</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Program cards — one block per level, cards inside a grid.
+         Ages, schedules, fees and accreditations only from a document the school provides;
+         otherwise leave the [bracket]. -->
+    <section class="section section--programs" id="programs" aria-labelledby="programs-title">
+      <div class="column stack stack--loose">
+        <h2 id="programs-title">[Level heading, e.g. Early years]</h2>
+        <div class="grid">
+          <article class="card program">
+            <span class="badge">[Level]</span>
+            <h3 class="card__title">[Program name 1]</h3>
+            <p>[Two lines: who it is for and what children learn.]</p>
+            <dl class="facts">
+              <div class="facts__row"><dt>Ages</dt><dd>[Ages - from the school]</dd></div>
+              <div class="facts__row"><dt>Schedule</dt><dd>[Schedule - from the school]</dd></div>
+            </dl>
+            <a class="post__link" href="<?= url('admissions') ?>">Admissions<span class="visually-hidden">: [Program name 1]</span></a>
+          </article>
+          <article class="card program">
+            <span class="badge">[Level]</span>
+            <h3 class="card__title">[Program name 2]</h3>
+            <p>[Two lines: who it is for and what children learn.]</p>
+            <dl class="facts">
+              <div class="facts__row"><dt>Ages</dt><dd>[Ages - from the school]</dd></div>
+              <div class="facts__row"><dt>Schedule</dt><dd>[Schedule - from the school]</dd></div>
+            </dl>
+            <a class="post__link" href="<?= url('admissions') ?>">Admissions<span class="visually-hidden">: [Program name 2]</span></a>
+          </article>
+          <article class="card program">
+            <span class="badge">[Level]</span>
+            <h3 class="card__title">[Program name 3]</h3>
+            <p>[Two lines: who it is for and what children learn.]</p>
+            <dl class="facts">
+              <div class="facts__row"><dt>Ages</dt><dd>[Ages - from the school]</dd></div>
+              <div class="facts__row"><dt>Schedule</dt><dd>[Schedule - from the school]</dd></div>
+            </dl>
+            <a class="post__link" href="<?= url('admissions') ?>">Admissions<span class="visually-hidden">: [Program name 3]</span></a>
+          </article>
         </div>
-
       </div>
     </section>
 
-    <!-- 5.16 IMAGE HERO — big type over one still photo. No video, no pause button.
-         The photo fills the section; the dark overlay keeps white text readable.
-         IMAGE SLOT. Put your photo inside .media-bg:
-           <img class="media-bg__img" src="<?= e(asset('assets/img/hero-image.jpg')) ?>" alt="" width="1920" height="1200">
-         SIZE: master 1920 x 1200, subject near the centre (phones crop the sides).
-         Leave alt="" - the photo is decoration; the headline carries the message. -->
-    <section class="section section--hero section--hero-image section--media" id="hero-image" aria-labelledby="hero-image-title">
-      <div class="media-bg" aria-hidden="true"></div>
-      <div class="column stack">
-        <p class="hero__eyebrow">[Short label: who you are or what you do]</p>
-        <!-- On a real page this heading is a level-1 heading (one per page). Here it is level 2 because this catalog page already has its level-1 heading. -->
-        <h2 class="hero__title" id="hero-image-title">[Main promise, in very few words]</h2>
-        <p class="lead">[One or two sentences that support the promise.]</p>
-        <p><a class="btn btn--primary" href="<?= url('contact') ?>">[Primary action]</a></p>
-      </div>
-    </section>
-
-    <!-- 5.17 HERO + LOGO BAR — a thin band of logos right under the hero.
-         Use it with 5.1 (video hero) or 5.16 (image hero). Real logos only,
-         and only with the owner's permission. -->
-    <section class="section section--logo-bar" id="logo-bar" aria-label="[Who trusts us]">
-      <div class="column stack">
-        <p class="logo-bar__caption">[Short caption, e.g. Trusted by]</p>
-        <!-- LOGO SLOTS. Replace each <span> with:
-             <img class="logo-strip__img" src="<?= e(asset('assets/img/partner.svg')) ?>" alt="[Partner name]" height="48"> -->
-        <ul class="logo-strip">
-          <li><span class="logo-strip__placeholder">LOGO</span></li>
-          <li><span class="logo-strip__placeholder">LOGO</span></li>
-          <li><span class="logo-strip__placeholder">LOGO</span></li>
-          <li><span class="logo-strip__placeholder">LOGO</span></li>
-          <li><span class="logo-strip__placeholder">LOGO</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 5.18 PROJECT CARDS — portfolio / case studies. Each card is one link to a project page.
+    <!-- Project cards — portfolio / case studies. Each card is one link to a project page.
          Make the first card .project--feature to make it bigger (2 columns on tablet, 2 x 2 cells on desktop).
          Six cards (feature + 5) fill the desktop grid exactly.
          One real page per project: copy pages/project.php to pages/NAME.php. -->
@@ -636,166 +859,21 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.19 BENTO GRID — a mosaic of tiles in different sizes (4 columns on desktop,
-         2 on tablet, 1 on phone). Sizes: --wide, --tall, --feature. Looks: default,
-         --primary, --image. Keep text short: a tile is a glance, not a paragraph.
-         This order fills the 4-column desktop grid exactly (rows of 4 cells); if you add or
-         remove tiles, count cells so no hole is left.
-         IMAGE TILE. Add the photo as the first child:
-           <img class="bento__img" src="<?= e(asset('assets/img/tile.jpg')) ?>" alt="" width="1200" height="1200"> -->
-    <section class="section section--bento" id="bento" aria-labelledby="bento-title">
-      <div class="column stack stack--loose">
-        <h2 id="bento-title">[Heading]</h2>
-        <div class="bento">
-          <article class="bento__tile bento__tile--feature bento__tile--image">
-            <span class="badge">[Label]</span>
-            <h3>[Big tile: your strongest message]</h3>
-            <p>[One short sentence.]</p>
-          </article>
-          <article class="bento__tile">
-            <svg class="icon icon--large" aria-hidden="true" focusable="false"><use href="<?= e(asset('assets/icons/sprite.svg')) ?>#icon-star"></use></svg>
-            <h3>[Tile title]</h3>
-            <p>[One short sentence.]</p>
-          </article>
-          <article class="bento__tile bento__tile--primary">
-            <svg class="icon icon--large" aria-hidden="true" focusable="false"><use href="<?= e(asset('assets/icons/sprite.svg')) ?>#icon-heart"></use></svg>
-            <h3>[Tile title]</h3>
-            <p>[One short sentence.]</p>
-          </article>
-          <article class="bento__tile bento__tile--wide">
-            <h3>[Wide tile title]</h3>
-            <p>[One short sentence.]</p>
-          </article>
-          <article class="bento__tile bento__tile--tall bento__tile--primary">
-            <h3>[Tall tile title]</h3>
-            <p>[One or two short sentences.]</p>
-          </article>
-          <article class="bento__tile">
-            <h3>[Tile title]</h3>
-            <p>[One short sentence.]</p>
-          </article>
-          <article class="bento__tile bento__tile--image">
-            <h3>[Tile title]</h3>
-          </article>
-          <article class="bento__tile">
-            <h3>[Tile title]</h3>
-            <p>[One short sentence.]</p>
-          </article>
-          <article class="bento__tile bento__tile--wide">
-            <h3>[Wide tile title]</h3>
-            <p>[One short sentence.]</p>
-          </article>
-          <article class="bento__tile bento__tile--primary">
-            <h3>[Tile title]</h3>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5.20 ABOUT ME — portrait photo (stays in view while you read) + story.
-         The story uses .prose for comfortable line length. -->
-    <section class="section section--about-me" id="about-me" aria-labelledby="about-me-title">
-      <div class="column halves halves--top">
-        <figure class="figure figure--portrait">
-          <span class="figure__placeholder" data-size="960 × 1200">IMAGE</span>
+    <!-- Pull quote — one large statement -->
+    <section class="section section--quote section--alt" id="quote" aria-labelledby="quote-title">
+      <div class="column column--narrow">
+        <h2 id="quote-title" class="visually-hidden">[Quote heading]</h2>
+        <figure class="pull-quote">
+          <blockquote>
+            <p class="pull-quote__text">[One powerful statement, in one or two lines.]</p>
+          </blockquote>
+          <figcaption class="pull-quote__author">[Name], [Role]</figcaption>
         </figure>
-        <div class="stack">
-          <h2 id="about-me-title">[Heading: a human sentence, not "About me"]</h2>
-          <div class="prose">
-            <p>[Opening: who you are, in the first person.]</p>
-            <p>[The story: where you started, the turning point, what you believe.]</p>
-            <p>[Today: what you do and who you do it for.]</p>
-          </div>
-          <p><a class="btn btn--primary" href="<?= url('contact') ?>">[Action label]</a></p>
-        </div>
       </div>
     </section>
 
-    <!-- 5.20b OFFERINGS — what you can do for the reader: number, title, text.
-         Numbers come from CSS. Three to five items; more feels like a menu. -->
-    <section class="section section--offerings section--alt" id="offerings" aria-labelledby="offerings-title">
-      <div class="column stack stack--loose">
-        <h2 id="offerings-title">[Heading, e.g. How I can help]</h2>
-        <ol class="offers">
-          <li class="offer"><h3>[Offer one]</h3><p>[Who it is for and what changes for them.]</p></li>
-          <li class="offer"><h3>[Offer two]</h3><p>[Who it is for and what changes for them.]</p></li>
-          <li class="offer"><h3>[Offer three]</h3><p>[Who it is for and what changes for them.]</p></li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- 5.21 PROGRAM CARDS (schools) — one block per level, cards inside a grid.
-         Ages, schedules, fees and accreditations only from a document the school provides;
-         otherwise leave the [bracket]. -->
-    <section class="section section--programs" id="programs" aria-labelledby="programs-title">
-      <div class="column stack stack--loose">
-        <h2 id="programs-title">[Level heading, e.g. Early years]</h2>
-        <div class="grid">
-          <article class="card program">
-            <span class="badge">[Level]</span>
-            <h3 class="card__title">[Program name 1]</h3>
-            <p>[Two lines: who it is for and what children learn.]</p>
-            <dl class="facts">
-              <div class="facts__row"><dt>Ages</dt><dd>[Ages - from the school]</dd></div>
-              <div class="facts__row"><dt>Schedule</dt><dd>[Schedule - from the school]</dd></div>
-            </dl>
-            <a class="post__link" href="<?= url('admissions') ?>">Admissions<span class="visually-hidden">: [Program name 1]</span></a>
-          </article>
-          <article class="card program">
-            <span class="badge">[Level]</span>
-            <h3 class="card__title">[Program name 2]</h3>
-            <p>[Two lines: who it is for and what children learn.]</p>
-            <dl class="facts">
-              <div class="facts__row"><dt>Ages</dt><dd>[Ages - from the school]</dd></div>
-              <div class="facts__row"><dt>Schedule</dt><dd>[Schedule - from the school]</dd></div>
-            </dl>
-            <a class="post__link" href="<?= url('admissions') ?>">Admissions<span class="visually-hidden">: [Program name 2]</span></a>
-          </article>
-          <article class="card program">
-            <span class="badge">[Level]</span>
-            <h3 class="card__title">[Program name 3]</h3>
-            <p>[Two lines: who it is for and what children learn.]</p>
-            <dl class="facts">
-              <div class="facts__row"><dt>Ages</dt><dd>[Ages - from the school]</dd></div>
-              <div class="facts__row"><dt>Schedule</dt><dd>[Schedule - from the school]</dd></div>
-            </dl>
-            <a class="post__link" href="<?= url('admissions') ?>">Admissions<span class="visually-hidden">: [Program name 3]</span></a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5.22 DARK SECTION — one class flips a whole band to a dark look.
-         Add class="section--dark" to any section. Cards, buttons, steps, FAQ and forms adapt by
-         themselves, because the color ROLES change (see --dark-* in css/tokens.css).
-         Alternate dark and light bands for rhythm. Whole site dark: <body class="theme-dark">. -->
-    <section class="section section--dark" id="dark" aria-labelledby="dark-title">
-      <div class="column stack stack--loose">
-        <div class="stack">
-          <p class="hero__eyebrow">[Short label]</p>
-          <h2 id="dark-title">[Heading for a dark band]</h2>
-          <p class="lead">[One or two sentences. Light text on a dark band reads as premium and calm.]</p>
-          <p><a class="btn btn--primary" href="<?= url('contact') ?>">[Primary action]</a> <a class="btn btn--outline" href="<?= url('projects') ?>">[Second action]</a></p>
-        </div>
-        <div class="grid">
-          <article class="card">
-            <h3 class="card__title">[Card title]</h3>
-            <p>[One short sentence.]</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">[Card title]</h3>
-            <p>[One short sentence.]</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">[Card title]</h3>
-            <p>[One short sentence.]</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5.23 STATS CARD OVER THE HERO — a card of figures that rises over the bottom of the hero.
-         Put the second section right after ANY hero (5.1 video hero, 5.16 image hero) and add
+    <!-- Stats card — a card of figures that rises over the bottom of the hero.
+         Put the second section right after ANY hero (Hero video, Hero image) and add
          the class section--hero-overlap to that hero (leaves room at its foot for the card).
          Below, a small hero is shown only so you can see the overlap.
          RULE: every number needs a primary source and the date it was checked.
@@ -837,51 +915,63 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.24 EDITORIAL ROWS — a section label (03 / Selected work) and a list of thin-lined rows.
-         Looks like a magazine page. Shown on a dark band; works on light too.
-         Numbers in the rows come from CSS. The number inside .section-label is typed on purpose:
-         it is the section's place on the page. ICON: on a real page use the sprite file:
-         <use href="<?= e(asset('assets/icons/sprite.svg')) ?>#icon-arrow-right"> -->
-    <section class="section section--dark" id="rows" aria-labelledby="rows-title">
+    <!-- Stats strip — big numbers with labels -->
+    <section class="section section--stats section--alt" id="stats" aria-labelledby="stats-title">
       <div class="column stack stack--loose">
-        <div class="stack">
-          <p class="section-label"><span class="section-label__number">03</span> <span>[Label, e.g. Selected work]</span></p>
-          <h2 id="rows-title">[Heading]</h2>
+        <h2 id="stats-title">[Heading]</h2>
+        <!-- RULE: every number needs a primary source and the date it was checked.
+             No verified source? Write [NUMBER NEEDED - source required]. -->
+        <div class="grid grid--narrow">
+          <div class="stat">
+            <p class="stat__value">[Number]</p>
+            <p class="stat__label">[What it counts]</p>
+            <p class="stat__source">[Source, date checked]</p>
+          </div>
+          <div class="stat">
+            <p class="stat__value">[Number]</p>
+            <p class="stat__label">[What it counts]</p>
+            <p class="stat__source">[Source, date checked]</p>
+          </div>
+          <div class="stat">
+            <p class="stat__value">[Number]</p>
+            <p class="stat__label">[What it counts]</p>
+            <p class="stat__source">[Source, date checked]</p>
+          </div>
+          <div class="stat">
+            <p class="stat__value">[Number]</p>
+            <p class="stat__label">[What it counts]</p>
+            <p class="stat__source">[Source, date checked]</p>
+          </div>
         </div>
-        <ol class="rows">
-          <li class="row">
-            <a class="row__link" href="<?= url('projects') ?>">
-              <h3 class="row__title">[Row title 1]</h3>
-              <p class="row__text">[One line about it.]</p>
-              <svg class="icon row__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg>
-            </a>
+      </div>
+    </section>
+
+    <!-- Steps — numbers come from CSS, not the HTML -->
+    <section class="section section--steps" id="steps" aria-labelledby="steps-title">
+      <div class="column stack stack--loose">
+        <h2 id="steps-title">[Heading]</h2>
+        <ol class="steps">
+          <li class="steps__item">
+            <h3 class="steps__title">[Step title]</h3>
+            <p>[One or two sentences about this step.]</p>
           </li>
-          <li class="row">
-            <a class="row__link" href="<?= url('projects') ?>">
-              <h3 class="row__title">[Row title 2]</h3>
-              <p class="row__text">[One line about it.]</p>
-              <svg class="icon row__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg>
-            </a>
+          <li class="steps__item">
+            <h3 class="steps__title">[Step title]</h3>
+            <p>[One or two sentences about this step.]</p>
           </li>
-          <li class="row">
-            <a class="row__link" href="<?= url('projects') ?>">
-              <h3 class="row__title">[Row title 3]</h3>
-              <p class="row__text">[One line about it.]</p>
-              <svg class="icon row__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg>
-            </a>
+          <li class="steps__item">
+            <h3 class="steps__title">[Step title]</h3>
+            <p>[One or two sentences about this step.]</p>
           </li>
-          <li class="row">
-            <a class="row__link" href="<?= url('projects') ?>">
-              <h3 class="row__title">[Row title 4]</h3>
-              <p class="row__text">[One line about it.]</p>
-              <svg class="icon row__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right"></use></svg>
-            </a>
+          <li class="steps__item">
+            <h3 class="steps__title">[Step title]</h3>
+            <p>[One or two sentences about this step.]</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- 5.25 TALL TILES + SWIPE ROW — tall photos with a caption laid over the foot of each.
+    <!-- Tall tiles — tall photos with a caption laid over the foot of each.
          Phones: swipe sideways, each tile snaps into place. Wide screens: four fit side by side;
          with more than four, arrow buttons appear (JavaScript adds them; without it the row still scrolls).
          IMAGE SLOTS: replace each <figure> content with
@@ -972,7 +1062,106 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.26a PROCESS TIMELINE (horizontal, numbered) — how you work, in one row from tablets up.
+    <!-- Team cards — round photo, name, role -->
+    <section class="section section--team" id="team" aria-labelledby="team-title">
+      <div class="column stack stack--loose">
+        <h2 id="team-title">[Heading]</h2>
+        <div class="grid grid--narrow">
+          <article class="person">
+            <figure class="figure figure--square">
+              <span class="figure__placeholder" data-size="800 × 800">PHOTO</span>
+            </figure>
+            <h3 class="person__name">[Name]</h3>
+            <p class="person__role">[Role]</p>
+          </article>
+          <article class="person">
+            <figure class="figure figure--square">
+              <span class="figure__placeholder" data-size="800 × 800">PHOTO</span>
+            </figure>
+            <h3 class="person__name">[Name]</h3>
+            <p class="person__role">[Role]</p>
+          </article>
+          <article class="person">
+            <figure class="figure figure--square">
+              <span class="figure__placeholder" data-size="800 × 800">PHOTO</span>
+            </figure>
+            <h3 class="person__name">[Name]</h3>
+            <p class="person__role">[Role]</p>
+          </article>
+          <article class="person">
+            <figure class="figure figure--square">
+              <span class="figure__placeholder" data-size="800 × 800">PHOTO</span>
+            </figure>
+            <h3 class="person__name">[Name]</h3>
+            <p class="person__role">[Role]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials — real quotes, with the person's permission -->
+    <section class="section section--testimonials" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="column stack stack--loose">
+        <h2 id="testimonials-title">[Heading]</h2>
+        <div class="grid">
+          <figure class="card testimonial">
+            <blockquote class="testimonial__quote">
+              <p>[A real quote, in the person's own words.]</p>
+            </blockquote>
+            <figcaption class="testimonial__author">
+              <span class="testimonial__name">[Name]</span>
+              <span class="testimonial__role">[Role or relation]</span>
+            </figcaption>
+          </figure>
+          <figure class="card testimonial">
+            <blockquote class="testimonial__quote">
+              <p>[A real quote, in the person's own words.]</p>
+            </blockquote>
+            <figcaption class="testimonial__author">
+              <span class="testimonial__name">[Name]</span>
+              <span class="testimonial__role">[Role or relation]</span>
+            </figcaption>
+          </figure>
+          <figure class="card testimonial">
+            <blockquote class="testimonial__quote">
+              <p>[A real quote, in the person's own words.]</p>
+            </blockquote>
+            <figcaption class="testimonial__author">
+              <span class="testimonial__name">[Name]</span>
+              <span class="testimonial__role">[Role or relation]</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline itinerary — things in order over days or years:
+         a trip, a school year, a career. The small label above each title holds the dates.
+         Dates and durations only from a document or the client. -->
+    <section class="section section--itinerary" id="timeline-itinerary" aria-labelledby="timeline-itinerary-title">
+      <div class="column column--narrow stack stack--loose">
+        <h2 id="timeline-itinerary-title">[Heading, e.g. The journey]</h2>
+        <ol class="timeline">
+          <li class="timeline__item">
+            <p class="timeline__when">[Dates or stage]</p>
+            <h3 class="timeline__title">[Title 1]</h3>
+            <p>[One or two sentences about this stage.]</p>
+          </li>
+          <li class="timeline__item">
+            <p class="timeline__when">[Dates or stage]</p>
+            <h3 class="timeline__title">[Title 2]</h3>
+            <p>[One or two sentences about this stage.]</p>
+          </li>
+          <li class="timeline__item">
+            <p class="timeline__when">[Dates or stage]</p>
+            <h3 class="timeline__title">[Title 3]</h3>
+            <p>[One or two sentences about this stage.]</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Timeline process — how you work, in one row from tablets up.
          Phones stack it. Three to five stages read best. Numbers come from CSS. Shown on a dark band. -->
     <section class="section section--dark" id="timeline-process" aria-labelledby="timeline-process-title">
       <div class="column stack stack--loose">
@@ -1004,192 +1193,6 @@ require SITE_ROOT . '/partials/head.php';
             <p>[One or two sentences about this stage.]</p>
           </li>
         </ol>
-      </div>
-    </section>
-
-    <!-- 5.26b ITINERARY TIMELINE (vertical, dots) — things in order over days or years:
-         a trip, a school year, a career. The small label above each title holds the dates.
-         Dates and durations only from a document or the client. -->
-    <section class="section section--itinerary" id="timeline-itinerary" aria-labelledby="timeline-itinerary-title">
-      <div class="column column--narrow stack stack--loose">
-        <h2 id="timeline-itinerary-title">[Heading, e.g. The journey]</h2>
-        <ol class="timeline">
-          <li class="timeline__item">
-            <p class="timeline__when">[Dates or stage]</p>
-            <h3 class="timeline__title">[Title 1]</h3>
-            <p>[One or two sentences about this stage.]</p>
-          </li>
-          <li class="timeline__item">
-            <p class="timeline__when">[Dates or stage]</p>
-            <h3 class="timeline__title">[Title 2]</h3>
-            <p>[One or two sentences about this stage.]</p>
-          </li>
-          <li class="timeline__item">
-            <p class="timeline__when">[Dates or stage]</p>
-            <h3 class="timeline__title">[Title 3]</h3>
-            <p>[One or two sentences about this stage.]</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- 5.27 GLASS FORM CARD — a request form on a frosted panel over a photo.
-         The panel is tinted dark, so white text stays readable on any photo. Fields stay white so
-         people can see where to type. BACKEND: posts to php/handlers/contact.php, like 5.14.
-         IMAGE SLOT. Put your photo inside .media-bg:
-           <img class="media-bg__img" src="<?= e(asset('assets/img/glass-bg.jpg')) ?>" alt="" width="1920" height="1200">
-         SIZE: master 1920 x 1200. Leave alt="" - the photo is decoration. -->
-    <section class="section section--media section--glass" id="glass-form" aria-labelledby="glass-form-title">
-      <div class="media-bg" aria-hidden="true"></div>
-      <div class="column halves">
-        <div class="stack">
-          <h2 id="glass-form-title">[Heading: an invitation]</h2>
-          <p class="lead">[One or two sentences: what happens after they send the request.]</p>
-        </div>
-        <div class="glass-card stack">
-          <form class="form" action="php/handlers/contact.php" method="post" data-js="form">
-            <div class="form__field">
-              <label class="form__label" for="gl-name">Name</label>
-              <input class="form__control" id="gl-name" name="name" type="text" autocomplete="name" required>
-            </div>
-            <div class="form__field">
-              <label class="form__label" for="gl-email">Email</label>
-              <input class="form__control" id="gl-email" name="email" type="email" autocomplete="email" required>
-            </div>
-            <div class="form__field">
-              <label class="form__label" for="gl-message">Message</label>
-              <textarea class="form__control form__control--area" id="gl-message" name="message" required></textarea>
-              <p class="form__hint">[Short note: when they will hear back.]</p>
-            </div>
-            <div class="visually-hidden" aria-hidden="true">
-              <label>Leave this field empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
-            </div>
-            <div class="form__status" role="status" data-js="form-status" hidden></div>
-            <p><button class="btn btn--primary" type="submit" data-loading-label="Sending…">[Send request]</button></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5.27b NUMBERED FAQ — the same no-JavaScript FAQ as 5.7, with 01, 02, 03 in front.
-         Add the class faq--numbered. Numbers come from CSS. -->
-    <section class="section section--faq" id="faq-numbered" aria-labelledby="faq-numbered-title">
-      <div class="column column--narrow stack stack--loose">
-        <h2 id="faq-numbered-title">[Heading]</h2>
-        <div class="faq faq--numbered">
-          <details class="faq__item">
-            <summary class="faq__question">[Question]</summary>
-            <p>[Answer.]</p>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__question">[Question]</summary>
-            <p>[Answer.]</p>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__question">[Question]</summary>
-            <p>[Answer.]</p>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__question">[Question]</summary>
-            <p>[Answer.]</p>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__question">[Question]</summary>
-            <p>[Answer.]</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5.28 GIANT-TYPE HERO — the headline is the picture: very large letters, and a photo that
-         overlaps their lower part. Keep the headline to one or two SHORT words, so the part the
-         photo covers never hides the meaning. The photo is decoration; the headline stays real text.
-         How much the photo covers: --hero-type-overlap in css/tokens.css.
-         IMAGE SLOT. Replace the placeholder with
-           <img class="figure__img" src="<?= e(asset('assets/img/hero-type.jpg')) ?>" alt="" width="960" height="1200">
-         SIZE: master 960 x 1200 (4:5). -->
-    <section class="section section--hero-type" id="hero-type" aria-labelledby="hero-type-title">
-      <div class="column stack stack--loose">
-        <h2 class="hero__title hero__title--giant" id="hero-type-title">[Name]</h2>
-        <figure class="figure figure--portrait hero-type__figure">
-          <span class="figure__placeholder" data-size="960 × 1200">IMAGE</span>
-        </figure>
-        <p class="lead">[One or two sentences that say what you do and for whom.]</p>
-        <p class="hero-type__action"><a class="btn btn--primary" href="<?= url('contact') ?>">[Primary action]</a></p>
-      </div>
-    </section>
-
-    <!-- 5.29 FLOATING PROOF CARDS — text on one side; on the other a pale panel with small cards that
-         overlap: a dark score card, a sources card with round logos, and a meter panel.
-         Use for proof beside a headline. Put theme-dark on ONE card only.
-         Meters: five spans per bar, the first N carry is-on; the aria-label says the same in words.
-         RULE: every number, source name and level must come from a real check, with the date.
-         No verified source? Write [NUMBER NEEDED - source required]. Logos only with permission.
-         To add a meter row: copy one <li class="meter-row"> and change label, segments, status. -->
-    <section class="section section--float-cards" id="float-cards" aria-labelledby="float-cards-title">
-      <div class="column halves halves--top">
-        <div class="stack">
-          <p class="hero__eyebrow">[Short label]</p>
-          <h2 id="float-cards-title">[The promise, in one line]</h2>
-          <p class="lead">[One or two sentences that say how the proof below was checked.]</p>
-          <p><a class="btn btn--primary" href="<?= url('contact') ?>">[Primary action]</a></p>
-        </div>
-        <div class="float-cluster">
-          <div class="float-card theme-dark float-card--score">
-            <p class="score">
-              <span class="score__value">[Number]</span>
-              <span class="score__note">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg>
-                <span>[What the number counts]</span>
-              </span>
-            </p>
-          </div>
-          <div class="float-card float-card--sources">
-            <h3 class="float-card__title">[Sources]</h3>
-            <ul class="avatar-row" aria-label="[Names of the sources]">
-              <li class="avatar-row__item">[A]</li>
-              <li class="avatar-row__item">[B]</li>
-              <li class="avatar-row__item">[C]</li>
-              <li class="avatar-row__item">[D]</li>
-            </ul>
-            <p class="stat__source">[Where the sources come from, date checked]</p>
-          </div>
-          <div class="float-card float-card--meters">
-            <h3 class="float-card__title">[Check name]</h3>
-            <ul class="meter-list">
-              <li class="meter-row">
-                <span class="meter-row__label">[Label]</span>
-                <span class="meter" role="img" aria-label="[4] of [5]">
-                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span>
-                </span>
-                <span class="meter-row__status">[Status]</span>
-              </li>
-              <li class="meter-row">
-                <span class="meter-row__label">[Label]</span>
-                <span class="meter" role="img" aria-label="[5] of [5]">
-                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span>
-                </span>
-                <span class="meter-row__status">[Status]</span>
-              </li>
-              <li class="meter-row">
-                <span class="meter-row__label">[Label]</span>
-                <span class="meter" role="img" aria-label="[3] of [5]">
-                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span><span class="meter__segment"></span>
-                </span>
-                <span class="meter-row__status">[Status]</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5.15 CALL-TO-ACTION BAND — one line, one button; sits right above the footer -->
-    <section class="section section--cta" id="cta" aria-labelledby="cta-title">
-      <div class="column stack">
-        <h2 id="cta-title">[One-line invitation]</h2>
-        <p>[One short sentence that removes doubt.]</p>
-        <p><a class="btn btn--light" href="<?= url('contact') ?>">[Action label]</a></p>
       </div>
     </section>
 

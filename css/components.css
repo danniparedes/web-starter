@@ -1394,7 +1394,7 @@ a.row__link:hover .row__title { color: var(--color-primary); }
 /* --------------------------------------------------------------------------
    COMPONENT: stats-card  (a card of figures that rises over the hero above it)
    Use when : proof right under the headline. Place the section directly after a
-              hero (5.1 video hero or 5.16 image hero).
+              hero (Hero video or Hero image).
    Markup   : <section class="section section--stats-card"><div class="column">
                 <div class="stats-card"><div class="grid grid--narrow">
                   <div class="stat"> .. </div> ..</div></div></div></section>

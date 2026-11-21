@@ -24,7 +24,7 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- PROJECT CARDS (5.18 in the patterns catalog) — portfolio / case studies. Each card is one link to a project page.
+    <!-- Project cards (in the patterns catalog) — portfolio / case studies. Each card is one link to a project page.
          Make the first card .project--feature to make it bigger (2 columns on tablet, 2 x 2 cells on desktop).
          Six cards (feature + 5) fill the desktop grid exactly.
          One real page per project: copy pages/project.php to pages/NAME.php. -->

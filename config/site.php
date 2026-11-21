@@ -78,6 +78,7 @@ return [
     ],
 
     /* ---- Main menu. One level of children only.
+          Order: the visitor's journey (Home first). The Library group is A to Z: keep it that way.
           'footer' => false keeps an item out of the footer sitemap. ---- */
     'menu' => [
         ['label' => 'Home', 'href' => 'index'],
@@ -89,15 +90,15 @@ return [
         ['label' => 'Blog',    'href' => 'blog'],
         ['label' => 'Contact', 'href' => 'contact'],
         ['label' => 'Library', 'href' => 'all-pages', 'footer' => false, 'children' => [
-            ['label' => 'All pages',           'href' => 'all-pages', 'footer' => false],
-            ['label' => 'Patterns',            'href' => 'patterns', 'footer' => false],
-            ['label' => 'Forms',               'href' => 'forms', 'footer' => false],
-            ['label' => 'Store', 'href' => 'store', 'footer' => false],
-            ['label' => 'Work',                'href' => 'projects', 'footer' => false],
-            ['label' => 'Project','href' => 'project', 'footer' => false],
-            ['label' => 'About me', 'href' => 'about-me', 'footer' => false],
-            ['label' => 'Programs',          'href' => 'programs', 'footer' => false],
-            ['label' => 'Blog post','href' => 'post', 'footer' => false],
+            ['label' => 'About me',   'href' => 'about-me',  'footer' => false],
+            ['label' => 'All pages',  'href' => 'all-pages', 'footer' => false],
+            ['label' => 'Blog post',  'href' => 'post',      'footer' => false],
+            ['label' => 'Forms',      'href' => 'forms',     'footer' => false],
+            ['label' => 'Patterns',   'href' => 'patterns',  'footer' => false],
+            ['label' => 'Programs',   'href' => 'programs',  'footer' => false],
+            ['label' => 'Project',    'href' => 'project',   'footer' => false],
+            ['label' => 'Store',      'href' => 'store',     'footer' => false],
+            ['label' => 'Work',       'href' => 'projects',  'footer' => false],
         ]],
     ],
 

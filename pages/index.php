@@ -11,7 +11,7 @@ require SITE_ROOT . '/partials/head.php';
 
   <main id="main">
 
-    <!-- 5.1 HERO — first impression: one promise, one action.
+    <!-- Hero video — first impression: one promise, one action.
          Video background: remove the .media-bg block, the toggle button and
          the class "section--media" if you want a hero without media. -->
     <section class="section section--hero section--media" id="hero" aria-labelledby="hero-title">
@@ -46,7 +46,7 @@ require SITE_ROOT . '/partials/head.php';
       <button class="media-toggle" type="button" data-js="bg-video-toggle">Pause video</button>
     </section>
 
-    <!-- 5.2 ABOUT — who/what, in plain words -->
+    <!-- About text — who/what, in plain words -->
     <section class="section section--about" id="about" aria-labelledby="about-title">
       <div class="column stack">
         <h2 id="about-title">[About heading]</h2>
@@ -54,7 +54,7 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.3 FEATURES — repeating cards in a responsive grid -->
+    <!-- Features grid — repeating cards in a responsive grid -->
     <section class="section section--features section--alt" id="features" aria-labelledby="features-title">
       <div class="column stack">
         <h2 id="features-title">[Features heading]</h2>
@@ -75,7 +75,7 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.4 IMAGE + TEXT — two columns: image (left), text (right).
+    <!-- Image + text — two columns: image (left), text (right).
          Invert the columns by swapping the two children (see 5.5). -->
     <section class="section section--image-text" id="image-text" aria-labelledby="image-text-title">
       <div class="column halves">
@@ -96,7 +96,7 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.5 TEXT + IMAGE — same pattern, columns inverted: text (left), image (right) -->
+    <!-- Text + image — same pattern, columns inverted: text (left), image (right) -->
     <section class="section section--text-image section--alt" id="text-image" aria-labelledby="text-image-title">
       <div class="column halves">
 
@@ -116,8 +116,8 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.6 DIVIDER — a band with a video background and a short message.
-         Same video pattern as the hero (see 5.1). Own poster, own video,
+    <!-- Video divider — a band with a video background and a short message.
+         Same video pattern as the hero (see Hero video). Own poster, own video,
          own pause button.
          Files: assets/img/divider-poster.jpg, assets/video/divider.webm, assets/video/divider.mp4 -->
     <section class="section section--divider section--media" id="divider" aria-labelledby="divider-title">
@@ -141,7 +141,7 @@ require SITE_ROOT . '/partials/head.php';
       <button class="media-toggle" type="button" data-js="bg-video-toggle">Pause video</button>
     </section>
 
-    <!-- 5.7 LISTS — three rows inside one column:
+    <!-- Triple lists — three rows inside one column:
          row 1 = heading | row 2 = two columns of bullets | row 3 = text + action -->
     <section class="section section--lists" id="lists" aria-labelledby="lists-title">
       <div class="column stack stack--loose">
@@ -172,7 +172,7 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- 5.8 CONTACT / CALL TO ACTION — the page's closing action -->
+    <!-- Contact band — the page's closing action -->
     <section class="section section--contact section--alt" id="contact" aria-labelledby="contact-title">
       <div class="column stack">
         <h2 id="contact-title">[Contact heading]</h2>

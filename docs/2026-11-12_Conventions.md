@@ -266,3 +266,11 @@ Markup and class names are in `docs/2026-11-12_Patterns.md`; image sizes in `doc
 - **Numbered FAQ (`.faq--numbered`)**: same `<details>` markup as the FAQ; numbers from CSS.
 - **Floating proof cards (`.float-cluster`, `.float-card`, `.score`, `.avatar-row`, `.meter-list`)**: every number, source name and meter level must come from a real check, with the date; no source = `[NUMBER NEEDED - source required]`. Show a logo only with the owner's permission. Put `theme-dark` on one card only. The status word carries the meaning, the bar only pictures it (the `aria-label` says the same in words). The lime figure (`--color-highlight`) is for dark cards only: never use it as text on a light background.
 - **Giant-type hero (`.hero__title--giant`, `.hero-type__figure`)**: one or two short words, because the photo covers part of the lower letters (`--hero-type-overlap`). The headline stays real text and the photo is decoration. On a real page the headline is the page's one `h1`.
+
+## 23. Names and order (added 2026-11-21)
+
+- Every structure has one NAME, listed in `docs/2026-11-21_Name-Index.md`. Use the name in requests, comments and notes. Class names stay as they are.
+- Every list in the template is A to Z: Library menu, All-pages index, Patterns contents and catalog blocks, tables in the docs, media tables. Add a new item in its alphabetical place.
+- Exception: a client's real menu follows the visitor's journey (Home first), and steps in a process keep their order.
+- A new structure is finished only when it has: a name in the Name Index, a row in `docs/2026-11-12_Patterns.md`, a block in the Patterns catalog (in A-to-Z place) and a line in the Checklist if it needs a check.
+

@@ -24,7 +24,7 @@ require SITE_ROOT . '/partials/head.php';
       </div>
     </section>
 
-    <!-- PROGRAM CARDS (5.21 in the patterns catalog): one block per level. Ages, schedules, fees and
+    <!-- Program cards (in the patterns catalog): one block per level. Ages, schedules, fees and
          accreditations only from a document the school provides; otherwise leave the [bracket]. -->
     <section class="section section--programs" id="level-1" aria-labelledby="level-1-title">
       <div class="column stack stack--loose">
