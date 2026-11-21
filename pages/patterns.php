@@ -85,6 +85,7 @@ require SITE_ROOT . '/partials/head.php';
             <li><a href="#timeline-process">Timelines (process, itinerary)</a></li>
             <li><a href="#glass-form">Glass form card + numbered FAQ</a></li>
             <li><a href="#hero-type">Giant-type hero</a></li>
+            <li><a href="#float-cards">Floating proof cards</a></li>
             <li><a href="#cta">Call-to-action band</a></li>
             <li><a href="<?= url('forms') ?>">Form kit (all field types)</a></li>
           </ul>
@@ -1115,6 +1116,71 @@ require SITE_ROOT . '/partials/head.php';
         </figure>
         <p class="lead">[One or two sentences that say what you do and for whom.]</p>
         <p class="hero-type__action"><a class="btn btn--primary" href="<?= url('contact') ?>">[Primary action]</a></p>
+      </div>
+    </section>
+
+    <!-- 5.29 FLOATING PROOF CARDS — text on one side; on the other a pale panel with small cards that
+         overlap: a dark score card, a sources card with round logos, and a meter panel.
+         Use for proof beside a headline. Put theme-dark on ONE card only.
+         Meters: five spans per bar, the first N carry is-on; the aria-label says the same in words.
+         RULE: every number, source name and level must come from a real check, with the date.
+         No verified source? Write [NUMBER NEEDED - source required]. Logos only with permission.
+         To add a meter row: copy one <li class="meter-row"> and change label, segments, status. -->
+    <section class="section section--float-cards" id="float-cards" aria-labelledby="float-cards-title">
+      <div class="column halves halves--top">
+        <div class="stack">
+          <p class="hero__eyebrow">[Short label]</p>
+          <h2 id="float-cards-title">[The promise, in one line]</h2>
+          <p class="lead">[One or two sentences that say how the proof below was checked.]</p>
+          <p><a class="btn btn--primary" href="<?= url('contact') ?>">[Primary action]</a></p>
+        </div>
+        <div class="float-cluster">
+          <div class="float-card theme-dark float-card--score">
+            <p class="score">
+              <span class="score__value">[Number]</span>
+              <span class="score__note">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg>
+                <span>[What the number counts]</span>
+              </span>
+            </p>
+          </div>
+          <div class="float-card float-card--sources">
+            <h3 class="float-card__title">[Sources]</h3>
+            <ul class="avatar-row" aria-label="[Names of the sources]">
+              <li class="avatar-row__item">[A]</li>
+              <li class="avatar-row__item">[B]</li>
+              <li class="avatar-row__item">[C]</li>
+              <li class="avatar-row__item">[D]</li>
+            </ul>
+            <p class="stat__source">[Where the sources come from, date checked]</p>
+          </div>
+          <div class="float-card float-card--meters">
+            <h3 class="float-card__title">[Check name]</h3>
+            <ul class="meter-list">
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[4] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[5] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[3] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 

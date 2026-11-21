@@ -24,6 +24,7 @@ Quality numbers below (CRF, quality 80, etc.) are **starting points**, not rules
 | Tall tile photo (swipe row) | 900 x 1200 (3:4) | JPG or WebP | `assets/img/` | `tile-1.jpg` |
 | Glass-form background | 1920 x 1200 (16:10) | JPG or WebP | `assets/img/` | `glass-bg.jpg` |
 | Giant-type hero photo | 960 x 1200 (4:5) | JPG or WebP | `assets/img/` | `hero-type.jpg` |
+| Source logo (floating proof card) | 96 x 96 (1:1) | PNG, SVG or WebP | `assets/img/` | `source-1.svg` |
 | Card / news image | 1200 x 900 (4:3) | JPG or WebP | `assets/img/` | `news-spring-fair.jpg` |
 | Gallery image | 1600 x 1200 (4:3) | JPG or WebP | `assets/img/` | `gallery-01.jpg` |
 | Team photo | 800 x 800 (1:1) | JPG or WebP | `assets/img/` | `team-ana-lopez.jpg` |

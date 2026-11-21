@@ -1593,3 +1593,121 @@ a.row__link:hover .row__title { color: var(--color-primary); }
   }
 }
 .glass-card .form__hint { color: var(--glass-text-muted); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: float-cluster  (a pale panel holding two or three small cards that overlap)
+   Use when : proof beside a headline: a score, the sources behind it, a quality check.
+   Markup   : <div class="float-cluster">
+                <div class="float-card theme-dark float-card--score"> <p class="score">..</p> </div>
+                <div class="float-card float-card--sources"> <h3 class="float-card__title">..</h3>
+                  <ul class="avatar-row">..</ul> <p>..</p> </div>
+                <div class="float-card float-card--meters"> <h3 class="float-card__title">..</h3>
+                  <ul class="meter-list"><li class="meter-row">..</li></ul> </div>
+              </div>
+   Phones   : cards stack. From 40em: score and sources side by side, meters below and
+              rising over them (--float-overlap).
+   Dark card: add theme-dark to ONE card. It swaps the roles by itself (no colors here).
+   Rule     : Every number needs a primary source and the date it was checked.
+              No source = write [NUMBER NEEDED - source required].
+   -------------------------------------------------------------------------- */
+.float-cluster {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+}
+.float-card {
+  padding: var(--space-4);
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.float-card__title { margin-bottom: var(--space-3); font-size: var(--text-lg); }
+.float-card--meters { position: relative; z-index: 1; }   /* paints above the cards over it */
+@media (min-width: 40em) {
+  .float-cluster { grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .float-card--meters { grid-column: 1 / -1; margin-top: calc(var(--float-overlap) * -1); }
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT: score  (one big figure with a short line and a check icon)
+   Use when : inside .float-card: "98/100" and what it counts.
+   Markup   : <p class="score"><span class="score__value">[Number]</span>
+              <span class="score__note"><svg class="icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check"></use></svg><span>[What it counts]</span></span></p>
+   Colors   : the figure uses --color-highlight (lime) on a dark card, --color-primary otherwise.
+   -------------------------------------------------------------------------- */
+.score { display: grid; gap: var(--space-3); }
+.score__value {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-primary);
+}
+.theme-dark .score__value { color: var(--color-highlight); }
+.score__note { display: flex; align-items: center; gap: var(--space-2); }
+.score__note .icon { flex: none; color: var(--color-primary); }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: avatar-row  (a row of round logos or initials: "who we draw from")
+   Use when : inside .float-card, under a title; sources, partners, schools.
+   Markup   : <ul class="avatar-row"><li class="avatar-row__item">
+                <img src=".." alt="[Name]" width="48" height="48"></li>..</ul>
+              No logo yet: put the initials as text, e.g. <li class="avatar-row__item">[AB]</li>
+   Rule     : Show only real sources, with permission to use their logo.
+   -------------------------------------------------------------------------- */
+.avatar-row { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0; list-style: none; }
+.avatar-row__item {
+  display: grid;
+  place-items: center;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+.avatar-row__item img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --------------------------------------------------------------------------
+   COMPONENT: meter-list  (rows of "label  ▮▮▮▯▯  STATUS")
+   Use when : a short quality or readiness check inside .float-card.
+   Markup   : <ul class="meter-list"><li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[4] of [5]">
+                  <span class="meter__segment is-on"></span> .. five spans, first N have is-on</span>
+                <span class="meter-row__status">[STATUS]</span></li>..</ul>
+   Note     : The status word carries the meaning; the bar is a picture of it.
+              Never state a level that is not backed by a real check.
+   -------------------------------------------------------------------------- */
+.meter-list { display: grid; gap: var(--space-3); padding: 0; list-style: none; }
+.meter-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-1);
+  align-items: center;
+}
+.meter-row__label { font-weight: 600; }
+.meter { display: flex; gap: var(--space-1); }
+.meter__segment {
+  flex: 1;
+  height: var(--meter-segment-height);
+  background: var(--color-border);
+  border-radius: var(--radius-pill);
+}
+.meter__segment.is-on { background: var(--color-primary); }
+.meter-row__status {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+@media (min-width: 40em) {
+  .meter-row { grid-template-columns: 7rem 1fr 6rem; gap: var(--space-3); }
+  .meter-row__status { text-align: right; }
+}

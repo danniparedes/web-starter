@@ -30,7 +30,7 @@ docs/                 Conventions, Patterns catalog, Checklist, Media specs
 
 ## See every page and layout
 
-Open the **Library** menu. **All pages** lists every page of the starter (status, one line each); **Patterns** is the catalog of sections to copy, including the dark theme (`section--dark`), stats card over the hero, editorial rows, tall tiles with a swipe row, timelines, glass form card, numbered FAQ and giant-type hero. Both are design reference: remove them before launch (Launch Guide, step 9).
+Open the **Library** menu. **All pages** lists every page of the starter (status, one line each); **Patterns** is the catalog of sections to copy, including the dark theme (`section--dark`), stats card over the hero, editorial rows, tall tiles with a swipe row, timelines, glass form card, numbered FAQ, giant-type hero and floating proof cards. Both are design reference: remove them before launch (Launch Guide, step 9).
 
 ## Run it
 

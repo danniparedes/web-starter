@@ -257,3 +257,12 @@
    the pieces live in components.css (project, facts, bento, program, offers, rows,
    section-label, tiles, timeline, faq--numbered).
    -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   SECTION: float-cards  (text on one side, a cluster of small proof cards on the other)
+   Markup : <section class="section section--float-cards"><div class="column halves halves--top">
+              <div class="stack"> eyebrow, h2, lead, button </div>
+              <div class="float-cluster"> .. </div></div></section>
+   Note   : Reuses .halves; the cluster is the component (see .float-cluster).
+   -------------------------------------------------------------------------- */
+.section--float-cards .halves { align-items: center; }

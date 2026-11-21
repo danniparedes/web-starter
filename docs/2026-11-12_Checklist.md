@@ -38,6 +38,7 @@ Run through this before calling any page done. Each item is verifiable.
 - [ ] Stats card over the hero: the hero above has `section--hero-overlap`; every number has a source and the date checked.
 - [ ] Timelines: dates and durations come from a document or the client.
 - [ ] Tall tiles: every photo has `alt`; the link text says where it goes; the row swipes on a phone and the arrows work (desktop).
+- [ ] Floating proof cards: every number, source and meter level has a real check and date; logos have permission; lime figure only on the dark card.
 - [ ] Giant-type hero: headline is one or two short words; exactly one `h1` on the page (use `h1` on the real home page); the photo is decoration.
 - [ ] Glass form card: white text readable over the real photo (check it, not the placeholder); form tested like any other form.
 - [ ] Dark bands: every dark color pair checked for contrast (text, muted text, primary, error, success); changes made in the `--dark-*` tokens only.
