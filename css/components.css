@@ -1605,6 +1605,8 @@ a.row__link:hover .row__title { color: var(--color-primary); }
                   <ul class="meter-list"><li class="meter-row">..</li></ul> </div>
               </div>
    Phones   : cards stack. From 40em: score and sources side by side, meters below.
+   Options  : add one modifier to .float-cluster for another layout:
+              float-cluster--mirrored, --spotlight, --stair, --tall.
    Dark card: add theme-dark to ONE card. It swaps the roles by itself (no colors here).
    Rule     : Every number needs a primary source and the date it was checked.
               No source = write [NUMBER NEEDED - source required].
@@ -1641,6 +1643,26 @@ a.row__link:hover .row__title { color: var(--color-primary); }
   .float-card--score   { grid-column: 1 / span 6; grid-row: 1; }
   .float-card--sources { grid-column: 7 / -1;     grid-row: 1; }
   .float-card--meters  { grid-column: 2 / span 10; grid-row: 2; }
+
+  /* ---- Layout options. Same cards, same rules (gap, rounded, centered smaller
+          backdrop); only the size and place of each card changes. ---- */
+  /* Mirrored: meter panel on top (wide), score and sources below it. */
+  .float-cluster--mirrored .float-card--meters  { grid-column: 1 / span 10; grid-row: 1; }
+  .float-cluster--mirrored .float-card--score   { grid-row: 2; }
+  .float-cluster--mirrored .float-card--sources { grid-row: 2; }
+  /* Spotlight: wide score card on top; sources and meters share the row below. */
+  .float-cluster--spotlight { align-items: start; }   /* the two lower cards keep their own height */
+  .float-cluster--spotlight .float-card--score   { grid-column: 2 / span 10; grid-row: 1; }
+  .float-cluster--spotlight .float-card--sources { grid-column: 1 / span 6;  grid-row: 2; }
+  .float-cluster--spotlight .float-card--meters  { grid-column: 7 / -1;      grid-row: 2; }
+  /* Stair: three rows, each card stepping across (left, right, left). */
+  .float-cluster--stair .float-card--score   { grid-column: 1 / span 7; grid-row: 1; }
+  .float-cluster--stair .float-card--sources { grid-column: 5 / -1;     grid-row: 2; }
+  .float-cluster--stair .float-card--meters  { grid-column: 1 / span 10; grid-row: 3; }
+  /* Tall: the score card is tall on the left; sources and meters stack on the right. */
+  .float-cluster--tall .float-card--score   { grid-column: 1 / span 6; grid-row: 1 / span 2; display: grid; align-content: center; }
+  .float-cluster--tall .float-card--sources { grid-column: 7 / -1;     grid-row: 1; }
+  .float-cluster--tall .float-card--meters  { grid-column: 7 / -1;     grid-row: 2; }
 }
 
 /* --------------------------------------------------------------------------
@@ -1697,7 +1719,7 @@ a.row__link:hover .row__title { color: var(--color-primary); }
    Note     : The status word carries the meaning; the bar is a picture of it.
               Never state a level that is not backed by a real check.
    -------------------------------------------------------------------------- */
-.meter-list { display: grid; gap: var(--space-3); padding: 0; list-style: none; }
+.meter-list { display: grid; gap: var(--space-3); padding: 0; list-style: none; container-type: inline-size; }
 .meter-row {
   display: grid;
   grid-template-columns: 1fr;
@@ -1719,7 +1741,9 @@ a.row__link:hover .row__title { color: var(--color-primary); }
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
-@media (min-width: 40em) {
+/* One line per row ("label  bar  STATUS") only when the list is wide enough;
+   in a narrow card the label sits above the bar. */
+@container (min-width: 20rem) {
   .meter-row { grid-template-columns: 7rem 1fr 6rem; gap: var(--space-3); }
   .meter-row__status { text-align: right; }
 }

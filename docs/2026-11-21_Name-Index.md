@@ -47,8 +47,12 @@ Every structure we built has ONE name. Use the name when you ask for it ("add Fl
 | Features grid | Section | `section--features` (Home) | Heading + card grid | Features (old Home 5.3) |
 | Figure | Component | `.figure` | Image frame with fixed shape (4:3, portrait, tall) |  |
 | Float card | Component | `.float-card` | One small card inside a Float cluster |  |
-| Float cluster | Component | `.float-cluster` | Separate rounded cards over a centered pale panel smaller than the group |  |
+| Float cluster | Component | `.float-cluster` | Separate rounded cards over a centered pale panel smaller than the group; layout options: --mirrored, --spotlight, --stair, --tall |  |
 | Floating proof cards | Section | `section--float-cards` | Dark score card, sources card with round logos, meter panel | (old 5.29) |
+| Floating proof cards mirrored | Section | `section--float-cards` + `.float-cluster--mirrored` | Floating proof cards with another layout: the wide meter panel on top; score and sources below it |  |
+| Floating proof cards spotlight | Section | `section--float-cards` + `.float-cluster--spotlight` | Floating proof cards with another layout: a wide score card on top; sources and meters share the row below |  |
+| Floating proof cards stair | Section | `section--float-cards` + `.float-cluster--stair` | Floating proof cards with another layout: three rows, cards stepping left, right, left |  |
+| Floating proof cards tall | Section | `section--float-cards` + `.float-cluster--tall` | Floating proof cards with another layout: a tall score card on the left; sources and meters stacked on the right |  |
 | Footer | Page frame | `section--footer` | Logo, sitemap, company info, social, legal line |  |
 | Form | Component | `.form` | Field, label, error and status styles |  |
 | Form kit | Page | `pages/forms.php` | Complete form and Newsletter signup | Forms |

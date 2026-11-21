@@ -196,15 +196,19 @@
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#faq-numbered">FAQ numbered</a></li>
             <li><a href="#float-cards">Floating proof cards</a></li>
+            <li><a href="#float-cards-mirrored">Floating proof cards mirrored</a></li>
+            <li><a href="#float-cards-spotlight">Floating proof cards spotlight</a></li>
+            <li><a href="#float-cards-stair">Floating proof cards stair</a></li>
+            <li><a href="#float-cards-tall">Floating proof cards tall</a></li>
             <li><a href="forms.html">Form kit</a> (all field types)</li>
             <li><a href="#gallery">Gallery viewer</a></li>
             <li><a href="#glass-form">Glass form</a></li>
             <li><a href="#hero-type">Hero giant type</a></li>
             <li><a href="#hero-image">Hero image</a></li>
-            <li><a href="#icons">Icons</a></li>
-            <li><a href="#logo-bar">Logo bar</a></li>
           </ul>
           <ul class="list">
+            <li><a href="#icons">Icons</a></li>
+            <li><a href="#logo-bar">Logo bar</a></li>
             <li><a href="#logos">Logo strip</a></li>
             <li><a href="#lottie">Lottie</a></li>
             <li><a href="#news">News cards</a></li>
@@ -489,8 +493,8 @@
       </div>
     </section>
 
-    <!-- Floating proof cards — text on one side; on the other a pale panel with small cards that
-         overlap: a dark score card, a sources card with round logos, and a meter panel.
+    <!-- Floating proof cards — text on one side; on the other a pale panel and small separate
+         cards with a gap: a dark score card, a sources card with round logos, and a meter panel.
          Use for proof beside a headline. Put theme-dark on ONE card only.
          Meters: five spans per bar, the first N carry is-on; the aria-label says the same in words.
          RULE: every number, source name and level must come from a real check, with the date.
@@ -553,6 +557,254 @@
         </div>
       </div>
     </section>
+
+    <!-- Floating proof cards mirrored — same cards, the wide meter panel on top and the score and sources card below it.
+         Same markup as Floating proof cards; the only change is the class float-cluster--mirrored.
+         Same RULE: every number, source name and level needs a real check and its date. -->
+    <section class="section section--float-cards" id="float-cards-mirrored" aria-labelledby="float-cards-mirrored-title">
+      <div class="column halves halves--top">
+        <div class="stack">
+          <p class="hero__eyebrow">[Short label]</p>
+          <h2 id="float-cards-mirrored-title">[The promise, in one line]</h2>
+          <p class="lead">[One or two sentences that say how the proof below was checked.]</p>
+          <p><a class="btn btn--primary" href="contact.html">[Primary action]</a></p>
+        </div>
+        <div class="float-cluster float-cluster--mirrored">
+          <div class="float-card theme-dark float-card--score">
+            <p class="score">
+              <span class="score__value">[Number]</span>
+              <span class="score__note">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg>
+                <span>[What the number counts]</span>
+              </span>
+            </p>
+          </div>
+          <div class="float-card float-card--sources">
+            <h3 class="float-card__title">[Sources]</h3>
+            <ul class="avatar-row" aria-label="[Names of the sources]">
+              <li class="avatar-row__item">[A]</li>
+              <li class="avatar-row__item">[B]</li>
+              <li class="avatar-row__item">[C]</li>
+              <li class="avatar-row__item">[D]</li>
+            </ul>
+            <p class="stat__source">[Where the sources come from, date checked]</p>
+          </div>
+          <div class="float-card float-card--meters">
+            <h3 class="float-card__title">[Check name]</h3>
+            <ul class="meter-list">
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[4] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[5] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[3] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Floating proof cards spotlight — a wide score card on top; sources and meters share the row below.
+         Same markup as Floating proof cards; the only change is the class float-cluster--spotlight.
+         Same RULE: every number, source name and level needs a real check and its date. -->
+    <section class="section section--float-cards" id="float-cards-spotlight" aria-labelledby="float-cards-spotlight-title">
+      <div class="column halves halves--top">
+        <div class="stack">
+          <p class="hero__eyebrow">[Short label]</p>
+          <h2 id="float-cards-spotlight-title">[The promise, in one line]</h2>
+          <p class="lead">[One or two sentences that say how the proof below was checked.]</p>
+          <p><a class="btn btn--primary" href="contact.html">[Primary action]</a></p>
+        </div>
+        <div class="float-cluster float-cluster--spotlight">
+          <div class="float-card theme-dark float-card--score">
+            <p class="score">
+              <span class="score__value">[Number]</span>
+              <span class="score__note">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg>
+                <span>[What the number counts]</span>
+              </span>
+            </p>
+          </div>
+          <div class="float-card float-card--sources">
+            <h3 class="float-card__title">[Sources]</h3>
+            <ul class="avatar-row" aria-label="[Names of the sources]">
+              <li class="avatar-row__item">[A]</li>
+              <li class="avatar-row__item">[B]</li>
+              <li class="avatar-row__item">[C]</li>
+              <li class="avatar-row__item">[D]</li>
+            </ul>
+            <p class="stat__source">[Where the sources come from, date checked]</p>
+          </div>
+          <div class="float-card float-card--meters">
+            <h3 class="float-card__title">[Check name]</h3>
+            <ul class="meter-list">
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[4] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[5] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[3] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Floating proof cards stair — three rows, cards stepping left, right, left.
+         Same markup as Floating proof cards; the only change is the class float-cluster--stair.
+         Same RULE: every number, source name and level needs a real check and its date. -->
+    <section class="section section--float-cards" id="float-cards-stair" aria-labelledby="float-cards-stair-title">
+      <div class="column halves halves--top">
+        <div class="stack">
+          <p class="hero__eyebrow">[Short label]</p>
+          <h2 id="float-cards-stair-title">[The promise, in one line]</h2>
+          <p class="lead">[One or two sentences that say how the proof below was checked.]</p>
+          <p><a class="btn btn--primary" href="contact.html">[Primary action]</a></p>
+        </div>
+        <div class="float-cluster float-cluster--stair">
+          <div class="float-card theme-dark float-card--score">
+            <p class="score">
+              <span class="score__value">[Number]</span>
+              <span class="score__note">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg>
+                <span>[What the number counts]</span>
+              </span>
+            </p>
+          </div>
+          <div class="float-card float-card--sources">
+            <h3 class="float-card__title">[Sources]</h3>
+            <ul class="avatar-row" aria-label="[Names of the sources]">
+              <li class="avatar-row__item">[A]</li>
+              <li class="avatar-row__item">[B]</li>
+              <li class="avatar-row__item">[C]</li>
+              <li class="avatar-row__item">[D]</li>
+            </ul>
+            <p class="stat__source">[Where the sources come from, date checked]</p>
+          </div>
+          <div class="float-card float-card--meters">
+            <h3 class="float-card__title">[Check name]</h3>
+            <ul class="meter-list">
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[4] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[5] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[3] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Floating proof cards tall — a tall score card on the left; sources and meters stacked on the right.
+         Same markup as Floating proof cards; the only change is the class float-cluster--tall.
+         Same RULE: every number, source name and level needs a real check and its date. -->
+    <section class="section section--float-cards" id="float-cards-tall" aria-labelledby="float-cards-tall-title">
+      <div class="column halves halves--top">
+        <div class="stack">
+          <p class="hero__eyebrow">[Short label]</p>
+          <h2 id="float-cards-tall-title">[The promise, in one line]</h2>
+          <p class="lead">[One or two sentences that say how the proof below was checked.]</p>
+          <p><a class="btn btn--primary" href="contact.html">[Primary action]</a></p>
+        </div>
+        <div class="float-cluster float-cluster--tall">
+          <div class="float-card theme-dark float-card--score">
+            <p class="score">
+              <span class="score__value">[Number]</span>
+              <span class="score__note">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg>
+                <span>[What the number counts]</span>
+              </span>
+            </p>
+          </div>
+          <div class="float-card float-card--sources">
+            <h3 class="float-card__title">[Sources]</h3>
+            <ul class="avatar-row" aria-label="[Names of the sources]">
+              <li class="avatar-row__item">[A]</li>
+              <li class="avatar-row__item">[B]</li>
+              <li class="avatar-row__item">[C]</li>
+              <li class="avatar-row__item">[D]</li>
+            </ul>
+            <p class="stat__source">[Where the sources come from, date checked]</p>
+          </div>
+          <div class="float-card float-card--meters">
+            <h3 class="float-card__title">[Check name]</h3>
+            <ul class="meter-list">
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[4] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[5] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+              <li class="meter-row">
+                <span class="meter-row__label">[Label]</span>
+                <span class="meter" role="img" aria-label="[3] of [5]">
+                  <span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment is-on"></span><span class="meter__segment"></span><span class="meter__segment"></span>
+                </span>
+                <span class="meter-row__status">[Status]</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <!-- Gallery viewer — needs JavaScript for the viewer -->
     <section class="section section--gallery section--alt" id="gallery" aria-labelledby="gallery-title">
