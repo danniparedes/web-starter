@@ -1604,7 +1604,8 @@ a.row__link:hover .row__title { color: var(--color-primary); }
                 <div class="float-card float-card--meters"> <h3 class="float-card__title">..</h3>
                   <ul class="meter-list"><li class="meter-row">..</li></ul> </div>
               </div>
-   Phones   : cards stack. From 40em: score and sources side by side, meters below.
+   Phones   : cards stack (also on tablets 48em to 64em). From 64em, and between 40em and
+              48em: score and sources side by side, meters below.
    Options  : add one modifier to .float-cluster for another layout:
               float-cluster--mirrored, --spotlight, --stair, --tall.
    Dark card: add theme-dark to ONE card. It swaps the roles by itself (no colors here).
@@ -1636,9 +1637,10 @@ a.row__link:hover .row__title { color: var(--color-primary); }
   box-shadow: var(--shadow-card);
 }
 .float-card__title { margin-bottom: var(--space-3); font-size: var(--text-lg); }
-/* Phones: one column. From 40em: score and sources side by side, meters below
-   (a little narrower, centered under them). */
-@media (min-width: 40em) {
+/* One column on phones and on tablets, where the group sits in a half-width column
+   (48em to 64em: too narrow for a big figure beside a card). Wider groups use the
+   12-column layouts: 40em to 48em (full-width group) and from 64em. */
+@media (min-width: 40em) and (max-width: 47.99em), (min-width: 64em) {
   .float-cluster { grid-template-columns: repeat(12, 1fr); }
   .float-card--score   { grid-column: 1 / span 6; grid-row: 1; }
   .float-card--sources { grid-column: 7 / -1;     grid-row: 1; }
